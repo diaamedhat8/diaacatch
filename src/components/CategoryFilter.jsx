@@ -38,14 +38,12 @@ export default function CategoryFilter({
       gap: '1.25rem'
     }}>
       {/* Category Pills Slider */}
-      <div style={{
+      <div className="hide-scrollbar" style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '0.75rem',
+        gap: '0.5rem',
         overflowX: 'auto',
-        paddingBottom: '0.5rem',
-        msOverflowStyle: 'none',
-        scrollbarWidth: 'none'
+        paddingBottom: '0.4rem'
       }}>
         {CATEGORIES.map((cat) => {
           const IconComponent = ICON_MAP[cat.icon] || Sparkles;

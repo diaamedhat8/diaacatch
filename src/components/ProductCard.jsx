@@ -5,8 +5,7 @@ import {
   Eye, 
   ExternalLink, 
   ShoppingBag, 
-  Truck, 
-  CheckCircle2 
+  Truck 
 } from 'lucide-react';
 import { CURRENCIES } from '../data/products';
 
@@ -25,7 +24,7 @@ export default function ProductCard({
   return (
     <div style={{
       background: 'var(--bg-card)',
-      borderRadius: '20px',
+      borderRadius: '16px',
       border: '1px solid var(--border-color)',
       overflow: 'hidden',
       display: 'flex',
@@ -35,7 +34,7 @@ export default function ProductCard({
       position: 'relative'
     }}
     onMouseEnter={(e) => {
-      e.currentTarget.style.transform = 'translateY(-6px)';
+      e.currentTarget.style.transform = 'translateY(-4px)';
       e.currentTarget.style.boxShadow = 'var(--shadow-hover)';
     }}
     onMouseLeave={(e) => {
@@ -47,7 +46,7 @@ export default function ProductCard({
       <div style={{
         position: 'relative',
         width: '100%',
-        paddingTop: '75%', /* 4:3 Aspect Ratio */
+        paddingTop: '80%',
         overflow: 'hidden',
         background: '#000'
       }}>
@@ -61,20 +60,20 @@ export default function ProductCard({
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            transition: 'transform 0.5s ease'
+            transition: 'transform 0.4s ease'
           }}
-          onMouseEnter={(e) => e.target.style.transform = 'scale(1.08)'}
+          onMouseEnter={(e) => e.target.style.transform = 'scale(1.06)'}
           onMouseLeave={(e) => e.target.style.transform = 'scale(1.0)'}
         />
 
         {/* Top Badges */}
         <div style={{
           position: 'absolute',
-          top: '0.75rem',
-          right: '0.75rem',
+          top: '0.5rem',
+          right: '0.5rem',
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.4rem',
+          gap: '0.3rem',
           zIndex: 2
         }}>
           {product.isChoice && <span className="badge-choice">CHOICE</span>}
@@ -86,25 +85,24 @@ export default function ProductCard({
           onClick={() => onToggleWishlist(product.id)}
           style={{
             position: 'absolute',
-            top: '0.75rem',
-            left: '0.75rem',
-            width: '36px',
-            height: '36px',
+            top: '0.5rem',
+            left: '0.5rem',
+            width: '32px',
+            height: '32px',
             borderRadius: '50%',
-            background: 'rgba(255, 255, 255, 0.9)',
-            backdropFilter: 'blur(8px)',
+            background: 'rgba(255, 255, 255, 0.92)',
+            backdropFilter: 'blur(6px)',
             border: 'none',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
             zIndex: 2,
-            boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
-            transition: 'all 0.2s ease'
+            boxShadow: '0 3px 8px rgba(0,0,0,0.15)'
           }}
         >
           <Heart
-            size={18}
+            size={16}
             fill={isWishlisted ? 'var(--primary-red)' : 'none'}
             color={isWishlisted ? 'var(--primary-red)' : '#64748b'}
           />
@@ -113,7 +111,7 @@ export default function ProductCard({
         {/* Quick View Floating Overlay */}
         <div style={{
           position: 'absolute',
-          bottom: '0.75rem',
+          bottom: '0.5rem',
           left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 2
@@ -121,30 +119,30 @@ export default function ProductCard({
           <button
             onClick={() => onQuickView(product)}
             style={{
-              background: 'rgba(0, 0, 0, 0.75)',
+              background: 'rgba(0, 0, 0, 0.78)',
               color: '#fff',
               border: 'none',
               borderRadius: '50px',
-              padding: '0.4rem 0.9rem',
-              fontSize: '0.78rem',
+              padding: '0.35rem 0.75rem',
+              fontSize: '0.72rem',
               fontWeight: '700',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.4rem',
-              backdropFilter: 'blur(6px)',
-              transition: 'all 0.2s ease'
+              gap: '0.3rem',
+              backdropFilter: 'blur(4px)',
+              whiteSpace: 'nowrap'
             }}
           >
-            <Eye size={14} />
+            <Eye size={13} />
             <span>نظرة سريعة</span>
           </button>
         </div>
       </div>
 
       {/* Card Details Body */}
-      <div style={{
-        padding: '1.2rem',
+      <div className="product-card-body" style={{
+        padding: '1rem',
         display: 'flex',
         flexDirection: 'column',
         flex: 1,
@@ -156,28 +154,27 @@ export default function ProductCard({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            fontSize: '0.8rem',
+            fontSize: '0.75rem',
             color: 'var(--text-muted)',
-            marginBottom: '0.5rem'
+            marginBottom: '0.4rem'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', color: '#ffaa00', fontWeight: '800' }}>
-              <Star size={14} fill="#ffaa00" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', color: '#ffaa00', fontWeight: '800' }}>
+              <Star size={13} fill="#ffaa00" />
               <span>{product.rating}</span>
-              <span style={{ color: 'var(--text-muted)', fontWeight: '500' }}>({product.reviewsCount.toLocaleString()})</span>
             </div>
             <div style={{ fontWeight: '600' }}>
-              {(product.ordersCount / 1000).toFixed(1)}k+ طلبيات
+              {(product.ordersCount / 1000).toFixed(1)}k+ طلب
             </div>
           </div>
 
           {/* Title */}
-          <h3 style={{
-            fontSize: '0.98rem',
+          <h3 className="product-card-title" style={{
+            fontSize: '0.9rem',
             fontWeight: '700',
-            lineHeight: '1.4',
+            lineHeight: '1.35',
             color: 'var(--text-main)',
-            marginBottom: '0.75rem',
-            height: '2.8em',
+            marginBottom: '0.5rem',
+            height: '2.7em',
             overflow: 'hidden',
             display: '-webkit-box',
             WebkitLineClamp: 2,
@@ -187,56 +184,58 @@ export default function ProductCard({
           </h3>
 
           {/* Shipping Badge Tag */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.85rem' }}>
-            <Truck size={14} color="#10b981" />
-            <span className="badge-shipping">شحن مجاني السريع ({product.deliveryDays})</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', marginBottom: '0.75rem' }}>
+            <Truck size={13} color="#10b981" />
+            <span className="badge-shipping">{product.deliveryDays}</span>
           </div>
         </div>
 
         {/* Pricing & Buy CTA */}
         <div style={{
           borderTop: '1px solid var(--border-color)',
-          paddingTop: '0.85rem'
+          paddingTop: '0.65rem'
         }}>
           <div style={{
             display: 'flex',
             alignItems: 'baseline',
-            gap: '0.5rem',
-            marginBottom: '0.85rem'
+            gap: '0.4rem',
+            marginBottom: '0.65rem',
+            flexWrap: 'wrap'
           }}>
-            <span style={{
-              fontSize: '1.4rem',
+            <span className="product-card-price" style={{
+              fontSize: '1.25rem',
               fontWeight: '900',
               color: 'var(--primary-red)'
             }}>
               {currentPrice} {currency.symbol}
             </span>
-            <span style={{
-              fontSize: '0.88rem',
+            <span className="product-card-orig-price" style={{
+              fontSize: '0.8rem',
               color: 'var(--text-muted)',
               textDecoration: 'line-through',
               fontWeight: '500'
             }}>
-              {originalPrice} {currency.symbol}
+              {originalPrice}
             </span>
           </div>
 
           {/* Action Buttons Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.4rem' }}>
             <a
               href={product.aliExpressUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className="btn-primary btn-buy-aliexpress"
               style={{
                 textDecoration: 'none',
-                padding: '0.55rem',
-                fontSize: '0.85rem',
-                borderRadius: '12px'
+                padding: '0.5rem 0.4rem',
+                fontSize: '0.78rem',
+                borderRadius: '10px',
+                whiteSpace: 'nowrap'
               }}
             >
-              <span>شراء من AliExpress</span>
-              <ExternalLink size={15} />
+              <span>شراء</span>
+              <ExternalLink size={13} />
             </a>
 
             <button
@@ -246,17 +245,16 @@ export default function ProductCard({
                 background: 'var(--bg-main)',
                 border: '1px solid var(--border-color)',
                 color: 'var(--text-main)',
-                borderRadius: '12px',
-                width: '38px',
-                height: '38px',
+                borderRadius: '10px',
+                width: '34px',
+                height: '34px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease'
+                cursor: 'pointer'
               }}
             >
-              <ShoppingBag size={18} color="var(--primary-red)" />
+              <ShoppingBag size={16} color="var(--primary-red)" />
             </button>
           </div>
         </div>
