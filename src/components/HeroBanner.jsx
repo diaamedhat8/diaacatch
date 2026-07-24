@@ -18,82 +18,88 @@ export default function HeroBanner({ onExploreClick }) {
 
   return (
     <section style={{
-      padding: '1.5rem 0 1rem 0',
-      background: 'radial-gradient(circle at 80% 20%, rgba(255, 106, 0, 0.15) 0%, rgba(255, 43, 74, 0.05) 50%, transparent 100%)'
+      padding: '1.25rem 0 0.85rem 0',
+      background: 'radial-gradient(circle at 80% 20%, rgba(255, 106, 0, 0.15) 0%, rgba(255, 43, 74, 0.05) 50%, transparent 100%)',
+      width: '100%',
+      maxWidth: '100vw',
+      overflowX: 'hidden'
     }}>
       <div className="container">
         <div className="hero-card" style={{
           background: 'var(--bg-card)',
-          borderRadius: '24px',
+          borderRadius: '20px',
           border: '1px solid var(--border-color)',
-          padding: '2.25rem',
+          padding: '1.75rem 1.25rem',
           boxShadow: 'var(--shadow-md)',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '1.5rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+          gap: '1.25rem',
           alignItems: 'center',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          width: '100%',
+          boxSizing: 'border-box'
         }}>
 
           {/* Left Column Content */}
-          <div style={{ zIndex: 2 }}>
+          <div style={{ zIndex: 2, width: '100%' }}>
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.4rem',
+              gap: '0.35rem',
               background: 'rgba(255, 43, 74, 0.1)',
               color: 'var(--primary-red)',
-              padding: '0.35rem 0.85rem',
+              padding: '0.3rem 0.75rem',
               borderRadius: '50px',
               fontWeight: '800',
-              fontSize: '0.8rem',
-              marginBottom: '0.75rem'
+              fontSize: '0.75rem',
+              marginBottom: '0.65rem'
             }}>
-              <Zap size={15} color="var(--primary-red)" />
+              <Zap size={14} color="var(--primary-red)" />
               <span>الصفقات الخاطفة - FLASH SALE</span>
             </div>
 
             <h1 className="hero-title" style={{
-              fontSize: '2.2rem',
+              fontSize: '1.85rem',
               fontWeight: '900',
               lineHeight: '1.25',
-              marginBottom: '0.85rem',
-              color: 'var(--text-main)'
+              marginBottom: '0.75rem',
+              color: 'var(--text-main)',
+              maxWidth: '100%'
             }}>
               أفضل صيدات وتخفيضات <span style={{
                 background: 'var(--primary-gradient)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent'
-              }}>diaaCatch (ضياء كَاتش)</span> بخصومات تصل إلى 80%
+              }}>diaaCatch</span> بخصومات حتى 80%
             </h1>
 
             <p className="hero-desc" style={{
               color: 'var(--text-muted)',
-              fontSize: '0.98rem',
+              fontSize: '0.9rem',
               lineHeight: '1.5',
-              marginBottom: '1.25rem',
+              marginBottom: '1rem',
               maxWidth: '540px'
             }}>
-              استكشف تشكيلة واسعة من المنتجات المضمونة ذات الجودة العالية: أجهزة ذكية، جيمنج، إلكترونيات، ومستلزمات منزلية مع ضمان الشحن المجاني والتوصيل السريع.
+              استكشف تشكيلة واسعة من المنتجات المضمونة ذات الجودة العالية: أجهزة ذكية، جيمنج، وإلكترونيات مع ضمان الشحن المجاني والتوصيل السريع.
             </p>
 
             {/* Action Buttons */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
-              <button onClick={onExploreClick} className="btn-primary pulse-animation" style={{ padding: '0.75rem 1.5rem', fontSize: '0.92rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <button onClick={onExploreClick} className="btn-primary pulse-animation" style={{ padding: '0.65rem 1.35rem', fontSize: '0.85rem' }}>
                 <span>تصفح العروض الآن</span>
-                <ArrowLeft size={17} />
+                <ArrowLeft size={15} />
               </button>
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.4rem',
-                fontSize: '0.8rem',
+                gap: '0.35rem',
+                fontSize: '0.75rem',
                 color: 'var(--text-muted)',
                 fontWeight: '600'
               }}>
-                <Truck size={16} color="#10b981" />
-                <span>شحن مجاني للطلبات المختارة</span>
+                <Truck size={15} color="#10b981" />
+                <span>شحن مجاني مختار</span>
               </div>
             </div>
           </div>
@@ -102,17 +108,19 @@ export default function HeroBanner({ onExploreClick }) {
           <div className="hero-countdown-box" style={{
             background: 'var(--bg-main)',
             border: '2px solid var(--primary-red)',
-            borderRadius: '20px',
-            padding: '1.5rem',
+            borderRadius: '16px',
+            padding: '1.25rem 1rem',
             textAlign: 'center',
             zIndex: 2,
-            boxShadow: '0 10px 30px rgba(255, 43, 74, 0.15)'
+            boxShadow: '0 10px 30px rgba(255, 43, 74, 0.15)',
+            width: '100%',
+            boxSizing: 'border-box'
           }}>
             <div style={{
-              fontSize: '0.85rem',
+              fontSize: '0.8rem',
               fontWeight: '800',
               color: 'var(--text-muted)',
-              marginBottom: '0.65rem'
+              marginBottom: '0.5rem'
             }}>
               ينتهي العرض الخاطف خلال:
             </div>
@@ -122,42 +130,43 @@ export default function HeroBanner({ onExploreClick }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '0.5rem',
+              gap: '0.4rem',
               direction: 'ltr',
-              marginBottom: '1rem'
+              marginBottom: '0.85rem',
+              width: '100%'
             }}>
               <div className="countdown-num" style={{
                 background: 'var(--primary-gradient)',
                 color: '#fff',
-                padding: '0.5rem 0.8rem',
-                borderRadius: '10px',
-                fontSize: '1.4rem',
+                padding: '0.45rem 0.65rem',
+                borderRadius: '8px',
+                fontSize: '1.2rem',
                 fontWeight: '900',
-                minWidth: '50px'
+                minWidth: '42px'
               }}>
                 {hours}
               </div>
-              <span style={{ fontSize: '1.3rem', fontWeight: '900', color: 'var(--primary-red)' }}>:</span>
+              <span style={{ fontSize: '1.2rem', fontWeight: '900', color: 'var(--primary-red)' }}>:</span>
               <div className="countdown-num" style={{
                 background: 'var(--primary-gradient)',
                 color: '#fff',
-                padding: '0.5rem 0.8rem',
-                borderRadius: '10px',
-                fontSize: '1.4rem',
+                padding: '0.45rem 0.65rem',
+                borderRadius: '8px',
+                fontSize: '1.2rem',
                 fontWeight: '900',
-                minWidth: '50px'
+                minWidth: '42px'
               }}>
                 {minutes}
               </div>
-              <span style={{ fontSize: '1.3rem', fontWeight: '900', color: 'var(--primary-red)' }}>:</span>
+              <span style={{ fontSize: '1.2rem', fontWeight: '900', color: 'var(--primary-red)' }}>:</span>
               <div className="countdown-num" style={{
                 background: 'var(--primary-gradient)',
                 color: '#fff',
-                padding: '0.5rem 0.8rem',
-                borderRadius: '10px',
-                fontSize: '1.4rem',
+                padding: '0.45rem 0.65rem',
+                borderRadius: '8px',
+                fontSize: '1.2rem',
                 fontWeight: '900',
-                minWidth: '50px'
+                minWidth: '42px'
               }}>
                 {seconds}
               </div>
@@ -166,26 +175,26 @@ export default function HeroBanner({ onExploreClick }) {
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '0.35rem',
+              gap: '0.25rem',
               borderTop: '1px solid var(--border-color)',
-              paddingTop: '0.85rem',
-              fontSize: '0.75rem',
+              paddingTop: '0.75rem',
+              fontSize: '0.72rem',
               color: 'var(--text-muted)'
             }}>
               <div>
-                <Truck size={16} color="var(--primary-red)" style={{ marginBottom: '0.2rem' }} />
+                <Truck size={15} color="var(--primary-red)" style={{ marginBottom: '0.15rem' }} />
                 <div style={{ fontWeight: '700', color: 'var(--text-main)' }}>شحن سريع</div>
                 <div>7-10 أيام</div>
               </div>
               <div>
-                <ShieldCheck size={16} color="var(--primary-red)" style={{ marginBottom: '0.2rem' }} />
+                <ShieldCheck size={15} color="var(--primary-red)" style={{ marginBottom: '0.15rem' }} />
                 <div style={{ fontWeight: '700', color: 'var(--text-main)' }}>دفع آمن</div>
                 <div>حماية كاملة</div>
               </div>
               <div>
-                <RefreshCw size={16} color="var(--primary-red)" style={{ marginBottom: '0.2rem' }} />
+                <RefreshCw size={15} color="var(--primary-red)" style={{ marginBottom: '0.15rem' }} />
                 <div style={{ fontWeight: '700', color: 'var(--text-main)' }}>إرجاع مجاني</div>
-                <div>خلال 15 يوم</div>
+                <div>15 يوم</div>
               </div>
             </div>
           </div>
