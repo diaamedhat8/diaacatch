@@ -12,9 +12,9 @@
   --choice-gradient: linear-gradient(135deg, #ffe100 0%, #ff9d00 100%);
   
   /* Light Theme Defaults */
-  --bg-main: #f5f6fa;
+  --bg-main: #f4f5fa;
   --bg-card: #ffffff;
-  --bg-header: rgba(255, 255, 255, 0.94);
+  --bg-header: rgba(255, 255, 255, 0.95);
   --text-main: #1e2029;
   --text-muted: #64748b;
   --border-color: #e2e8f0;
@@ -26,12 +26,12 @@
 }
 
 [data-theme="dark"] {
-  --bg-main: #0f1117;
-  --bg-card: #1a1d26;
-  --bg-header: rgba(26, 29, 38, 0.94);
+  --bg-main: #0c0e14;
+  --bg-card: #161922;
+  --bg-header: rgba(22, 25, 34, 0.95);
   --text-main: #f1f5f9;
   --text-muted: #94a3b8;
-  --border-color: #2e3444;
+  --border-color: #272c3b;
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
   --shadow-hover: 0 14px 30px rgba(255, 106, 0, 0.25);
@@ -57,10 +57,15 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Hide Mobile Bottom Nav by Default on Desktop */
+.mobile-bottom-nav {
+  display: none !important;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-main);
@@ -96,7 +101,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 15px rgba(255, 43, 74, 0.3);
 }
@@ -136,8 +141,8 @@ body {
   background: var(--choice-gradient);
   color: #000000;
   font-weight: 900;
-  font-size: 0.72rem;
-  padding: 0.2rem 0.5rem;
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -151,9 +156,9 @@ body {
   background: var(--primary-gradient);
   color: #fff;
   font-weight: 800;
-  font-size: 0.72rem;
-  padding: 0.2rem 0.45rem;
-  border-radius: 6px;
+  font-size: 0.68rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 5px;
 }
 
 .badge-shipping {
@@ -161,27 +166,22 @@ body {
   color: #10b981;
   border: 1px solid rgba(16, 185, 129, 0.3);
   font-weight: 700;
-  font-size: 0.72rem;
-  padding: 0.15rem 0.45rem;
+  font-size: 0.68rem;
+  padding: 0.12rem 0.4rem;
   border-radius: 4px;
   white-space: nowrap;
 }
 
 /* Animations */
 @keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(255, 43, 74, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 28px rgba(255, 106, 0, 0.6);
-  }
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 43, 74, 0.3); }
+  50% { box-shadow: 0 0 28px rgba(255, 106, 0, 0.6); }
 }
 
 .pulse-animation {
   animation: pulse-glow 2.5s infinite ease-in-out;
 }
 
-/* Hide scrollbars on mobile horizontal pills */
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -191,19 +191,33 @@ body {
 }
 
 /* ===================================================
-   RESPONSIVE MEDIA QUERIES FOR MOBILE DEVICES (<= 768px)
+   RESPONSIVE MEDIA QUERIES FOR SMARTPHONES (<= 768px)
    =================================================== */
 @media (max-width: 768px) {
+  body {
+    padding-bottom: 68px; /* Give room for fixed bottom navigation dock */
+  }
+
   .container {
-    padding: 0 0.75rem;
+    padding: 0 0.65rem;
+  }
+
+  /* Show Bottom Navigation Dock Bar */
+  .mobile-bottom-nav {
+    display: flex !important;
+  }
+
+  /* Hide redundant cart button in header on mobile since bottom nav has it */
+  .desktop-cart-btn {
+    display: none !important;
   }
 
   /* Navbar Responsive */
   .navbar-container {
     flex-direction: column !important;
-    gap: 0.75rem !important;
-    padding-top: 0.65rem !important;
-    padding-bottom: 0.65rem !important;
+    gap: 0.6rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .navbar-top-row {
@@ -220,84 +234,78 @@ body {
 
   /* Hero Banner Responsive */
   .hero-card {
-    padding: 1.25rem !important;
+    padding: 1.15rem 0.9rem !important;
     border-radius: 18px !important;
     grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
+    gap: 1rem !important;
   }
 
   .hero-title {
-    font-size: 1.5rem !important;
+    font-size: 1.35rem !important;
+    line-height: 1.3 !important;
   }
 
   .hero-desc {
-    font-size: 0.9rem !important;
-    margin-bottom: 1rem !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 0.85rem !important;
   }
 
   .hero-countdown-box {
-    padding: 1.25rem 1rem !important;
+    padding: 1rem 0.75rem !important;
+    border-radius: 16px !important;
   }
 
   .countdown-num {
-    padding: 0.4rem 0.65rem !important;
-    font-size: 1.3rem !important;
-    min-width: 45px !important;
+    padding: 0.35rem 0.55rem !important;
+    font-size: 1.15rem !important;
+    min-width: 40px !important;
   }
 
-  /* Products Grid Responsive: 2 Columns on mobile! */
+  /* Products Grid: Native 2-Column App Grid */
   .products-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.75rem !important;
+    gap: 0.6rem !important;
   }
 
   .product-card-body {
-    padding: 0.75rem !important;
+    padding: 0.65rem !important;
   }
 
   .product-card-title {
-    font-size: 0.82rem !important;
+    font-size: 0.78rem !important;
+    line-height: 1.3 !important;
     height: 2.6em !important;
   }
 
   .product-card-price {
-    font-size: 1.1rem !important;
+    font-size: 1.05rem !important;
   }
 
   .product-card-orig-price {
-    font-size: 0.75rem !important;
+    font-size: 0.72rem !important;
   }
 
   .btn-buy-aliexpress {
-    padding: 0.45rem 0.4rem !important;
-    font-size: 0.75rem !important;
+    padding: 0.4rem 0.3rem !important;
+    font-size: 0.72rem !important;
+    border-radius: 8px !important;
   }
 
-  /* Filter Section Mobile */
-  .filter-row {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 0.85rem !important;
-  }
-
-  /* Quick View Modal Mobile */
+  /* Modal Mobile Bottom-Sheet */
   .modal-box {
-    padding: 1.25rem !important;
-    border-radius: 20px !important;
+    padding: 1rem !important;
+    border-radius: 20px 20px 0 0 !important;
     grid-template-columns: 1fr !important;
     gap: 1rem !important;
-    max-height: 94vh !important;
-  }
-
-  /* Cart Drawer Mobile */
-  .cart-drawer-content {
-    max-width: 100% !important;
+    max-height: 90vh !important;
+    bottom: 0 !important;
+    position: fixed !important;
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 380px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.5rem !important;
+    gap: 0.45rem !important;
   }
 }

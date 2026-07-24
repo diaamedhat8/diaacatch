@@ -204,7 +204,7 @@ export default function Navbar({
             {/* Cart Drawer Toggle Button */}
             <button
               onClick={onOpenCart}
-              className="btn-primary"
+              className="btn-primary desktop-cart-btn"
               style={{
                 padding: '0.45rem 0.85rem',
                 fontSize: '0.8rem',

@@ -6,6 +6,7 @@ import ProductCard from './components/ProductCard';
 import QuickViewModal from './components/QuickViewModal';
 import CartDrawer from './components/CartDrawer';
 import AliExpressDealFinder from './components/AliExpressDealFinder';
+import MobileBottomNav from './components/MobileBottomNav';
 import Footer from './components/Footer';
 import { PRODUCTS } from './data/products';
 import { ShoppingBag, Heart, Sparkles, AlertCircle } from 'lucide-react';
@@ -248,6 +249,20 @@ export default function App() {
         onUpdateQuantity={handleUpdateCartQuantity}
         onRemoveItem={handleRemoveCartItem}
         currencyCode={selectedCurrency}
+      />
+
+      {/* Mobile Bottom Dock Bar for Smartphones */}
+      <MobileBottomNav
+        activeTab={showWishlistOnly ? 'wishlist' : 'home'}
+        setActiveTab={(tab) => {
+          if (tab === 'wishlist') setShowWishlistOnly(true);
+          else setShowWishlistOnly(false);
+        }}
+        wishlistCount={wishlist.length}
+        cartCount={cart.reduce((sum, item) => sum + (item.quantity || 1), 0)}
+        onOpenCart={() => setIsCartOpen(true)}
+        onOpenWishlist={() => setShowWishlistOnly(true)}
+        onScrollToTop={handleScrollToProducts}
       />
     </div>
   );
