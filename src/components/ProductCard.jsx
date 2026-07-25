@@ -15,7 +15,8 @@ export default function ProductCard({
   isWishlisted,
   onToggleWishlist,
   onQuickView,
-  onAddToCart
+  onAddToCart,
+  t
 }) {
   const currency = CURRENCIES[currencyCode] || CURRENCIES.USD;
   const currentPrice = (product.priceUSD * currency.rate).toFixed(2);
@@ -77,7 +78,7 @@ export default function ProductCard({
           zIndex: 2
         }}>
           {product.isChoice && <span className="badge-choice">CHOICE</span>}
-          <span className="badge-discount">خصم {product.discount}%</span>
+          <span className="badge-discount">-{product.discount}%</span>
         </div>
 
         {/* Wishlist Heart Button */}
@@ -135,7 +136,7 @@ export default function ProductCard({
             }}
           >
             <Eye size={13} />
-            <span>نظرة سريعة</span>
+            <span>{t('quickView')}</span>
           </button>
         </div>
       </div>
@@ -163,7 +164,7 @@ export default function ProductCard({
               <span>{product.rating}</span>
             </div>
             <div style={{ fontWeight: '600' }}>
-              {(product.ordersCount / 1000).toFixed(1)}k+ طلب
+              {(product.ordersCount / 1000).toFixed(1)}k+ {t('ordersCount')}
             </div>
           </div>
 
@@ -207,7 +208,7 @@ export default function ProductCard({
               fontWeight: '900',
               color: 'var(--primary-red)'
             }}>
-              {currentPrice} {currency.symbol}
+              {currency.symbol}{currentPrice}
             </span>
             <span className="product-card-orig-price" style={{
               fontSize: '0.8rem',
@@ -215,7 +216,7 @@ export default function ProductCard({
               textDecoration: 'line-through',
               fontWeight: '500'
             }}>
-              {originalPrice}
+              {currency.symbol}{originalPrice}
             </span>
           </div>
 
@@ -234,13 +235,13 @@ export default function ProductCard({
                 whiteSpace: 'nowrap'
               }}
             >
-              <span>شراء</span>
+              <span>{t('buyOnAliExpress')}</span>
               <ExternalLink size={13} />
             </a>
 
             <button
               onClick={() => onAddToCart(product)}
-              title="إضافة للسلة"
+              title={t('addToCart')}
               style={{
                 background: 'var(--bg-main)',
                 border: '1px solid var(--border-color)',

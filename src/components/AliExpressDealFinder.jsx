@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link2, Sparkles, CheckCircle2, ShieldAlert, ArrowLeft } from 'lucide-react';
+import { Link2, Sparkles, CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react';
 
-export default function AliExpressDealFinder() {
+export default function AliExpressDealFinder({ t, dir }) {
   const [inputUrl, setInputUrl] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [resultData, setResultData] = useState(null);
@@ -16,22 +16,23 @@ export default function AliExpressDealFinder() {
     setTimeout(() => {
       setIsAnalyzing(false);
       setResultData({
-        productName: 'منتج علي إكسبريس المستخرج تلقائياً',
+        productName: 'AliExpress Extracted Item',
         estimatedDiscount: '58%',
         cashback: '$4.20 USD',
-        shippingStatus: 'شحن مجاني سريع (Choice Express)',
-        couponAvailable: 'كوبون متوفر: CHOICE2026'
+        shippingStatus: 'Choice Express Free Shipping'
       });
     }, 1200);
   };
 
+  const ArrowIcon = dir === 'rtl' ? ArrowLeft : ArrowRight;
+
   return (
     <section style={{
-      margin: '3rem 0',
+      margin: '2.5rem 0 1.5rem 0',
       background: 'var(--bg-card)',
-      borderRadius: '24px',
+      borderRadius: '20px',
       border: '1px solid var(--border-color)',
-      padding: '2.25rem',
+      padding: '1.75rem 1.25rem',
       boxShadow: 'var(--shadow-md)',
       position: 'relative',
       overflow: 'hidden'
@@ -39,13 +40,13 @@ export default function AliExpressDealFinder() {
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '0.75rem',
-        marginBottom: '0.75rem'
+        gap: '0.65rem',
+        marginBottom: '0.65rem'
       }}>
         <div style={{
-          width: '36px',
-          height: '36px',
-          borderRadius: '10px',
+          width: '34px',
+          height: '34px',
+          borderRadius: '8px',
           background: 'var(--choice-gradient)',
           display: 'flex',
           alignItems: 'center',
@@ -53,44 +54,45 @@ export default function AliExpressDealFinder() {
           color: '#000',
           fontWeight: '900'
         }}>
-          <Sparkles size={20} />
+          <Sparkles size={18} />
         </div>
-        <h2 style={{ fontSize: '1.4rem', fontWeight: '900' }}>مستكشف صفقات ورل AliExpress</h2>
+        <h2 style={{ fontSize: '1.25rem', fontWeight: '900' }}>{t('dealFinderTitle')}</h2>
       </div>
 
-      <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1.5rem', maxWidth: '650px' }}>
-        انسخ رابط أي منتج من موقع AliExpress والمصق في الخانة التالية للحصول على أعلى نسبة خصم متوفرة، حساب الكاش باك التقديري، والتحقق من أهلية الشحن المجاني.
+      <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem', maxWidth: '650px' }}>
+        {t('dealFinderDesc')}
       </p>
 
       {/* URL Input Form */}
-      <form onSubmit={handleAnalyze} style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-        <div style={{ position: 'relative', flex: 1, minWidth: '280px' }}>
+      <form onSubmit={handleAnalyze} style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
+        <div style={{ position: 'relative', flex: 1, minWidth: '260px' }}>
           <input
             type="url"
-            placeholder="ضع رابط منتج AliExpress هنا (مثال: https://www.aliexpress.com/item/...)"
+            placeholder={t('dealFinderPlaceholder')}
             value={inputUrl}
             onChange={(e) => setInputUrl(e.target.value)}
             style={{
               width: '100%',
-              padding: '0.85rem 2.8rem 0.85rem 1rem',
-              borderRadius: '14px',
+              padding: '0.75rem 2.6rem 0.75rem 0.85rem',
+              borderRadius: '12px',
               border: '2px solid var(--border-color)',
               background: 'var(--bg-main)',
               color: 'var(--text-main)',
-              fontSize: '0.9rem',
-              outline: 'none'
+              fontSize: '0.85rem',
+              outline: 'none',
+              boxSizing: 'border-box'
             }}
           />
-          <Link2 size={18} style={{ position: 'absolute', right: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+          <Link2 size={16} style={{ position: 'absolute', right: '0.85rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
         </div>
         <button
           type="submit"
           className="btn-primary"
           disabled={isAnalyzing}
-          style={{ padding: '0.85rem 1.6rem', fontSize: '0.92rem', borderRadius: '14px' }}
+          style={{ padding: '0.75rem 1.35rem', fontSize: '0.88rem', borderRadius: '12px' }}
         >
-          {isAnalyzing ? 'جاري التحليل واستخراج الصفقة...' : 'فحص الخصم والكاش باك'}
-          {!isAnalyzing && <ArrowLeft size={16} />}
+          {isAnalyzing ? t('analyzing') : t('dealFinderBtn')}
+          {!isAnalyzing && <ArrowIcon size={15} />}
         </button>
       </form>
 
@@ -99,32 +101,32 @@ export default function AliExpressDealFinder() {
         <div style={{
           background: 'rgba(16, 185, 129, 0.08)',
           border: '1px solid rgba(16, 185, 129, 0.3)',
-          borderRadius: '16px',
-          padding: '1.25rem',
+          borderRadius: '14px',
+          padding: '1rem',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: '1rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+          gap: '0.85rem',
           animation: 'fadeIn 0.3s ease'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <CheckCircle2 size={20} color="#10b981" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <CheckCircle2 size={18} color="#10b981" />
             <div>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>الخصم المتوفر</span>
-              <strong style={{ fontSize: '1.1rem', color: 'var(--primary-red)' }}>{resultData.estimatedDiscount} خصم مباشر</strong>
+              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', display: 'block' }}>{t('availableDiscount')}</span>
+              <strong style={{ fontSize: '1rem', color: 'var(--primary-red)' }}>{resultData.estimatedDiscount} OFF</strong>
             </div>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Sparkles size={20} color="#ffaa00" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <Sparkles size={18} color="#ffaa00" />
             <div>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>كاش باك مقدر</span>
-              <strong style={{ fontSize: '1.1rem', color: '#ffaa00' }}>{resultData.cashback}</strong>
+              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', display: 'block' }}>{t('estimatedCashback')}</span>
+              <strong style={{ fontSize: '1rem', color: '#ffaa00' }}>{resultData.cashback}</strong>
             </div>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <CheckCircle2 size={20} color="#10b981" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <CheckCircle2 size={18} color="#10b981" />
             <div>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>خيار الشحن</span>
-              <strong style={{ fontSize: '0.9rem', color: '#10b981' }}>{resultData.shippingStatus}</strong>
+              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', display: 'block' }}>{t('shippingMethod')}</span>
+              <strong style={{ fontSize: '0.82rem', color: '#10b981' }}>{resultData.shippingStatus}</strong>
             </div>
           </div>
         </div>

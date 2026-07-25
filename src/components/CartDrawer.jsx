@@ -8,7 +8,8 @@ export default function CartDrawer({
   cartItems,
   onUpdateQuantity,
   onRemoveItem,
-  currencyCode
+  currencyCode,
+  t
 }) {
   if (!isOpen) return null;
 
@@ -26,10 +27,10 @@ export default function CartDrawer({
 
   const handleApplyCoupon = (e) => {
     e.preventDefault();
-    if (coupon.trim().toUpperCase() === 'CHOICE' || coupon.trim().toUpperCase() === 'ALI2026') {
+    if (coupon.trim().toUpperCase() === 'CHOICE' || coupon.trim().toUpperCase() === 'DIAA2026') {
       setDiscountApplied(true);
     } else {
-      alert('كوبون غير صالح. جرب استخدام الكوبون: CHOICE');
+      alert('Invalid coupon. Try: CHOICE');
     }
   };
 
@@ -48,10 +49,10 @@ export default function CartDrawer({
     }}
     onClick={onClose}
     >
-      <div style={{
+      <div className="cart-drawer-content" style={{
         background: 'var(--bg-card)',
         width: '100%',
-        maxWidth: '440px',
+        maxWidth: '420px',
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -63,21 +64,21 @@ export default function CartDrawer({
       >
         {/* Header */}
         <div style={{
-          padding: '1.25rem 1.5rem',
+          padding: '1.1rem 1.25rem',
           borderBottom: '1px solid var(--border-color)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            <ShoppingBag size={22} color="var(--primary-red)" />
-            <h2 style={{ fontSize: '1.15rem', fontWeight: '800' }}>سلة المشتريات المحفوظة</h2>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <ShoppingBag size={20} color="var(--primary-red)" />
+            <h2 style={{ fontSize: '1.05rem', fontWeight: '800' }}>{t('cartTitle')}</h2>
             <span style={{
               background: 'var(--primary-red)',
               color: '#fff',
               borderRadius: '50%',
-              padding: '0.15rem 0.5rem',
-              fontSize: '0.75rem',
+              padding: '0.1rem 0.45rem',
+              fontSize: '0.72rem',
               fontWeight: '800'
             }}>
               {cartItems.length}
@@ -93,7 +94,7 @@ export default function CartDrawer({
               padding: '0.2rem'
             }}
           >
-            <X size={22} />
+            <X size={20} />
           </button>
         </div>
 
@@ -101,10 +102,10 @@ export default function CartDrawer({
         <div style={{
           flex: 1,
           overflowY: 'auto',
-          padding: '1.25rem',
+          padding: '1rem',
           display: 'flex',
           flexDirection: 'column',
-          gap: '1rem'
+          gap: '0.85rem'
         }}>
           {cartItems.length === 0 ? (
             <div style={{
@@ -112,9 +113,9 @@ export default function CartDrawer({
               padding: '3rem 1rem',
               color: 'var(--text-muted)'
             }}>
-              <ShoppingBag size={48} strokeWidth={1} style={{ marginBottom: '1rem', opacity: 0.5 }} />
-              <p style={{ fontWeight: '700', fontSize: '1.05rem', marginBottom: '0.5rem' }}>سلتك فارغة حالياً</p>
-              <p style={{ fontSize: '0.85rem' }}>اختر أفضل المنتجات من عروض علي إكسبريس وأضفها هنا.</p>
+              <ShoppingBag size={44} strokeWidth={1} style={{ marginBottom: '0.85rem', opacity: 0.5 }} />
+              <p style={{ fontWeight: '700', fontSize: '1rem', marginBottom: '0.4rem' }}>{t('cartEmpty')}</p>
+              <p style={{ fontSize: '0.82rem' }}>{t('cartEmptySub')}</p>
             </div>
           ) : (
             cartItems.map((item) => {
@@ -123,24 +124,24 @@ export default function CartDrawer({
               return (
                 <div key={item.id} style={{
                   display: 'flex',
-                  gap: '1rem',
-                  padding: '0.85rem',
-                  borderRadius: '14px',
+                  gap: '0.85rem',
+                  padding: '0.75rem',
+                  borderRadius: '12px',
                   background: 'var(--bg-main)',
                   border: '1px solid var(--border-color)'
                 }}>
                   <img
                     src={item.image}
                     alt={item.title}
-                    style={{ width: '70px', height: '70px', borderRadius: '10px', objectFit: 'cover' }}
+                    style={{ width: '64px', height: '64px', borderRadius: '8px', objectFit: 'cover' }}
                   />
                   <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                     <div>
                       <h4 style={{
-                        fontSize: '0.85rem',
+                        fontSize: '0.82rem',
                         fontWeight: '700',
                         lineHeight: '1.3',
-                        marginBottom: '0.25rem',
+                        marginBottom: '0.2rem',
                         overflow: 'hidden',
                         display: '-webkit-box',
                         WebkitLineClamp: 2,
@@ -148,51 +149,46 @@ export default function CartDrawer({
                       }}>
                         {item.title}
                       </h4>
-                      {item.selectedColor && (
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                          اللون: {item.selectedColor}
-                        </div>
-                      )}
                     </div>
 
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem' }}>
-                      <span style={{ fontSize: '0.95rem', fontWeight: '800', color: 'var(--primary-red)' }}>
-                        {itemPrice} {currency.symbol}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.4rem' }}>
+                      <span style={{ fontSize: '0.9rem', fontWeight: '800', color: 'var(--primary-red)' }}>
+                        {currency.symbol}{itemPrice}
                       </span>
 
                       {/* Quantity Controls */}
                       <div style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '0.4rem',
+                        gap: '0.35rem',
                         background: 'var(--bg-card)',
-                        borderRadius: '8px',
+                        borderRadius: '6px',
                         border: '1px solid var(--border-color)',
-                        padding: '0.15rem 0.4rem'
+                        padding: '0.1rem 0.35rem'
                       }}>
                         <button
                           onClick={() => onUpdateQuantity(item.id, (item.quantity || 1) - 1)}
                           style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer' }}
                         >
-                          <Minus size={13} />
+                          <Minus size={12} />
                         </button>
-                        <span style={{ fontSize: '0.82rem', fontWeight: '800', minWidth: '16px', textAlign: 'center' }}>
+                        <span style={{ fontSize: '0.78rem', fontWeight: '800', minWidth: '14px', textAlign: 'center' }}>
                           {item.quantity || 1}
                         </span>
                         <button
                           onClick={() => onUpdateQuantity(item.id, (item.quantity || 1) + 1)}
                           style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer' }}
                         >
-                          <Plus size={13} />
+                          <Plus size={12} />
                         </button>
                       </div>
 
                       <button
                         onClick={() => onRemoveItem(item.id)}
                         style={{ background: 'none', border: 'none', color: '#ef4444', cursor: 'pointer' }}
-                        title="حذف"
+                        title="Remove"
                       >
-                        <Trash2 size={16} />
+                        <Trash2 size={15} />
                       </button>
                     </div>
                   </div>
@@ -205,33 +201,33 @@ export default function CartDrawer({
         {/* Footer & Checkout */}
         {cartItems.length > 0 && (
           <div style={{
-            padding: '1.25rem 1.5rem',
+            padding: '1.1rem 1.25rem',
             borderTop: '1px solid var(--border-color)',
             background: 'var(--bg-card)'
           }}>
             {/* Coupon Code Input Form */}
-            <form onSubmit={handleApplyCoupon} style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+            <form onSubmit={handleApplyCoupon} style={{ display: 'flex', gap: '0.4rem', marginBottom: '0.85rem' }}>
               <div style={{ position: 'relative', flex: 1 }}>
                 <input
                   type="text"
-                  placeholder="رمز الكوبون (جرب CHOICE)"
+                  placeholder={t('couponPlaceholder')}
                   value={coupon}
                   onChange={(e) => setCoupon(e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '0.5rem 2rem 0.5rem 0.75rem',
+                    padding: '0.45rem 1.8rem 0.45rem 0.65rem',
                     borderRadius: '8px',
                     border: '1px solid var(--border-color)',
                     background: 'var(--bg-main)',
                     color: 'var(--text-main)',
-                    fontSize: '0.82rem',
+                    fontSize: '0.8rem',
                     outline: 'none'
                   }}
                 />
-                <Tag size={14} style={{ position: 'absolute', right: '0.6rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+                <Tag size={13} style={{ position: 'absolute', right: '0.5rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               </div>
-              <button type="submit" className="btn-secondary" style={{ padding: '0.5rem 0.85rem', fontSize: '0.8rem', borderRadius: '8px' }}>
-                تطبيق
+              <button type="submit" className="btn-secondary" style={{ padding: '0.45rem 0.75rem', fontSize: '0.78rem', borderRadius: '8px' }}>
+                {t('applyCoupon')}
               </button>
             </form>
 
@@ -239,17 +235,17 @@ export default function CartDrawer({
               <div style={{
                 background: 'rgba(16, 185, 129, 0.1)',
                 color: '#10b981',
-                padding: '0.4rem 0.75rem',
-                borderRadius: '8px',
-                fontSize: '0.78rem',
+                padding: '0.35rem 0.65rem',
+                borderRadius: '6px',
+                fontSize: '0.75rem',
                 fontWeight: '700',
-                marginBottom: '0.75rem',
+                marginBottom: '0.65rem',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.4rem'
+                gap: '0.35rem'
               }}>
-                <Check size={14} />
-                <span>تم تطبيق خصم الكوبون بنجاح (10% خصم إضافي)!</span>
+                <Check size={13} />
+                <span>{t('couponSuccess')}</span>
               </div>
             )}
 
@@ -258,18 +254,18 @@ export default function CartDrawer({
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginBottom: '1rem'
+              marginBottom: '0.85rem'
             }}>
               <div>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'block' }}>إجمالي المشتريات:</span>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'block' }}>{t('totalPrice')}</span>
                 {discountApplied && (
-                  <span style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: '700' }}>
-                    وفرت: {savingsFormatted} {currency.symbol}
+                  <span style={{ fontSize: '0.72rem', color: '#10b981', fontWeight: '700' }}>
+                    {t('savings')} {currency.symbol}{savingsFormatted}
                   </span>
                 )}
               </div>
-              <span style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--primary-red)' }}>
-                {subtotalFormatted} {currency.symbol}
+              <span style={{ fontSize: '1.3rem', fontWeight: '900', color: 'var(--primary-red)' }}>
+                {currency.symbol}{subtotalFormatted}
               </span>
             </div>
 
@@ -281,14 +277,14 @@ export default function CartDrawer({
               className="btn-primary"
               style={{
                 width: '100%',
-                padding: '0.85rem',
-                fontSize: '0.95rem',
+                padding: '0.75rem',
+                fontSize: '0.9rem',
                 textDecoration: 'none',
-                borderRadius: '12px'
+                borderRadius: '10px'
               }}
             >
-              <span>إتمام الطلب في AliExpress</span>
-              <ExternalLink size={18} />
+              <span>{t('checkoutBtn')}</span>
+              <ExternalLink size={16} />
             </a>
           </div>
         )}

@@ -8,7 +8,8 @@ export default function MobileBottomNav({
   cartCount,
   onOpenCart,
   onOpenWishlist,
-  onScrollToTop
+  onScrollToTop,
+  t
 }) {
   return (
     <nav style={{
@@ -47,7 +48,7 @@ export default function MobileBottomNav({
         }}
       >
         <Home size={20} color={activeTab === 'home' ? 'var(--primary-red)' : 'var(--text-muted)'} />
-        <span>الرئيسية</span>
+        <span>{t('navHome')}</span>
       </button>
 
       {/* Categories Scroll Button */}
@@ -70,7 +71,7 @@ export default function MobileBottomNav({
         }}
       >
         <Grid size={20} color={activeTab === 'categories' ? 'var(--primary-red)' : 'var(--text-muted)'} />
-        <span>الأقسام</span>
+        <span>{t('navCategories')}</span>
       </button>
 
       {/* Wishlist Button */}
@@ -113,7 +114,7 @@ export default function MobileBottomNav({
             {wishlistCount}
           </span>
         )}
-        <span>المفضلة</span>
+        <span>{t('navWishlist')}</span>
       </button>
 
       {/* Cart Button */}
@@ -156,7 +157,7 @@ export default function MobileBottomNav({
             {cartCount}
           </span>
         )}
-        <span>السلة</span>
+        <span>{t('navCart')}</span>
       </button>
 
     </nav>

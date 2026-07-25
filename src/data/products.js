@@ -1,23 +1,25 @@
 export const CATEGORIES = [
-  { id: 'all', name: 'كل المنتجات', icon: 'Sparkles' },
-  { id: 'electronics', name: 'إلكترونيات وهواتف', icon: 'Smartphone' },
-  { id: 'smarthome', name: 'الأجهزة الذكية', icon: 'Home' },
-  { id: 'gaming', name: 'ألعاب وجيمنج', icon: 'Gamepad2' },
-  { id: 'fashion', name: 'ساعات وموضة', icon: 'Watch' },
-  { id: 'gadgets', name: 'أدوات ومبتكرات', icon: 'Zap' },
+  { id: 'all', nameKey: 'filterAll', icon: 'Sparkles' },
+  { id: 'electronics', nameKey: 'filterElectronics', icon: 'Smartphone' },
+  { id: 'smarthome', nameKey: 'filterSmarthome', icon: 'Home' },
+  { id: 'gaming', nameKey: 'filterGaming', icon: 'Gamepad2' },
+  { id: 'fashion', nameKey: 'filterFashion', icon: 'Watch' },
+  { id: 'gadgets', nameKey: 'filterGadgets', icon: 'Zap' },
 ];
 
 export const CURRENCIES = {
-  USD: { code: 'USD', symbol: '$', rate: 1, name: 'دولار أمريكي' },
-  SAR: { code: 'SAR', symbol: 'ر.س', rate: 3.75, name: 'ريال سعودي' },
-  EGP: { code: 'EGP', symbol: 'ج.م', rate: 48.5, name: 'جنيه مصري' },
-  AED: { code: 'AED', symbol: 'د.إ', rate: 3.67, name: 'درهم إماراتي' },
+  USD: { code: 'USD', symbol: '$', rate: 1, name: 'US Dollar' },
+  EUR: { code: 'EUR', symbol: '€', rate: 0.92, name: 'Euro' },
+  GBP: { code: 'GBP', symbol: '£', rate: 0.79, name: 'British Pound' },
+  SAR: { code: 'SAR', symbol: 'SAR', rate: 3.75, name: 'Saudi Riyal' },
+  EGP: { code: 'EGP', symbol: 'EGP', rate: 48.5, name: 'Egyptian Pound' },
+  AED: { code: 'AED', symbol: 'AED', rate: 3.67, name: 'UAE Dirham' },
 };
 
 export const PRODUCTS = [
   {
     id: 1,
-    title: 'ساعة ذكية AMOLED مقاومة للماء مع تتبع كامل للأنشطة والنبض Pro 2026',
+    title: 'AMOLED Smartwatch Waterproof Ultra Pulse & Sleep Tracker Pro 2026',
     category: 'fashion',
     priceUSD: 24.99,
     originalPriceUSD: 79.99,
@@ -33,20 +35,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '7-10 أيام',
-    colors: ['أسود بريميوم', 'فضي تيتانيوم', 'ذهبي وردي'],
+    deliveryDays: '7-10 Days',
+    colors: ['Premium Black', 'Titanium Silver', 'Rose Gold'],
     specs: {
-      'الشاشة': '1.43 بوصة Ultra AMOLED 60Hz',
-      'البطارية': '450mAh (تصل إلى 14 يوم)',
-      'مقاومة الماء': 'IP68 5ATM',
-      'الاتصال': 'بلوتوث 5.3 + مكالمات مباشرة'
+      'Display': '1.43" Ultra AMOLED 60Hz',
+      'Battery': '450mAh (Up to 14 Days)',
+      'Waterproof': 'IP68 5ATM',
+      'Connectivity': 'Bluetooth 5.3 + Direct Calls'
     },
     aliExpressUrl: 'https://www.aliexpress.com/item/1005001234567.html',
-    description: 'ساعة ذكية متطورة بتصميم فاخر وشاشة AMOLED فائقة الوضوح. تدعم قياس الأكسجين بالدم وضربات القلب ومراقبة النوم، بالإضافة إلى إجراء وتلقي المكالمات بصوت عالي النقاء.'
+    description: 'Advanced smartwatch featuring a sleek design and crystal-clear AMOLED display. Supports SpO2 tracking, heart rate monitoring, sleep analysis, and Bluetooth calling.'
   },
   {
     id: 2,
-    title: 'سماعات لاسلكية ANC لعزل الضوضاء النشط مع صوت Hi-Fi وبطارية 40 ساعة',
+    title: 'Wireless ANC Headphones Active Noise Cancelling Hi-Fi 40H Battery',
     category: 'electronics',
     priceUSD: 18.50,
     originalPriceUSD: 59.00,
@@ -62,20 +64,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '5-8 أيام',
-    colors: ['أسود مات', 'أبيض ثلجي', 'أزرق كحلي'],
+    deliveryDays: '5-8 Days',
+    colors: ['Matte Black', 'Snow White', 'Navy Blue'],
     specs: {
-      'تقنية العزل': 'ANC Active Noise Cancellation -38dB',
-      'مدة التشغيل': '40 ساعة مع علبة الشحن',
-      'منفذ الشحن': 'USB Type-C شحن سريع',
-      'الترميز': 'AAC / SBC HD Audio'
+      'Noise Control': 'ANC Active Noise Cancellation -38dB',
+      'Playtime': '40 Hours with Charging Case',
+      'Port': 'USB Type-C Fast Charge',
+      'Codec': 'AAC / SBC HD Audio'
     },
     aliExpressUrl: 'https://www.aliexpress.com/item/1005009876543.html',
-    description: 'تجربة صوتية مذهلة مع تقنية عزل الضوضاء المحيطة ANC. تمنحك استجابة جهير عميقة (Deep Bass) وميكروفون نقي جداً للمكالمات والألعاب.'
+    description: 'Immersive sound experience with ANC active noise cancellation. Delivers deep bass response and crystal-clear microphone audio for calls and gaming.'
   },
   {
     id: 3,
-    title: 'كاميرا مراقبة خارجية ذكية 4K تعمل بالطاقة الشمسية مع تتبع الحركة بالذكاء الاصطناعي',
+    title: '4K Smart Outdoor Solar Security Camera AI Motion Tracking',
     category: 'smarthome',
     priceUSD: 39.90,
     originalPriceUSD: 119.00,
@@ -90,20 +92,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '7-12 يوم',
-    colors: ['أبيض ناصع'],
+    deliveryDays: '7-12 Days',
+    colors: ['Pure White'],
     specs: {
-      'الدقة': '4K Ultra HD Dual Lens',
-      'مصدر الطاقة': 'لوح شمسي + بطاريات 12000mAh',
-      'الرؤية الليلية': 'رؤية ليلية ملونة مع كشافات LED',
-      'التخزين': 'كارت MicroSD حتى 128GB + تخزين سحابي'
+      'Resolution': '4K Ultra HD Dual Lens',
+      'Power Source': 'Solar Panel + 12000mAh Battery',
+      'Night Vision': 'Color Night Vision with LED Spotlights',
+      'Storage': 'MicroSD up to 128GB + Cloud Storage'
     },
     aliExpressUrl: 'https://www.aliexpress.com/item/1005003334445.html',
-    description: 'كاميرا حماية متطورة جداً تعمل بالكامل بالطاقة الشمسية بدون الحاجة لأسلاك. ترسل تنبيهات فورية للهاتف عند كشف أي حركة وتدعم التحدث باتجاهين.'
+    description: 'Advanced solar-powered security camera requiring zero wiring. Sends instant mobile alerts on motion detection with two-way audio.'
   },
   {
     id: 4,
-    title: 'دراع تحكم لاسلكي احترافي للجيمنج RGB متوافق مع PC / Switch / Android / iOS',
+    title: 'Pro Wireless Gaming Controller RGB Hall Effect Joysticks PC/Switch/Mobile',
     category: 'gaming',
     priceUSD: 21.80,
     originalPriceUSD: 54.99,
@@ -118,20 +120,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '6-9 أيام',
-    colors: ['أسود شفاف RGB', 'أبيض سايبر'],
+    deliveryDays: '6-9 Days',
+    colors: ['Translucent Black RGB', 'Cyber White'],
     specs: {
-      'الحساسات': 'Hall Effect Joysticks (بدون Drift)',
-      'الربط': 'Bluetooth 5.0 + 2.4G Receiver + Type-C',
-      'الإضاءة': 'Dynamic RGB Lighting 7 ألوان',
-      'الاهتزاز': 'محرك اهتزاز مزدوج HD Rumble'
+      'Joysticks': 'Hall Effect Sensors (Zero Drift)',
+      'Connection': 'Bluetooth 5.0 + 2.4G Receiver + Type-C',
+      'Lighting': 'Dynamic 7-Color RGB',
+      'Rumble': 'Dual HD Vibration Motors'
     },
     aliExpressUrl: 'https://www.aliexpress.com/item/1005007778889.html',
-    description: 'يد تحكم ألعاب عالية الدقة مزودة بحساسات Hall Effect الاستشعارية لمنع الانحراف نهائياً. استجابة فورية بدون تأخير مع أزرار ماكرو قابلة للبرمجة.'
+    description: 'High-precision game controller equipped with Hall Effect sensor sticks to prevent drift. Zero-latency wireless response with programmable macro buttons.'
   },
   {
     id: 5,
-    title: 'جهاز عرض بروجيكتور سمارت 4K بدعم Wi-Fi 6 و Android 11 وضوح خيالي للمنزل',
+    title: '4K Smart Home Theater Projector Wi-Fi 6 & Android 11 Built-in',
     category: 'electronics',
     priceUSD: 56.00,
     originalPriceUSD: 149.99,
@@ -146,20 +148,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '5-10 أيام',
-    colors: ['رمادي فلكي'],
+    deliveryDays: '5-10 Days',
+    colors: ['Space Gray'],
     specs: {
-      'حجم العرض': 'حتى 150 بوصة Full HD / 4K Decoding',
-      'السطوع': '8000 Lumens ANSI',
-      'النظام': 'Android 11 مدمج مع متجر التطبيقات',
-      'الاتصال': 'Wi-Fi 6 + Bluetooth + HDMI + USB'
+      'Screen Size': 'Up to 150 Inches Full HD / 4K Decoding',
+      'Brightness': '8000 ANSI Lumens',
+      'OS': 'Android 11 Built-in with App Store',
+      'Connectivity': 'Wi-Fi 6 + Bluetooth + HDMI + USB'
     },
     aliExpressUrl: 'https://www.aliexpress.com/item/1005005556667.html',
-    description: 'حّول غرفتك إلى سينما منزلية متكاملة! جهاز عرض ذكي يدعم تشغيل نتفليكس ويوتيوب مباشرة بصوت مدمج قوي وتعديل زوايا العرض تلقائياً.'
+    description: 'Turn your room into a cinema! Smart projector with Netflix, YouTube, powerful speakers, and auto keystone correction.'
   },
   {
     id: 6,
-    title: 'مفك كهربائي دقيق قابل للشحن مع 24 رأس تيتانيوم صلب لإصلاح الهواتف والأجهزة',
+    title: 'Precision Electric Screwdriver Set with 24 Titanium S2 Bits',
     category: 'gadgets',
     priceUSD: 14.20,
     originalPriceUSD: 36.00,
@@ -173,20 +175,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '6-8 أيام',
-    colors: ['ألومنيوم رمادي'],
+    deliveryDays: '6-8 Days',
+    colors: ['Aluminum Gray'],
     specs: {
-      'العزم': '0.35 N.m كهربائي / 3 N.m يدوياً',
-      'عدد الرؤوس': '24 bit S2 Steel Magnetic',
-      'البطارية': 'Type-C Rechargable 350mAh',
-      'الإضاءة': '3 أضواء Shadowless LED'
+      'Torque': '0.35 N.m Electric / 3 N.m Manual',
+      'Bits Count': '24 S2 Steel Magnetic Bits',
+      'Battery': 'Type-C Rechargeable 350mAh',
+      'Lighting': '3 Shadowless LED Lights'
     },
     aliExpressUrl: 'https://www.aliexpress.com/item/1005002221114.html',
-    description: 'أداة لا غنى عنها لكل عاشق للتكنولوجيا والصيانة! مفك كهربائي أنيق جداً بحجم القلم مع مغناطيس قوي لثبات الرؤوس والبراغي الصغيرة.'
+    description: 'Essential repair tool! Pen-sized aluminum electric screwdriver with strong magnetic bit lock for phone and electronics repair.'
   },
   {
     id: 7,
-    title: 'شاحن سريع 120W GaN Pro بخمس منافذ للهواتف واللابتوب والمكثفات الذكية',
+    title: '120W GaN Pro 5-Port Fast Charger for Laptops & Phones',
     category: 'electronics',
     priceUSD: 16.90,
     originalPriceUSD: 45.00,
@@ -200,20 +202,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '5-7 أيام',
-    colors: ['أسود', 'أبيض'],
+    deliveryDays: '5-7 Days',
+    colors: ['Black', 'White'],
     specs: {
-      'القوة القصوى': '120W GaN V Fast Charger',
-      'المنافذ': '3x USB-C PD3.0 + 2x USB-A QC4.0',
-      'الحماية': 'شريحة حماية من السخونة والجهد العالي',
-      'التوافق': 'iPhone, Samsung, MacBook, iPad, Xiaomi'
+      'Max Output': '120W GaN Fast Charge',
+      'Ports': '3x USB-C PD3.0 + 2x USB-A QC4.0',
+      'Protection': 'Overheat & Overvoltage Smart Chip',
+      'Compatibility': 'MacBook, iPhone, Samsung, iPad'
     },
     aliExpressUrl: 'https://www.aliexpress.com/item/1005004443332.html',
-    description: 'شاحن جاليوم نيترايد (GaN) قوي وصغير الحجم. يشحن جهاز ماك بوك وهاتفك واثنين من الأجهزة الأخرى في نفس الوقت بأقصى سرعة أمان.'
+    description: 'Compact 120W Gallium Nitride (GaN) fast charger. Charge your laptop, phone, and tablet simultaneously at maximum speed.'
   },
   {
     id: 8,
-    title: 'مصباح طاولة ذكي LED بروتوكول RGBIC مع مزامنة مع الموسيقى والتحكم الصوتي',
+    title: 'Smart RGBIC Ambient Desk Lamp Music Sync & Voice Control',
     category: 'smarthome',
     priceUSD: 19.99,
     originalPriceUSD: 49.99,
@@ -227,17 +229,17 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '7-11 يوم',
-    colors: ['أسود مات RGB'],
+    deliveryDays: '7-11 Days',
+    colors: ['Matte Black RGB'],
     specs: {
-      'الألوان': '16 مليون لون متدرج RGBIC',
-      'التحكم': 'تطبيق هاتف + Alexa + Google Assistant',
-      'النمط': 'مزامنة مع الألعاب والموسيقى',
-      'الطاقة': 'USB Powered 5V 2A'
+      'Colors': '16 Million Gradient RGBIC Colors',
+      'Control': 'Mobile App + Alexa + Google Assistant',
+      'Mode': 'Music & Gaming Sync',
+      'Power': 'USB Powered 5V 2A'
     },
     aliExpressUrl: 'https://www.aliexpress.com/item/1005008889991.html',
-    description: 'إضاءة محيطية رائعة جداً لمكتبك أو السيت أب، تتفاعل مع نغمات الموسيقى وأصوات الألعاب وتضفي أجواء ساحرة على الغرفة.'
+    description: 'Stunning ambient lighting for your desk setup! Syncs with music rhythm and game sound effects.'
   }
 ];
 
-export const FLASH_DEAL_TIMER_INITIAL = 5 * 3600 + 42 * 60 + 18; // 5 hours 42 mins 18 secs
+export const FLASH_DEAL_TIMER_INITIAL = 5 * 3600 + 42 * 60 + 18;

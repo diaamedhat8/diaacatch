@@ -7,21 +7,26 @@ import {
   Moon, 
   Sparkles, 
   Globe,
+  Languages,
   Tag
 } from 'lucide-react';
 import { CURRENCIES } from '../data/products';
+import { LANGUAGES } from '../data/translations';
 
 export default function Navbar({
   searchTerm,
   setSearchTerm,
   selectedCurrency,
   setSelectedCurrency,
+  selectedLanguage,
+  setSelectedLanguage,
   darkMode,
   setDarkMode,
   wishlistCount,
   cartCount,
   onOpenCart,
-  onOpenWishlist
+  onOpenWishlist,
+  t
 }) {
   return (
     <header style={{
@@ -56,7 +61,7 @@ export default function Navbar({
           whiteSpace: 'nowrap',
           maxWidth: '100%'
         }}>
-          عروض diaaCatch اليومية: شحن مجاني وتخفيضات 80%!
+          {t('topNotice')}
         </span>
       </div>
 
@@ -111,13 +116,48 @@ export default function Navbar({
                 }}>
                   diaaCatch
                 </span>
-                <span className="badge-choice" style={{ fontSize: '0.6rem', padding: '0.1rem 0.35rem' }}>ضياء</span>
+                <span className="badge-choice" style={{ fontSize: '0.6rem', padding: '0.1rem 0.35rem' }}>CHOICE</span>
               </div>
             </div>
           </div>
 
-          {/* Controls: Currency, Theme, Wishlist, Cart */}
+          {/* Controls: Language, Currency, Theme, Wishlist, Cart */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexShrink: 0 }}>
+            
+            {/* Multi-Language Switcher */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.2rem',
+              background: 'var(--bg-main)',
+              border: '1px solid var(--border-color)',
+              borderRadius: '50px',
+              padding: '0.2rem 0.45rem',
+              fontSize: '0.75rem',
+              fontWeight: '700'
+            }}>
+              <Languages size={13} color="var(--primary-orange)" />
+              <select
+                value={selectedLanguage}
+                onChange={(e) => setSelectedLanguage(e.target.value)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: 'var(--text-main)',
+                  fontWeight: '700',
+                  fontSize: '0.75rem',
+                  cursor: 'pointer',
+                  outline: 'none'
+                }}
+              >
+                {Object.keys(LANGUAGES).map((langKey) => (
+                  <option key={langKey} value={langKey} style={{ background: 'var(--bg-card)', color: 'var(--text-main)' }}>
+                    {LANGUAGES[langKey].flag} {LANGUAGES[langKey].code.toUpperCase()}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             {/* Currency Switcher */}
             <div style={{
               display: 'flex',
@@ -155,7 +195,7 @@ export default function Navbar({
             {/* Theme Toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
-              title="تغيير المظهر"
+              title="Theme Toggle"
               style={{
                 width: '32px',
                 height: '32px',
@@ -213,7 +253,7 @@ export default function Navbar({
               )}
             </button>
 
-            {/* Cart Drawer Toggle Button (Desktop) */}
+            {/* Cart Drawer Toggle Button */}
             <button
               onClick={onOpenCart}
               className="btn-primary desktop-cart-btn"
@@ -249,7 +289,7 @@ export default function Navbar({
         }}>
           <input
             type="text"
-            placeholder="ابحث عن منتج أو ساعة أو جهاز ذكي..."
+            placeholder={t('searchPlaceholder')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             style={{

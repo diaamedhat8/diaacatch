@@ -3,12 +3,8 @@ import {
   X, 
   Star, 
   Truck, 
-  ShieldCheck, 
   ExternalLink, 
-  ShoppingBag, 
-  Heart, 
-  Check,
-  Package
+  ShoppingBag
 } from 'lucide-react';
 import { CURRENCIES } from '../data/products';
 
@@ -18,7 +14,8 @@ export default function QuickViewModal({
   onClose,
   onAddToCart,
   isWishlisted,
-  onToggleWishlist
+  onToggleWishlist,
+  t
 }) {
   if (!product) return null;
 
@@ -45,25 +42,24 @@ export default function QuickViewModal({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '1.25rem',
-      animation: 'fadeIn 0.2s ease'
+      padding: '1rem'
     }}
     onClick={onClose}
     >
-      <div style={{
+      <div className="modal-box" style={{
         background: 'var(--bg-card)',
         borderRadius: '24px',
         border: '1px solid var(--border-color)',
-        maxWidth: '900px',
+        maxWidth: '850px',
         width: '100%',
         maxHeight: '90vh',
         overflowY: 'auto',
         position: 'relative',
         boxShadow: 'var(--shadow-md)',
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-        gap: '2rem',
-        padding: '2rem'
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: '1.5rem',
+        padding: '1.75rem'
       }}
       onClick={(e) => e.stopPropagation()}
       >
@@ -74,8 +70,8 @@ export default function QuickViewModal({
             position: 'absolute',
             top: '1rem',
             left: '1rem',
-            width: '36px',
-            height: '36px',
+            width: '32px',
+            height: '32px',
             borderRadius: '50%',
             background: 'var(--bg-main)',
             border: '1px solid var(--border-color)',
@@ -87,19 +83,18 @@ export default function QuickViewModal({
             zIndex: 10
           }}
         >
-          <X size={20} />
+          <X size={18} />
         </button>
 
         {/* Gallery Section */}
         <div>
-          {/* Main Large Display Image */}
           <div style={{
             width: '100%',
             paddingTop: '80%',
             position: 'relative',
-            borderRadius: '16px',
+            borderRadius: '14px',
             overflow: 'hidden',
-            marginBottom: '1rem',
+            marginBottom: '0.85rem',
             background: '#000'
           }}>
             <img
@@ -115,22 +110,22 @@ export default function QuickViewModal({
               }}
             />
             {product.isChoice && (
-              <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem' }}>
+              <div style={{ position: 'absolute', top: '0.65rem', right: '0.65rem' }}>
                 <span className="badge-choice">CHOICE</span>
               </div>
             )}
           </div>
 
-          {/* Thumbnails Row */}
-          <div style={{ display: 'flex', gap: '0.5rem', overflowX: 'auto' }}>
+          {/* Thumbnails */}
+          <div style={{ display: 'flex', gap: '0.4rem', overflowX: 'auto' }}>
             {imagesList.map((imgUrl, idx) => (
               <button
                 key={idx}
                 onClick={() => setActiveImageIndex(idx)}
                 style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '10px',
+                  width: '56px',
+                  height: '56px',
+                  borderRadius: '8px',
                   border: activeImageIndex === idx ? '2px solid var(--primary-red)' : '1px solid var(--border-color)',
                   overflow: 'hidden',
                   cursor: 'pointer',
@@ -147,91 +142,63 @@ export default function QuickViewModal({
         {/* Product Details Section */}
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              <span className="badge-discount">خصم {product.discount}%</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '600' }}>
-                رقم التتبع: #{product.id}00500
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.4rem' }}>
+              <span className="badge-discount">-{product.discount}%</span>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: '600' }}>
+                ID: #{product.id}00500
               </span>
             </div>
 
-            <h2 style={{ fontSize: '1.25rem', fontWeight: '800', lineHeight: '1.4', marginBottom: '0.75rem' }}>
+            <h2 style={{ fontSize: '1.15rem', fontWeight: '800', lineHeight: '1.35', marginBottom: '0.65rem' }}>
               {product.title}
             </h2>
 
             {/* Rating & Reviews */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem', fontSize: '0.88rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#ffaa00', fontWeight: '800' }}>
-                <Star size={16} fill="#ffaa00" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.85rem', fontSize: '0.82rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', color: '#ffaa00', fontWeight: '800' }}>
+                <Star size={15} fill="#ffaa00" />
                 <span>{product.rating}</span>
               </div>
-              <span style={{ color: 'var(--text-muted)' }}>({product.reviewsCount.toLocaleString()} مراجعة مشتري)</span>
-              <span style={{ color: 'var(--text-muted)' }}>•</span>
-              <span style={{ color: '#10b981', fontWeight: '700' }}>{product.ordersCount.toLocaleString()} تم شحنها</span>
+              <span style={{ color: 'var(--text-muted)' }}>({product.reviewsCount.toLocaleString()})</span>
+              <span style={{ color: '#10b981', fontWeight: '700' }}>{(product.ordersCount / 1000).toFixed(1)}k+ {t('ordersCount')}</span>
             </div>
 
             {/* Price Box */}
             <div style={{
               background: 'var(--bg-main)',
-              padding: '1rem',
-              borderRadius: '14px',
+              padding: '0.85rem 1rem',
+              borderRadius: '12px',
               border: '1px solid var(--border-color)',
-              marginBottom: '1.25rem',
+              marginBottom: '1rem',
               display: 'flex',
               alignItems: 'baseline',
-              gap: '1rem'
+              gap: '0.75rem'
             }}>
-              <span style={{ fontSize: '1.8rem', fontWeight: '900', color: 'var(--primary-red)' }}>
-                {currentPrice} {currency.symbol}
+              <span style={{ fontSize: '1.6rem', fontWeight: '900', color: 'var(--primary-red)' }}>
+                {currency.symbol}{currentPrice}
               </span>
-              <span style={{ fontSize: '1rem', color: 'var(--text-muted)', textDecoration: 'line-through' }}>
-                {originalPrice} {currency.symbol}
+              <span style={{ fontSize: '0.95rem', color: 'var(--text-muted)', textDecoration: 'line-through' }}>
+                {currency.symbol}{originalPrice}
               </span>
             </div>
 
-            {/* Color Selection */}
-            {product.colors && product.colors.length > 0 && (
-              <div style={{ marginBottom: '1.25rem' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: '700', marginBottom: '0.5rem' }}>اللون المختار: {selectedColor}</div>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  {product.colors.map((color) => (
-                    <button
-                      key={color}
-                      onClick={() => setSelectedColor(color)}
-                      style={{
-                        padding: '0.4rem 0.85rem',
-                        borderRadius: '8px',
-                        border: selectedColor === color ? '2px solid var(--primary-red)' : '1px solid var(--border-color)',
-                        background: selectedColor === color ? 'rgba(255, 43, 74, 0.1)' : 'var(--bg-main)',
-                        color: selectedColor === color ? 'var(--primary-red)' : 'var(--text-main)',
-                        fontWeight: '700',
-                        fontSize: '0.82rem',
-                        cursor: 'pointer'
-                      }}
-                    >
-                      {color}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Specifications Grid */}
-            <div style={{ marginBottom: '1.25rem' }}>
-              <div style={{ fontSize: '0.85rem', fontWeight: '700', marginBottom: '0.5rem' }}>المواصفات التقنية:</div>
+            {/* Specifications */}
+            <div style={{ marginBottom: '1rem' }}>
+              <div style={{ fontSize: '0.82rem', fontWeight: '700', marginBottom: '0.4rem' }}>Specifications:</div>
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-                gap: '0.5rem',
-                fontSize: '0.8rem'
+                gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+                gap: '0.4rem',
+                fontSize: '0.78rem'
               }}>
                 {Object.entries(product.specs || {}).map(([key, val]) => (
                   <div key={key} style={{
                     background: 'var(--bg-main)',
-                    padding: '0.5rem 0.75rem',
+                    padding: '0.4rem 0.65rem',
                     borderRadius: '8px',
                     border: '1px solid var(--border-color)'
                   }}>
-                    <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.72rem' }}>{key}</span>
+                    <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.7rem' }}>{key}</span>
                     <strong style={{ color: 'var(--text-main)' }}>{val}</strong>
                   </div>
                 ))}
@@ -242,18 +209,18 @@ export default function QuickViewModal({
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.75rem',
-              fontSize: '0.85rem',
+              gap: '0.6rem',
+              fontSize: '0.8rem',
               color: 'var(--text-muted)',
-              marginBottom: '1.5rem'
+              marginBottom: '1.25rem'
             }}>
-              <Truck size={18} color="#10b981" />
-              <span>تسليم متوقع خلال <strong>{product.deliveryDays}</strong> مع ضمان AliExpress لسلامة الشحنة</span>
+              <Truck size={16} color="#10b981" />
+              <span>{t('fastShipping')}: <strong>{product.deliveryDays}</strong></span>
             </div>
           </div>
 
           {/* Action Row */}
-          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
             <a
               href={product.aliExpressUrl}
               target="_blank"
@@ -261,13 +228,13 @@ export default function QuickViewModal({
               className="btn-primary"
               style={{
                 flex: 1,
-                padding: '0.75rem',
-                fontSize: '0.95rem',
+                padding: '0.65rem',
+                fontSize: '0.88rem',
                 textDecoration: 'none'
               }}
             >
-              <span>شراء الآن من AliExpress</span>
-              <ExternalLink size={18} />
+              <span>{t('buyOnAliExpress')}</span>
+              <ExternalLink size={16} />
             </a>
 
             <button
@@ -276,10 +243,10 @@ export default function QuickViewModal({
                 onClose();
               }}
               className="btn-secondary"
-              style={{ padding: '0.75rem 1.25rem' }}
+              style={{ padding: '0.65rem 1.1rem' }}
             >
-              <ShoppingBag size={18} />
-              <span>إضافة للسلة</span>
+              <ShoppingBag size={16} />
+              <span>{t('addToCart')}</span>
             </button>
           </div>
 

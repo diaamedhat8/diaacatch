@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Zap, ShieldCheck, Truck, RefreshCw, ArrowLeft } from 'lucide-react';
+import { Zap, ShieldCheck, Truck, RefreshCw, ArrowRight, ArrowLeft } from 'lucide-react';
 import { FLASH_DEAL_TIMER_INITIAL } from '../data/products';
 
-export default function HeroBanner({ onExploreClick }) {
+export default function HeroBanner({ onExploreClick, t, dir }) {
   const [timeLeft, setTimeLeft] = useState(FLASH_DEAL_TIMER_INITIAL);
 
   useEffect(() => {
@@ -15,6 +15,8 @@ export default function HeroBanner({ onExploreClick }) {
   const hours = String(Math.floor(timeLeft / 3600)).padStart(2, '0');
   const minutes = String(Math.floor((timeLeft % 3600) / 60)).padStart(2, '0');
   const seconds = String(timeLeft % 60).padStart(2, '0');
+
+  const ArrowIcon = dir === 'rtl' ? ArrowLeft : ArrowRight;
 
   return (
     <section style={{
@@ -56,7 +58,7 @@ export default function HeroBanner({ onExploreClick }) {
               marginBottom: '0.65rem'
             }}>
               <Zap size={14} color="var(--primary-red)" />
-              <span>الصفقات الخاطفة - FLASH SALE</span>
+              <span>{t('flashSale')}</span>
             </div>
 
             <h1 className="hero-title" style={{
@@ -67,11 +69,13 @@ export default function HeroBanner({ onExploreClick }) {
               color: 'var(--text-main)',
               maxWidth: '100%'
             }}>
-              أفضل صيدات وتخفيضات <span style={{
+              {t('heroTitle')}{' '}
+              <span style={{
                 background: 'var(--primary-gradient)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent'
-              }}>diaaCatch</span> بخصومات حتى 80%
+              }}>diaaCatch</span>{' '}
+              {t('heroTitleSuffix')}
             </h1>
 
             <p className="hero-desc" style={{
@@ -81,14 +85,14 @@ export default function HeroBanner({ onExploreClick }) {
               marginBottom: '1rem',
               maxWidth: '540px'
             }}>
-              استكشف تشكيلة واسعة من المنتجات المضمونة ذات الجودة العالية: أجهزة ذكية، جيمنج، وإلكترونيات مع ضمان الشحن المجاني والتوصيل السريع.
+              {t('heroDesc')}
             </p>
 
             {/* Action Buttons */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
               <button onClick={onExploreClick} className="btn-primary pulse-animation" style={{ padding: '0.65rem 1.35rem', fontSize: '0.85rem' }}>
-                <span>تصفح العروض الآن</span>
-                <ArrowLeft size={15} />
+                <span>{t('exploreBtn')}</span>
+                <ArrowIcon size={15} />
               </button>
               <div style={{
                 display: 'flex',
@@ -99,7 +103,7 @@ export default function HeroBanner({ onExploreClick }) {
                 fontWeight: '600'
               }}>
                 <Truck size={15} color="#10b981" />
-                <span>شحن مجاني مختار</span>
+                <span>{t('freeShippingBadge')}</span>
               </div>
             </div>
           </div>
@@ -122,7 +126,7 @@ export default function HeroBanner({ onExploreClick }) {
               color: 'var(--text-muted)',
               marginBottom: '0.5rem'
             }}>
-              ينتهي العرض الخاطف خلال:
+              {t('endsIn')}
             </div>
 
             {/* Countdown Numbers */}
@@ -183,18 +187,18 @@ export default function HeroBanner({ onExploreClick }) {
             }}>
               <div>
                 <Truck size={15} color="var(--primary-red)" style={{ marginBottom: '0.15rem' }} />
-                <div style={{ fontWeight: '700', color: 'var(--text-main)' }}>شحن سريع</div>
-                <div>7-10 أيام</div>
+                <div style={{ fontWeight: '700', color: 'var(--text-main)' }}>{t('fastShipping')}</div>
+                <div>{t('days')}</div>
               </div>
               <div>
                 <ShieldCheck size={15} color="var(--primary-red)" style={{ marginBottom: '0.15rem' }} />
-                <div style={{ fontWeight: '700', color: 'var(--text-main)' }}>دفع آمن</div>
-                <div>حماية كاملة</div>
+                <div style={{ fontWeight: '700', color: 'var(--text-main)' }}>{t('securePayment')}</div>
+                <div>{t('fullProtection')}</div>
               </div>
               <div>
                 <RefreshCw size={15} color="var(--primary-red)" style={{ marginBottom: '0.15rem' }} />
-                <div style={{ fontWeight: '700', color: 'var(--text-main)' }}>إرجاع مجاني</div>
-                <div>15 يوم</div>
+                <div style={{ fontWeight: '700', color: 'var(--text-main)' }}>{t('freeReturns')}</div>
+                <div>{t('returnWindow')}</div>
               </div>
             </div>
           </div>

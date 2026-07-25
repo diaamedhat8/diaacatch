@@ -9,30 +9,48 @@ import AliExpressDealFinder from './components/AliExpressDealFinder';
 import MobileBottomNav from './components/MobileBottomNav';
 import Footer from './components/Footer';
 import { PRODUCTS } from './data/products';
-import { ShoppingBag, Heart, Sparkles, AlertCircle } from 'lucide-react';
+import { TRANSLATIONS, LANGUAGES } from './data/translations';
+import { Heart, AlertCircle } from 'lucide-react';
 
 export default function App() {
-  // Filters & App State
+  // i18n & App State
+  const [selectedLanguage, setSelectedLanguage] = useState('en'); // Default English!
+  const [selectedCurrency, setSelectedCurrency] = useState('USD'); // Default USD!
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [choiceOnly, setChoiceOnly] = useState(false);
   const [freeShippingOnly, setFreeShippingOnly] = useState(false);
   const [sortBy, setSortBy] = useState('featured');
-  const [selectedCurrency, setSelectedCurrency] = useState('SAR'); // Default SAR
-  const [darkMode, setDarkMode] = useState(true); // Default sleek dark theme
+  const [darkMode, setDarkMode] = useState(true);
 
   // User Cart & Wishlist State
-  const [wishlist, setWishlist] = useState([1, 4]); // Pre-filled with some items for demo
+  const [wishlist, setWishlist] = useState([1, 4]);
   const [cart, setCart] = useState([
-    { ...PRODUCTS[0], quantity: 1, selectedColor: 'أسود بريميوم' }
+    { ...PRODUCTS[0], quantity: 1, selectedColor: 'Premium Black' }
   ]);
 
-  // Modal State
+  // Modal & Navigation State
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [showWishlistOnly, setShowWishlistOnly] = useState(false);
 
   const productsSectionRef = useRef(null);
+
+  // Get active translation dictionary & text directional flow (LTR/RTL)
+  const currentLang = LANGUAGES[selectedLanguage] || LANGUAGES.en;
+  const currentDir = currentLang.dir;
+
+  // Translation Helper Function
+  const t = (key) => {
+    const langDict = TRANSLATIONS[selectedLanguage] || TRANSLATIONS.en;
+    return langDict[key] || TRANSLATIONS.en[key] || key;
+  };
+
+  // Update document dir and lang attributes when language changes
+  useEffect(() => {
+    document.documentElement.setAttribute('dir', currentDir);
+    document.documentElement.setAttribute('lang', selectedLanguage);
+  }, [selectedLanguage, currentDir]);
 
   // Sync Dark Mode Attribute
   useEffect(() => {
@@ -45,22 +63,17 @@ export default function App() {
 
   // Filter & Sort Products
   const filteredProducts = PRODUCTS.filter((product) => {
-    // Category match
     if (selectedCategory !== 'all' && product.category !== selectedCategory) {
       return false;
     }
-    // Search match
     if (searchTerm.trim()) {
       const query = searchTerm.toLowerCase();
       const matchTitle = product.title.toLowerCase().includes(query);
       const matchDesc = product.description.toLowerCase().includes(query);
       if (!matchTitle && !matchDesc) return false;
     }
-    // Choice Only filter
     if (choiceOnly && !product.isChoice) return false;
-    // Free Shipping filter
     if (freeShippingOnly && !product.freeShipping) return false;
-    // Wishlist Only view toggle
     if (showWishlistOnly && !wishlist.includes(product.id)) return false;
 
     return true;
@@ -69,7 +82,7 @@ export default function App() {
     if (sortBy === 'price-asc') return a.priceUSD - b.priceUSD;
     if (sortBy === 'price-desc') return b.priceUSD - a.priceUSD;
     if (sortBy === 'rating') return b.rating - a.rating;
-    return b.ordersCount - a.ordersCount; // Featured / Most popular
+    return b.ordersCount - a.ordersCount;
   });
 
   // Handlers
@@ -122,43 +135,46 @@ export default function App() {
         setSearchTerm={setSearchTerm}
         selectedCurrency={selectedCurrency}
         setSelectedCurrency={setSelectedCurrency}
+        selectedLanguage={selectedLanguage}
+        setSelectedLanguage={setSelectedLanguage}
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         wishlistCount={wishlist.length}
         cartCount={cart.reduce((sum, item) => sum + (item.quantity || 1), 0)}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenWishlist={() => setShowWishlistOnly(!showWishlistOnly)}
+        t={t}
       />
 
       {/* Hero Banner Section */}
-      <HeroBanner onExploreClick={handleScrollToProducts} />
+      <HeroBanner onExploreClick={handleScrollToProducts} t={t} dir={currentDir} />
 
       {/* Main Content Body */}
-      <main className="container" style={{ flex: 1, paddingTop: '2rem' }} ref={productsSectionRef}>
+      <main className="container" style={{ flex: 1, paddingTop: '1.5rem' }} ref={productsSectionRef}>
         
         {/* Wishlist Active Bar Indicator */}
         {showWishlistOnly && (
           <div style={{
             background: 'rgba(255, 43, 74, 0.1)',
             border: '1px solid var(--primary-red)',
-            padding: '0.85rem 1.25rem',
-            borderRadius: '16px',
-            marginBottom: '1.5rem',
+            padding: '0.75rem 1.1rem',
+            borderRadius: '14px',
+            marginBottom: '1.25rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             color: 'var(--text-main)'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '800' }}>
-              <Heart size={20} color="var(--primary-red)" fill="var(--primary-red)" />
-              <span>أنت تعرض المنتجات المفضلة لديك فقط ({filteredProducts.length})</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: '800', fontSize: '0.88rem' }}>
+              <Heart size={18} color="var(--primary-red)" fill="var(--primary-red)" />
+              <span>{t('wishlistActiveNotice')} ({filteredProducts.length})</span>
             </div>
             <button
               onClick={() => setShowWishlistOnly(false)}
               className="btn-secondary"
-              style={{ padding: '0.4rem 0.85rem', fontSize: '0.82rem' }}
+              style={{ padding: '0.35rem 0.75rem', fontSize: '0.78rem' }}
             >
-              عرض كل المنتجات
+              {t('showAllProducts')}
             </button>
           </div>
         )}
@@ -173,23 +189,21 @@ export default function App() {
           setFreeShippingOnly={setFreeShippingOnly}
           sortBy={sortBy}
           setSortBy={setSortBy}
+          t={t}
         />
 
         {/* Product Cards Grid */}
         {filteredProducts.length === 0 ? (
           <div style={{
             textAlign: 'center',
-            padding: '4rem 1rem',
+            padding: '3.5rem 1rem',
             background: 'var(--bg-card)',
-            borderRadius: '24px',
+            borderRadius: '20px',
             border: '1px solid var(--border-color)',
-            margin: '2rem 0'
+            margin: '1.5rem 0'
           }}>
-            <AlertCircle size={48} color="var(--text-muted)" style={{ marginBottom: '1rem' }} />
-            <h3 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '0.5rem' }}>لم يتم العثور على منتجات مطابقة!</h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
-              جرب تغيير كلمات البحث أو إلغاء بعض الفلاتر لعرض نتائج أكثر.
-            </p>
+            <AlertCircle size={44} color="var(--text-muted)" style={{ marginBottom: '0.85rem' }} />
+            <h3 style={{ fontSize: '1.1rem', fontWeight: '800', marginBottom: '0.4rem' }}>{t('noProductsFound')}</h3>
             <button
               onClick={() => {
                 setSearchTerm('');
@@ -199,8 +213,9 @@ export default function App() {
                 setShowWishlistOnly(false);
               }}
               className="btn-primary"
+              style={{ marginTop: '0.85rem' }}
             >
-              إعادة ضبط الفلاتر
+              {t('resetFilters')}
             </button>
           </div>
         ) : (
@@ -208,7 +223,7 @@ export default function App() {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
             gap: '1.25rem',
-            marginBottom: '3rem'
+            marginBottom: '2.5rem'
           }}>
             {filteredProducts.map((product) => (
               <ProductCard
@@ -219,18 +234,19 @@ export default function App() {
                 onToggleWishlist={handleToggleWishlist}
                 onQuickView={(p) => setQuickViewProduct(p)}
                 onAddToCart={handleAddToCart}
+                t={t}
               />
             ))}
           </div>
         )}
 
         {/* Interactive AliExpress Deal Finder Component */}
-        <AliExpressDealFinder />
+        <AliExpressDealFinder t={t} dir={currentDir} />
 
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer t={t} />
 
       {/* Modals & Drawers */}
       <QuickViewModal
@@ -240,6 +256,7 @@ export default function App() {
         onAddToCart={handleAddToCart}
         isWishlisted={quickViewProduct ? wishlist.includes(quickViewProduct.id) : false}
         onToggleWishlist={handleToggleWishlist}
+        t={t}
       />
 
       <CartDrawer
@@ -249,6 +266,7 @@ export default function App() {
         onUpdateQuantity={handleUpdateCartQuantity}
         onRemoveItem={handleRemoveCartItem}
         currencyCode={selectedCurrency}
+        t={t}
       />
 
       {/* Mobile Bottom Dock Bar for Smartphones */}
@@ -263,6 +281,7 @@ export default function App() {
         onOpenCart={() => setIsCartOpen(true)}
         onOpenWishlist={() => setShowWishlistOnly(true)}
         onScrollToTop={handleScrollToProducts}
+        t={t}
       />
     </div>
   );
