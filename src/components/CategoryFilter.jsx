@@ -7,9 +7,10 @@ import {
   Watch, 
   Zap, 
   SlidersHorizontal,
-  Check
+  Check,
+  DollarSign
 } from 'lucide-react';
-import { CATEGORIES } from '../data/products';
+import { CATEGORIES, CURRENCIES } from '../data/products';
 
 const ICON_MAP = {
   Sparkles,
@@ -27,10 +28,16 @@ export default function CategoryFilter({
   setChoiceOnly,
   freeShippingOnly,
   setFreeShippingOnly,
+  maxPrice,
+  setMaxPrice,
+  currencyCode,
   sortBy,
   setSortBy,
   t
 }) {
+  const currency = CURRENCIES[currencyCode] || CURRENCIES.USD;
+  const maxPriceDisplay = (maxPrice * currency.rate).toFixed(0);
+
   return (
     <div style={{
       marginBottom: '1.75rem',
@@ -88,7 +95,7 @@ export default function CategoryFilter({
         alignItems: 'center',
         justifyContent: 'space-between',
         flexWrap: 'wrap',
-        gap: '0.85rem'
+        gap: '1rem'
       }}>
         {/* Toggle Checkboxes */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
@@ -160,31 +167,54 @@ export default function CategoryFilter({
           </label>
         </div>
 
-        {/* Sort Selector */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-          <SlidersHorizontal size={15} color="var(--text-muted)" />
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '600' }}>{t('sortBy')}</span>
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            style={{
-              background: 'var(--bg-main)',
-              border: '1px solid var(--border-color)',
-              color: 'var(--text-main)',
-              padding: '0.4rem 0.75rem',
-              borderRadius: '8px',
-              fontSize: '0.8rem',
-              fontWeight: '700',
-              outline: 'none',
-              cursor: 'pointer'
-            }}
-          >
-            <option value="featured">{t('sortFeatured')}</option>
-            <option value="discount">{t('sortDiscount')}</option>
-            <option value="price-asc">{t('sortPriceAsc')}</option>
-            <option value="price-desc">{t('sortPriceDesc')}</option>
-            <option value="rating">{t('sortRating')}</option>
-          </select>
+        {/* Price Slider & Sort Selector */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
+          
+          {/* Price Filter Slider */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', fontWeight: '700' }}>
+            <DollarSign size={14} color="var(--primary-red)" />
+            <span style={{ color: 'var(--text-muted)' }}>{t('maxPriceFilter')}</span>
+            <strong style={{ color: 'var(--primary-red)', minWidth: '55px' }}>
+              {currency.symbol}{maxPriceDisplay}
+            </strong>
+            <input
+              type="range"
+              min="10"
+              max="150"
+              step="5"
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(Number(e.target.value))}
+              style={{ accentColor: 'var(--primary-red)', cursor: 'pointer', width: '90px' }}
+            />
+          </div>
+
+          {/* Sort Selector */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <SlidersHorizontal size={15} color="var(--text-muted)" />
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '600' }}>{t('sortBy')}</span>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              style={{
+                background: 'var(--bg-main)',
+                border: '1px solid var(--border-color)',
+                color: 'var(--text-main)',
+                padding: '0.4rem 0.75rem',
+                borderRadius: '8px',
+                fontSize: '0.8rem',
+                fontWeight: '700',
+                outline: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              <option value="featured">{t('sortFeatured')}</option>
+              <option value="discount">{t('sortDiscount')}</option>
+              <option value="price-asc">{t('sortPriceAsc')}</option>
+              <option value="price-desc">{t('sortPriceDesc')}</option>
+              <option value="rating">{t('sortRating')}</option>
+            </select>
+          </div>
+
         </div>
 
       </div>

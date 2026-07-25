@@ -6,6 +6,9 @@ import ProductCard from './components/ProductCard';
 import QuickViewModal from './components/QuickViewModal';
 import CartDrawer from './components/CartDrawer';
 import AliExpressDealFinder from './components/AliExpressDealFinder';
+import FaqSection from './components/FaqSection';
+import Newsletter from './components/Newsletter';
+import ToastNotification from './components/ToastNotification';
 import MobileBottomNav from './components/MobileBottomNav';
 import Footer from './components/Footer';
 import { PRODUCTS } from './data/products';
@@ -14,20 +17,22 @@ import { Heart, AlertCircle } from 'lucide-react';
 
 export default function App() {
   // i18n & App State
-  const [selectedLanguage, setSelectedLanguage] = useState('en'); // Default English!
-  const [selectedCurrency, setSelectedCurrency] = useState('USD'); // Default USD!
+  const [selectedLanguage, setSelectedLanguage] = useState('en'); // Default English
+  const [selectedCurrency, setSelectedCurrency] = useState('USD'); // Default USD
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [choiceOnly, setChoiceOnly] = useState(false);
   const [freeShippingOnly, setFreeShippingOnly] = useState(false);
+  const [maxPrice, setMaxPrice] = useState(150); // Default max price USD
   const [sortBy, setSortBy] = useState('featured');
   const [darkMode, setDarkMode] = useState(true);
 
-  // User Cart & Wishlist State
+  // User Cart, Wishlist & Toast State
   const [wishlist, setWishlist] = useState([1, 4]);
   const [cart, setCart] = useState([
     { ...PRODUCTS[0], quantity: 1, selectedColor: 'Premium Black' }
   ]);
+  const [toastMessage, setToastMessage] = useState(null);
 
   // Modal & Navigation State
   const [quickViewProduct, setQuickViewProduct] = useState(null);
@@ -36,7 +41,7 @@ export default function App() {
 
   const productsSectionRef = useRef(null);
 
-  // Get active translation dictionary & text directional flow (LTR/RTL)
+  // Get active translation dictionary & direction
   const currentLang = LANGUAGES[selectedLanguage] || LANGUAGES.en;
   const currentDir = currentLang.dir;
 
@@ -46,7 +51,7 @@ export default function App() {
     return langDict[key] || TRANSLATIONS.en[key] || key;
   };
 
-  // Update document dir and lang attributes when language changes
+  // Sync document dir and lang
   useEffect(() => {
     document.documentElement.setAttribute('dir', currentDir);
     document.documentElement.setAttribute('lang', selectedLanguage);
@@ -64,6 +69,9 @@ export default function App() {
   // Filter & Sort Products
   const filteredProducts = PRODUCTS.filter((product) => {
     if (selectedCategory !== 'all' && product.category !== selectedCategory) {
+      return false;
+    }
+    if (product.priceUSD > maxPrice) {
       return false;
     }
     if (searchTerm.trim()) {
@@ -179,7 +187,7 @@ export default function App() {
           </div>
         )}
 
-        {/* Category Filter & Sorting Row */}
+        {/* Category Filter, Price Range & Sorting Row */}
         <CategoryFilter
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
@@ -187,6 +195,9 @@ export default function App() {
           setChoiceOnly={setChoiceOnly}
           freeShippingOnly={freeShippingOnly}
           setFreeShippingOnly={setFreeShippingOnly}
+          maxPrice={maxPrice}
+          setMaxPrice={setMaxPrice}
+          currencyCode={selectedCurrency}
           sortBy={sortBy}
           setSortBy={setSortBy}
           t={t}
@@ -210,6 +221,7 @@ export default function App() {
                 setSelectedCategory('all');
                 setChoiceOnly(false);
                 setFreeShippingOnly(false);
+                setMaxPrice(150);
                 setShowWishlistOnly(false);
               }}
               className="btn-primary"
@@ -234,6 +246,7 @@ export default function App() {
                 onToggleWishlist={handleToggleWishlist}
                 onQuickView={(p) => setQuickViewProduct(p)}
                 onAddToCart={handleAddToCart}
+                onShowToast={(msg) => setToastMessage(msg)}
                 t={t}
               />
             ))}
@@ -243,10 +256,19 @@ export default function App() {
         {/* Interactive AliExpress Deal Finder Component */}
         <AliExpressDealFinder t={t} dir={currentDir} />
 
+        {/* FAQ Accordion Section */}
+        <FaqSection t={t} />
+
+        {/* Newsletter Subscription Section */}
+        <Newsletter t={t} onShowToast={(msg) => setToastMessage(msg)} />
+
       </main>
 
       {/* Footer */}
       <Footer t={t} />
+
+      {/* Floating Toast Notification */}
+      <ToastNotification message={toastMessage} onClose={() => setToastMessage(null)} />
 
       {/* Modals & Drawers */}
       <QuickViewModal

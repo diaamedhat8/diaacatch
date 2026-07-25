@@ -5,7 +5,8 @@ import {
   Eye, 
   ExternalLink, 
   ShoppingBag, 
-  Truck 
+  Truck,
+  Share2
 } from 'lucide-react';
 import { CURRENCIES } from '../data/products';
 
@@ -16,11 +17,21 @@ export default function ProductCard({
   onToggleWishlist,
   onQuickView,
   onAddToCart,
+  onShowToast,
   t
 }) {
   const currency = CURRENCIES[currencyCode] || CURRENCIES.USD;
   const currentPrice = (product.priceUSD * currency.rate).toFixed(2);
   const originalPrice = (product.originalPriceUSD * currency.rate).toFixed(2);
+
+  const handleShare = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(product.aliExpressUrl);
+      if (onShowToast) {
+        onShowToast(t('linkCopied'));
+      }
+    }
+  };
 
   return (
     <div style={{
@@ -81,33 +92,59 @@ export default function ProductCard({
           <span className="badge-discount">-{product.discount}%</span>
         </div>
 
-        {/* Wishlist Heart Button */}
-        <button
-          onClick={() => onToggleWishlist(product.id)}
-          style={{
-            position: 'absolute',
-            top: '0.5rem',
-            left: '0.5rem',
-            width: '32px',
-            height: '32px',
-            borderRadius: '50%',
-            background: 'rgba(255, 255, 255, 0.92)',
-            backdropFilter: 'blur(6px)',
-            border: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            zIndex: 2,
-            boxShadow: '0 3px 8px rgba(0,0,0,0.15)'
-          }}
-        >
-          <Heart
-            size={16}
-            fill={isWishlisted ? 'var(--primary-red)' : 'none'}
-            color={isWishlisted ? 'var(--primary-red)' : '#64748b'}
-          />
-        </button>
+        {/* Top Action Icons (Wishlist & Share) */}
+        <div style={{
+          position: 'absolute',
+          top: '0.5rem',
+          left: '0.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.35rem',
+          zIndex: 2
+        }}>
+          <button
+            onClick={() => onToggleWishlist(product.id)}
+            style={{
+              width: '32px',
+              height: '32px',
+              borderRadius: '50%',
+              background: 'rgba(255, 255, 255, 0.92)',
+              backdropFilter: 'blur(6px)',
+              border: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              boxShadow: '0 3px 8px rgba(0,0,0,0.15)'
+            }}
+          >
+            <Heart
+              size={16}
+              fill={isWishlisted ? 'var(--primary-red)' : 'none'}
+              color={isWishlisted ? 'var(--primary-red)' : '#64748b'}
+            />
+          </button>
+
+          <button
+            onClick={handleShare}
+            title={t('shareDeal')}
+            style={{
+              width: '32px',
+              height: '32px',
+              borderRadius: '50%',
+              background: 'rgba(255, 255, 255, 0.92)',
+              backdropFilter: 'blur(6px)',
+              border: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              boxShadow: '0 3px 8px rgba(0,0,0,0.15)'
+            }}
+          >
+            <Share2 size={14} color="#1e2029" />
+          </button>
+        </div>
 
         {/* Quick View Floating Overlay */}
         <div style={{
