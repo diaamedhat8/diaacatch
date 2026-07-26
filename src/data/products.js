@@ -16,8 +16,21 @@ export const CURRENCIES = {
   AED: { code: 'AED', symbol: 'AED', rate: 3.67, name: 'UAE Dirham' },
 };
 
+// 💰 Your Personal AliExpress Affiliate Tracking Tag / ID
+// Replace this with your official Tracking ID from Portals.aliexpress.com
+export const MY_AFFILIATE_TRACKING_TAG = 'diaacatch_affiliate_id';
+
+// Helper function to append your tracking code to ANY AliExpress link automatically
+export const getAffiliateLink = (url) => {
+  if (!url) return 'https://www.aliexpress.com';
+  if (url.includes('s.click.aliexpress.com')) return url;
+  
+  const separator = url.includes('?') ? '&' : '?';
+  return `${url}${separator}aff_fcid=${MY_AFFILIATE_TRACKING_TAG}&aff_fsk=ChoiceDeals&aff_platform=portals-tool`;
+};
+
 // Target base URL for affiliate link transformation
-const BASE_ALIEXPRESS_ITEM_URL = 'https://www.aliexpress.com/item/1005007502032342.html?spm=oneshop.sub_buy_again.waterfall.17.97007f6bhIWI49&skuId=12000059381325615';
+const BASE_ALIEXPRESS_ITEM_URL = getAffiliateLink('https://www.aliexpress.com/item/1005007502032342.html?spm=oneshop.sub_buy_again.waterfall.17.97007f6bhIWI49&skuId=12000059381325615');
 
 export const PRODUCTS = [
   {
