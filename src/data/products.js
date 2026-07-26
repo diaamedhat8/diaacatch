@@ -239,6 +239,32 @@ export const PRODUCTS = [
     },
     aliExpressUrl: 'https://www.aliexpress.com/item/1005008889991.html',
     description: 'Stunning ambient lighting for your desk setup! Syncs with music rhythm and game sound effects.'
+  },
+  {
+    id: 9,
+    title: 'AliExpress Choice Premium Selected Deal Item #1005007502032342',
+    category: 'gadgets',
+    priceUSD: 29.90,
+    originalPriceUSD: 85.00,
+    discount: 65,
+    rating: 4.9,
+    reviewsCount: 2410,
+    ordersCount: 9800,
+    image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: '5-9 Days',
+    colors: ['Original Edition'],
+    specs: {
+      'Item ID': '1005007502032342',
+      'Guarantee': 'AliExpress Choice Official Guarantee',
+      'Shipping': 'Choice Express Free Shipping'
+    },
+    aliExpressUrl: 'https://www.aliexpress.com/item/1005007502032342.html?spm=oneshop.sub_buy_again.waterfall.17.97007f6bhIWI49&skuId=12000059381325615',
+    description: 'Featured high-demand product curated directly from AliExpress Choice top deals with maximum discount and fast shipping.'
   }
 ];
 
