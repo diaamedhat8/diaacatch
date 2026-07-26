@@ -11,16 +11,14 @@ export const CURRENCIES = {
   USD: { code: 'USD', symbol: '$', rate: 1, name: 'US Dollar' },
   EUR: { code: 'EUR', symbol: '€', rate: 0.92, name: 'Euro' },
   GBP: { code: 'GBP', symbol: '£', rate: 0.79, name: 'British Pound' },
-  SAR: { code: 'SAR', symbol: 'SAR', rate: 3.75, name: 'Saudi Riyal' },
-  EGP: { code: 'EGP', symbol: 'EGP', rate: 48.5, name: 'Egyptian Pound' },
-  AED: { code: 'AED', symbol: 'AED', rate: 3.67, name: 'UAE Dirham' },
+  SAR: { code: 'SAR', symbol: 'ر.س', rate: 3.75, name: 'ريال سعودي' },
+  EGP: { code: 'EGP', symbol: 'ج.م', rate: 48.5, name: 'جنيه مصري' },
+  AED: { code: 'AED', symbol: 'د.إ', rate: 3.67, name: 'درهم إماراتي' },
 };
 
-// 💰 Your Personal AliExpress Affiliate Tracking Tag / ID
-// Replace this with your official Tracking ID from Portals.aliexpress.com
+// 💰 Your Personal AliExpress Affiliate Tracking Link
 export const MY_AFFILIATE_TRACKING_TAG = 'diaacatch_affiliate_id';
 
-// Helper function to append your tracking code to ANY AliExpress link automatically
 export const getAffiliateLink = (url) => {
   if (!url) return 'https://www.aliexpress.com';
   if (url.includes('s.click.aliexpress.com')) return url;
@@ -29,13 +27,13 @@ export const getAffiliateLink = (url) => {
   return `${url}${separator}aff_fcid=${MY_AFFILIATE_TRACKING_TAG}&aff_fsk=ChoiceDeals&aff_platform=portals-tool`;
 };
 
-// Target base URL for affiliate link transformation
-const BASE_ALIEXPRESS_ITEM_URL = getAffiliateLink('https://www.aliexpress.com/item/1005007502032342.html?spm=oneshop.sub_buy_again.waterfall.17.97007f6bhIWI49&skuId=12000059381325615');
+// Direct target URL provided by user
+const TARGET_ALIEXPRESS_URL = getAffiliateLink('https://www.aliexpress.com/item/1005007502032342.html?spm=oneshop.sub_buy_again.waterfall.17.97007f6bhIWI49&skuId=12000059381325615');
 
 export const PRODUCTS = [
   {
     id: 1,
-    title: 'AliExpress Choice Verified Top Best Seller Item #1005007502032342',
+    title: 'عرض AliExpress Choice المختار المميز #1005007502032342',
     category: 'gadgets',
     priceUSD: 29.90,
     originalPriceUSD: 85.00,
@@ -50,21 +48,21 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '5-7 Days',
-    colors: ['Space Gray', 'Silver Metallic'],
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['رمادي فضائي', 'فضيات متألقة'],
     specs: {
-      'Item Code': '1005007502032342',
-      'SKU ID': '12000059381325615',
-      'Sales Volume': '68,400+ Units Sold Globally',
-      'Guarantee': 'AliExpress Choice Official Guarantee',
-      'Shipping': 'Choice Express 5-Day Delivery'
+      'رقم المنتج': '1005007502032342',
+      'كود SKU': '12000059381325615',
+      'حجم المبيعات': 'أكثر من 68,400 طلب حول العالم',
+      'الضمان': 'ضمان رسمي من AliExpress Choice',
+      'الشحن': 'شحن مجاني سريع خلال 5-7 أيام'
     },
-    aliExpressUrl: BASE_ALIEXPRESS_ITEM_URL,
-    description: '#1 Best-selling official Choice deal curated directly from top verified AliExpress stores with guaranteed fast 5-day shipping and maximum discount.'
+    aliExpressUrl: TARGET_ALIEXPRESS_URL,
+    description: 'المنتج الأكثر مبيعاً على منصة AliExpress Choice بخصم استثنائي 65% مع ضمان الشحن السريع والإرجاع المجاني.'
   },
   {
     id: 2,
-    title: 'Lenovo ThinkPlus TH10 ANC Wireless Headphones Hi-Fi Stereo Sound 40H',
+    title: 'سماعات لينوفو ThinkPlus TH10 اللاسلكية بنظام عزل الضوضاء ANC وصوت Hi-Fi',
     category: 'electronics',
     priceUSD: 14.80,
     originalPriceUSD: 49.99,
@@ -79,21 +77,21 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '5-8 Days',
-    colors: ['Matte Black', 'Pearl White', 'Beige Gold'],
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أسود مات', 'أبيض لؤلؤي', 'ذهبي بيج'],
     specs: {
-      'Brand': 'Lenovo Official',
-      'Noise Reduction': 'Active Noise Cancelling -35dB',
-      'Battery Life': '40 Hours Playback / 300mAh',
-      'Driver Unit': '40mm Dynamic Bass Unit',
-      'Bluetooth': 'V5.3 Ultra Low Latency'
+      'الماركة': 'Lenovo الأصلي',
+      'عزل الضوضاء': 'نظام عزل نشط ANC -35dB',
+      'البطارية': '40 ساعة تشغيل متواصل',
+      'المحرك الصوتي': '40mm دبل باس احترافي',
+      'البلوتوث': 'إصدار 5.3 سريع جداً'
     },
-    aliExpressUrl: BASE_ALIEXPRESS_ITEM_URL,
-    description: 'AliExpress Global #1 Headphone Best-Seller! Lenovo ThinkPlus TH10 provides HD acoustic sound, soft protein earmuffs, and active noise isolation.'
+    aliExpressUrl: TARGET_ALIEXPRESS_URL,
+    description: 'السماعة الأكثر مبيعاً عالمياً من شركة لينوفو! صوت سينمائي مجسم، وسادات أذن مريحة، وعزل كامل للضوضاء المحيطة.'
   },
   {
     id: 3,
-    title: 'AMOLED Smartwatch Ultra 2026 Waterproof Heart Rate & SpO2 Bluetooth Call',
+    title: 'ساعة ذكية بشاشة AMOLED 2026 ضد الماء وتدعم المكالمات وتتبع نبضات القلب',
     category: 'fashion',
     priceUSD: 23.50,
     originalPriceUSD: 75.00,
@@ -108,20 +106,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '6-9 Days',
-    colors: ['Titanium Black', 'Silver Armor', 'Rose Edition'],
+    deliveryDays: 'شحن 6-9 أيام',
+    colors: ['أسود تيتانيوم', 'فضي ملائم', 'وردي ملكي'],
     specs: {
-      'Display': '1.43" Ultra Always-On AMOLED (466x466 px)',
-      'Health Monitoring': '24/7 Heart Rate, Blood Oxygen & Sleep',
-      'Sports Modes': '100+ Professional Workout Modes',
-      'Water Resistance': 'IP68 50M Waterproof'
+      'الشاشة': '1.43 بوصة AMOLED فائقة الوضوح (466x466 بكسل)',
+      'تتبع الصحة': 'مراقبة نبضات القلب والكسجين ونوم 24/7',
+      'الرياضة': 'أكثر من 100 وضع رياضي احترافي',
+      'مقاومة الماء': 'معيار IP68 حتى عمق 50 متراً'
     },
-    aliExpressUrl: BASE_ALIEXPRESS_ITEM_URL,
-    description: 'Top-selling premium smartwatch with 60Hz AMOLED display, Bluetooth phone calls, customizable watch faces, and 14-day battery standby.'
+    aliExpressUrl: TARGET_ALIEXPRESS_URL,
+    description: 'ساعة ذكية متكاملة بشاشة AMOLED ألوان مشبعة، دعم إجراء واستقبال المكالمات، وبطارية تدوم حتى 14 يوماً.'
   },
   {
     id: 4,
-    title: '4K 60FPS Action Camera Dual Screen Waterproof Helmet Cam WiFi',
+    title: 'كاميرا الأكشن الرياضية 4K 60FPS بشاشتين مزدوجتين ومقاومة للماء',
     category: 'electronics',
     priceUSD: 34.20,
     originalPriceUSD: 99.00,
@@ -135,20 +133,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '5-9 Days',
-    colors: ['Matte Black Duo'],
+    deliveryDays: 'شحن 5-9 أيام',
+    colors: ['أسود مات دبل'],
     specs: {
-      'Video Resolution': '4K 60FPS Ultra HD Video Recording',
-      'Stabilization': '6-Axis EIS Gyro Anti-Shake',
-      'Waterproof': '30M Underwater with Included Housing',
-      'Screens': '2.0" Touch Main Screen + 1.4" Front Selfie Screen'
+      'دقة الفيديو': 'تصوير 4K بدقة 60 إطار بالثانية فائقة النقاء',
+      'مانع الاهتزاز': 'محور مانع اهتزاز 6-Axis EIS',
+      'مقاومة الماء': 'حتى عمق 30 متراً مع الكفر المرفق',
+      'الشاشات': 'شاشة لمس خلفية 2 بوصة + شاشة سيلفي أمامية'
     },
-    aliExpressUrl: BASE_ALIEXPRESS_ITEM_URL,
-    description: 'Top action camera for vloggers, bikers, and outdoor sports. Capture ultra-smooth 4K footage with dual selfie screens and wireless app transfer.'
+    aliExpressUrl: TARGET_ALIEXPRESS_URL,
+    description: 'كاميرا الأكشن الأفضل لصناع المحتوى والرياضيين! تصوير مقاطع فيديو ثابتة بنقاء 4K وشاشتين لمتابعة تصوير السيلفي.'
   },
   {
     id: 5,
-    title: 'Data Frog Wireless Retro Video Game Console 4K HDMI 20,000+ Games',
+    title: 'جهاز الألعاب اللاسلكي Data Frog 4K HDMI يضم أكثر من 20,000 لعبة ريترو',
     category: 'gaming',
     priceUSD: 19.90,
     originalPriceUSD: 59.99,
@@ -163,20 +161,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '5-7 Days',
-    colors: ['Cyber Black Duo'],
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أسود سايبر دبل'],
     specs: {
-      'Built-in Games': '20,000+ Classic Retro Arcade Games',
-      'Controllers': '2x 2.4G Wireless Game Controllers',
-      'Output': '4K HDMI Plug and Play Stick',
-      'Emulators': 'PS1, GBA, MAME, SNES, NES Support'
+      'الألعاب': 'أكثر من 20,000 لعبة أركيد كلاسيكية مدمجة',
+      'أذرع التحكم': '2 ذراع تحكم لاسلكي 2.4G بدون تأخير',
+      'الجودة': 'دعم توصيل HDMI 4K على التلفزيون مباشرة',
+      'المحاكيات': 'دعم ألعاب PS1, GBA, SNES, NES'
     },
-    aliExpressUrl: BASE_ALIEXPRESS_ITEM_URL,
-    description: 'The viral #1 gaming stick on AliExpress! Plug directly into your TV HDMI port to play over 20,000 retro games with two wireless controllers.'
+    aliExpressUrl: TARGET_ALIEXPRESS_URL,
+    description: 'جهاز الألعاب الأكثر مبيعاً وانتشاراً على AliExpress! يوصل بالتلفاز مباشرة للعب ألعابك الكلاسيكية المفضلة مع يدين لاسلكيتين.'
   },
   {
     id: 6,
-    title: '120W GaN 5-Port Fast Wall Charger PD3.0 Quick Charge for Laptops & Phones',
+    title: 'شاحن جداري سريع 120W GaN بخمسة منافذ للابتوب والهواتف الذكية',
     category: 'gadgets',
     priceUSD: 16.50,
     originalPriceUSD: 45.00,
@@ -190,20 +188,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '5-8 Days',
-    colors: ['Black GaN', 'White GaN'],
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أسود GaN', 'أبيض GaN'],
     specs: {
-      'Total Output': '120W Max Fast Charging Power',
-      'Technology': 'GaN (Gallium Nitride) Semiconductor',
-      'Ports': '3x USB-C Power Delivery + 2x USB-A QC4.0',
-      'Safety': 'Multi-protect Temperature & Overcurrent Safety'
+      'القوة الكلية': '120 واط شحن سريع فائق',
+      'التقنية': 'شريحة جاليوم نيترايد GaN المتطورة',
+      'المنافذ': '3 منافذ USB-C PD3.0 + منفذين USB-A QC4.0',
+      'الأمان': 'حماية متكاملة من السخونة والجهد العالي'
     },
-    aliExpressUrl: BASE_ALIEXPRESS_ITEM_URL,
-    description: 'Charge your laptop, smartphone, tablet, and earbuds simultaneously with this high-efficiency 120W GaN fast charger.'
+    aliExpressUrl: TARGET_ALIEXPRESS_URL,
+    description: 'شاحن GaN سريع وصغير الحجم! اشحن اللابتوب، الهاتف، والآيباد في وقت واحد وبأقصى سرعة أمان.'
   },
   {
     id: 7,
-    title: '4K Smart Home Theater LED Projector Wi-Fi 6 & Android 11 Native 1080P',
+    title: 'بروجيكتور السينما المنزلية الذكي 4K نظام Android 11 و Wi-Fi 6',
     category: 'electronics',
     priceUSD: 58.00,
     originalPriceUSD: 169.00,
@@ -217,20 +215,20 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '5-10 Days',
-    colors: ['Space White'],
+    deliveryDays: 'شحن 5-10 أيام',
+    colors: ['أبيض فضائي'],
     specs: {
-      'Resolution': 'Native 1080P Full HD / 4K Video Decoding',
-      'Brightness': '9000 Lumens / 300 ANSI',
-      'Operating System': 'Android 11 with Netflix & YouTube',
-      'Keystone Correction': 'Automatic 4D Keystone Correction'
+      'الدقة': 'دقة 1080P حقيقية ودعم تشغيل 4K',
+      'السطوع': '9000 لومن سطوع شاشة عالي',
+      'النظام': 'أندرويد 11 مدمج مع يوتيوب ونتفلكس',
+      'التعديل': 'تعديل تلقائي لزاوية العرض Keystone'
     },
-    aliExpressUrl: BASE_ALIEXPRESS_ITEM_URL,
-    description: 'Transform any wall into a 150-inch cinema screen! Built-in Android 11 OS, Wi-Fi 6 wireless mirroring, and high-fidelity stereo speakers.'
+    aliExpressUrl: TARGET_ALIEXPRESS_URL,
+    description: 'حول غرفتك إلى صالة سينما! بروجيكتور ذكي بنظام أندرويد 11، سماعات صوت نقية، وعرض يصل إلى 150 بوصة.'
   },
   {
     id: 8,
-    title: 'Smart RGBIC Gradient LED Light Bar Music Sync Smart Home Ambient Lamp',
+    title: 'إضاءة الجيمنج الذكية RGBIC المزودة بمزامنة الصوت والألعاب',
     category: 'smarthome',
     priceUSD: 17.90,
     originalPriceUSD: 49.99,
@@ -244,16 +242,16 @@ export const PRODUCTS = [
     ],
     isChoice: true,
     freeShipping: true,
-    deliveryDays: '6-9 Days',
-    colors: ['Matte Black RGBIC'],
+    deliveryDays: 'شحن 6-9 أيام',
+    colors: ['أسود RGBIC'],
     specs: {
-      'Color Output': '16 Million Colors RGBIC Segment Control',
-      'Audio Sync': 'Built-in High Sensitivity Microphone',
-      'Smart App': 'Tuya / Smart Life App + Alexa Support',
-      'Power': 'USB 5V Safe Power Supply'
+      'الألوان': '16 مليون لون متدرج RGBIC',
+      'المزامنة': 'مايك مدمج لمزامنة الإضاءة مع الموسيقى والألعاب',
+      'التحكم': 'تطبيق جوال + دعم أليكسا وجوجل',
+      'الطاقة': 'تغذية USB آمنة 5V'
     },
-    aliExpressUrl: BASE_ALIEXPRESS_ITEM_URL,
-    description: 'Enhance your gaming desk or TV setup with RGBIC dynamic ambient lighting that syncs in real-time to your music and gaming sound.'
+    aliExpressUrl: TARGET_ALIEXPRESS_URL,
+    description: 'إضاءة محيطية ساحرة لسطح المكتب والتلفزيون تتفاعل وتتحرك تلقائياً مع أصوات الألعاب والموسيقى.'
   }
 ];
 
