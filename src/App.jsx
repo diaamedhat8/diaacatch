@@ -16,21 +16,21 @@ import { TRANSLATIONS, LANGUAGES } from './data/translations';
 import { Heart, AlertCircle } from 'lucide-react';
 
 export default function App() {
-  // i18n & App State
-  const [selectedLanguage, setSelectedLanguage] = useState('en'); // Default English
-  const [selectedCurrency, setSelectedCurrency] = useState('USD'); // Default USD
+  // i18n & App State (Default Arabic & SAR Currency)
+  const [selectedLanguage, setSelectedLanguage] = useState('ar');
+  const [selectedCurrency, setSelectedCurrency] = useState('SAR');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [choiceOnly, setChoiceOnly] = useState(false);
   const [freeShippingOnly, setFreeShippingOnly] = useState(false);
-  const [maxPrice, setMaxPrice] = useState(150); // Default max price USD
+  const [maxPrice, setMaxPrice] = useState(150);
   const [sortBy, setSortBy] = useState('featured');
   const [darkMode, setDarkMode] = useState(true);
 
   // User Cart, Wishlist & Toast State
-  const [wishlist, setWishlist] = useState([1, 4]);
+  const [wishlist, setWishlist] = useState([1]);
   const [cart, setCart] = useState([
-    { ...PRODUCTS[0], quantity: 1, selectedColor: 'Premium Black' }
+    { ...PRODUCTS[0], quantity: 1, selectedColor: 'أسود بريميوم' }
   ]);
   const [toastMessage, setToastMessage] = useState(null);
 
@@ -42,13 +42,13 @@ export default function App() {
   const productsSectionRef = useRef(null);
 
   // Get active translation dictionary & direction
-  const currentLang = LANGUAGES[selectedLanguage] || LANGUAGES.en;
+  const currentLang = LANGUAGES[selectedLanguage] || LANGUAGES.ar;
   const currentDir = currentLang.dir;
 
   // Translation Helper Function
   const t = (key) => {
-    const langDict = TRANSLATIONS[selectedLanguage] || TRANSLATIONS.en;
-    return langDict[key] || TRANSLATIONS.en[key] || key;
+    const langDict = TRANSLATIONS[selectedLanguage] || TRANSLATIONS.ar;
+    return langDict[key] || TRANSLATIONS.ar[key] || key;
   };
 
   // Sync document dir and lang
