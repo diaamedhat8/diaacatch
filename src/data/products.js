@@ -12,7 +12,7 @@ export const CURRENCIES = {
   EUR: { code: 'EUR', symbol: '€', rate: 0.92, name: 'Euro' },
   GBP: { code: 'GBP', symbol: '£', rate: 0.79, name: 'British Pound' },
   SAR: { code: 'SAR', symbol: 'ر.س', rate: 3.75, name: 'ريال سعودي' },
-  EGP: { code: 'EGP', symbol: 'ج.م', rate: 48.5, name: 'جنيه مصري' },
+  EGP: { code: 'EGP', symbol: 'ج.م', rate: 48.65, name: 'جنيه مصري' },
   AED: { code: 'AED', symbol: 'د.إ', rate: 3.67, name: 'درهم إماراتي' },
 };
 
@@ -475,7 +475,7 @@ export const PRODUCTS = [
     specs: {
       'السويتشات': 'ميكانيكي Blue / Red Switches استجابة فائقة',
       'الإضاءة': '20 نمط إضاءة RGB dynamic',
-      'الاتصال': 'три-mode (بلوتوث 5.0 + 2.4G لاسلكي + Type-C سلكي)',
+      'الاتصال': 'بلوتوث 5.0 + 2.4G لاسلكي + Type-C سلكي',
       'البطارية': '3000mAh قابلة للشحن عبر USB-C'
     },
     aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-RGB-Wireless-Gaming-Keyboard.html'),
@@ -615,6 +615,403 @@ export const PRODUCTS = [
     },
     aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Anker-Soundcore-Bluetooth-Speaker.html'),
     description: 'السبيكر اللاسلكي المفضل للرحلات والسفر من أنكر! صوت ضخم ونقي، ضد الماء 100%، وبطارية تكفيك طوال اليوم.'
+  },
+  {
+    id: 22,
+    title: 'سماعات باسيوس اللاسلكية Baseus Bowie M2+ مع عزل الضوضاء المزدوج ANC 42dB',
+    category: 'electronics',
+    priceUSD: 29.90,
+    originalPriceUSD: 79.00,
+    discount: 62,
+    rating: 4.9,
+    reviewsCount: 16800,
+    ordersCount: 79000,
+    image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أسود فخم', 'أبيض كريمي'],
+    specs: {
+      'الماركة': 'Baseus Bowie M2+ الأصلي',
+      'عزل الضوضاء': 'نظام عزل الهجين الذكي ANC -42dB',
+      'البطارية': '30 ساعة تشغيل مع علبة الشحن السريع',
+      'الميكروفونات': '4 ميكروفونات ENC لإلغاء ضوضاء الرياح والمكالمات'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Baseus-Bowie-M2.html'),
+    description: 'السماعة اللاسلكية الاحترافية مع نظام عزل الضوضاء الهجين ANC! استمتع بصوت نقي للغاية ومكالمات واضحة في أي مكان.'
+  },
+  {
+    id: 23,
+    title: 'ماوس الجيمنج اللاسلكي الاحترافي 16000DPI مع إضاءة RGB وشحن سريع',
+    category: 'gaming',
+    priceUSD: 18.50,
+    originalPriceUSD: 49.00,
+    discount: 62,
+    rating: 4.8,
+    reviewsCount: 13400,
+    ordersCount: 65000,
+    image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أسود سايبر RGB', 'أبيض ثلجي'],
+    specs: {
+      'الحساسية': 'حساس بصر فائق 16000 DPI قابل للتعديل',
+      'الاتصال': 'Dual Mode (2.4G لاسلكي + USB-C)',
+      'الوزن': 'وزن خفيف جداً 68g لسرعة الحركة',
+      'البطارية': 'تشغيل مستمر حتى 70 ساعة'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Wireless-Gaming-Mouse-16000DPI.html'),
+    description: 'ماوس جيمنج احترافي خفيف الوزن واستجابة فائقة السرعة! حساس دقيق جداً للألعاب التنافسية وإضاءة RGB مذهلة.'
+  },
+  {
+    id: 24,
+    title: 'شريط الإضاءة الذكي RGBIC 15 متر مع تطبيق WiFi ومزامنة الصوت والتحكم الصوتي',
+    category: 'smarthome',
+    priceUSD: 16.80,
+    originalPriceUSD: 45.00,
+    discount: 63,
+    rating: 4.9,
+    reviewsCount: 28900,
+    ordersCount: 130000,
+    image: 'https://images.unsplash.com/photo-1550985616-10810253b84d?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1550985616-10810253b84d?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['RGBIC 16 مليون لون'],
+    specs: {
+      'الطول': '15 متر شريط LED مقوى مزود بطلاء ضد الماء IP65',
+      'التحكم': 'تطبيق Tuya Smart WiFi + ريموت كنترول',
+      'الأوامر الصوتية': 'دعم كامل مع أليكسا ومساعد جوجل',
+      'التفاعل': 'مايك مدمج يتفاعل مع الموسيقى والألعاب'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-RGBIC-LED-Strip-15M.html'),
+    description: 'زين غرفتك ومكتبك بأجمل الألوان المتدرجة! شريط إضاءة ذكي 15 متر يتحرك مع الصوت والموسيقى ويمكن التحكم به بالجوال.'
+  },
+  {
+    id: 25,
+    title: 'مفك البراغي الكهربائي الدقيق Xiaomi Mijia مع 24 رأس ستيل وشحن Type-C',
+    category: 'gadgets',
+    priceUSD: 21.90,
+    originalPriceUSD: 59.00,
+    discount: 63,
+    rating: 4.9,
+    reviewsCount: 34200,
+    ordersCount: 155000,
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['رمادي ألمنيوم أنودايزد'],
+    specs: {
+      'الماركة': 'Xiaomi Mijia Original',
+      'الرؤوس': '24 رأس فك وربط دقيق من الفولاذ الصلب S2',
+      'العزم': 'ترس عزم مزدوج (كهربائي + يدوي)',
+      'الهيكل': 'علبة شحن وتخزين مغناطيسية أنيقة جداً'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Xiaomi-Mijia-Electric-Screwdriver.html'),
+    description: 'مفك شاومي الكهربائي الدقيق لإصلاح الهواتف، الساعات، النظارات، والأجهزة الإلكترونية بسهولة وبأعلى خامات ألمنيوم.'
+  },
+  {
+    id: 26,
+    title: 'مكينة حلاقة وتشذيب الذقن والجسم الاحترافية من Kemei مع بطارية ليثيوم وشاشة LCD',
+    category: 'fashion',
+    priceUSD: 13.90,
+    originalPriceUSD: 39.00,
+    discount: 64,
+    rating: 4.8,
+    reviewsCount: 42100,
+    ordersCount: 190000,
+    image: 'https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['ذهب كلاسيكي vintage', 'فضي ستانلس'],
+    specs: {
+      'الماركة': 'Kemei Pro',
+      'الشفرات': 'شفرات تيتانيوم حادة وسريعة بدون جروح',
+      'البطارية': '180 دقيقة استخدام شحنة واحدة USB',
+      'الشاشة': 'عرض نسبة شحن البطارية بدقة LCD'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Kemei-Hair-Trimmer.html'),
+    description: 'المكينة الأكثر مبيعاً لتصفيف وتحفيف الذقن والشعر بدقة متناهية وشكل معدني ريترو فخم وبطارية تدوم طويلاً.'
+  },
+  {
+    id: 27,
+    title: 'مكنسة السيارة اللاسلكية باسيوس بقوة شفط 15000Pa وتفريغ أتربة ضاغط 2 في 1',
+    category: 'gadgets',
+    priceUSD: 31.50,
+    originalPriceUSD: 85.00,
+    discount: 63,
+    rating: 4.9,
+    reviewsCount: 19500,
+    ordersCount: 88000,
+    image: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أسود كربون', 'فضي تيتانيوم'],
+    specs: {
+      'الماركة': 'Baseus الأصلي',
+      'قوة الشفط': '15000Pa شفط محرك بدون فرش Brushless',
+      'الوظائف': 'شفط الأتربة + نفخ وتطهير الفتحات الدقيقة',
+      'الفلتر': 'فلتر HEPA قابل للغسل والاستخدام المكرر'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Baseus-Car-Vacuum-Cleaner.html'),
+    description: 'مكنسة السيارة اللاسلكية الأقوى من باسيوس! قوة شفط هائلة 15000Pa تنظف مقاعد سيارتك والفتحات الضيقة بسهولة.'
+  },
+  {
+    id: 28,
+    title: 'خاتم الصحة الذكي Smart Health Ring 2026 لتتبع النوم والنبض والأكسجين والرياضة',
+    category: 'fashion',
+    priceUSD: 28.90,
+    originalPriceUSD: 89.00,
+    discount: 68,
+    rating: 4.8,
+    reviewsCount: 8900,
+    ordersCount: 39000,
+    image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أسود سيراميك', 'ذهبي ملكي', 'فضي تيتانيوم'],
+    specs: {
+      'التقنية': 'مستشعرات PPG الطبية الدقيقة لقياس نبض القلب والسبو2',
+      'مقاومة الماء': 'معيار 5ATM مقاومة ماء كاملة للسباحة',
+      'البطارية': '7 أيام استخدام متواصل مع علبة شحن سفري',
+      'التطبيق': 'مزامنة مع أبل هيلث وجوجل فيت'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Smart-Health-Ring.html'),
+    description: 'بديل الساعة الذكية الأنيق والخفيف! خاتم ذكي يراقب مؤشراتك الصحية ونومك طوال الـ 24 ساعة بمظهر سيراميكي فخم.'
+  },
+  {
+    id: 29,
+    title: 'كوب القهوة الحراري من الستانلس ستيل مزود بشاشة لمس ذكية لعرض درجة الحرارة',
+    category: 'gadgets',
+    priceUSD: 9.80,
+    originalPriceUSD: 28.00,
+    discount: 65,
+    rating: 4.9,
+    reviewsCount: 31000,
+    ordersCount: 145000,
+    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أسود مات', 'أبيض ناصع', 'وردي'],
+    specs: {
+      'السعة': '500 مل حافظ للحرارة والبرودة حتى 12 ساعة',
+      'الشاشة': 'غطاء ذكي يعرض درجة حرارة السائل باللمس LCD',
+      'المادة': 'ستانلس ستيل آمن 304 عالي الجودة'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Temperature-Display-Coffee-Mug.html'),
+    description: 'كوب القهوة والشاي الذكي للحفاظ على المشروبات ساخنة طوال اليوم! يعرض لك درجة حرارة مشروبك بلمسة واحدة على الغطاء.'
+  },
+  {
+    id: 30,
+    title: 'سبيكر مكبر الصوت المحمول البلوتوث ميني من JBL Style مع إضاءة RGB صوت قوي',
+    category: 'electronics',
+    priceUSD: 12.50,
+    originalPriceUSD: 36.00,
+    discount: 65,
+    rating: 4.8,
+    reviewsCount: 23400,
+    ordersCount: 98000,
+    image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أسود جيب', 'أزرق', 'أحمر ناري'],
+    specs: {
+      'الصوت': 'محرك صابووفر ميني 5W بصوت مجسم وقوي',
+      'البطارية': '8 ساعات تشغيل موسيقى',
+      'الميزات': 'دعم كارت ميموري TF + AUX + بلوتوث 5.3'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Mini-Bluetooth-Speaker.html'),
+    description: 'سبيكر محمول صغير بحجم قبضة اليد وصوت ضخم بنقاء ممتاز! مثالي للسفر والرحلات والاستخدام اليومي.'
+  },
+  {
+    id: 31,
+    title: 'ميكروفون الياقة اللاسلكي للآيفون والأندرويد 2.4G لصناع المحتوى والبودكاست',
+    category: 'electronics',
+    priceUSD: 10.90,
+    originalPriceUSD: 32.00,
+    discount: 66,
+    rating: 4.9,
+    reviewsCount: 38900,
+    ordersCount: 175000,
+    image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أسود كليب دبل (2 مايك + مستقبل)'],
+    specs: {
+      'الاتصال': 'إرسال لاسلكي 2.4G مدى 20 متراً بدون تأخير',
+      'عزل الضوضاء': 'شريحة DSP الذكية لتصفية أصوات الشارع',
+      'التوافق': 'منفذ Type-C و Lightning لجميع الهواتف'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Wireless-Lavalier-Microphone.html'),
+    description: 'الميكروفون الأكثر استخداماً وتفضيلًا لصناع فيديوهات التيكتوك واليوتيوب! تسجيل صوت احترافي بنقاء وبدون أسلاك.'
+  },
+  {
+    id: 32,
+    title: 'باور بنك باسيوس السريع 65W سعة 20000mAh لشحن اللابتوب والجوال بسرعة فائقة',
+    category: 'gadgets',
+    priceUSD: 39.50,
+    originalPriceUSD: 99.00,
+    discount: 60,
+    rating: 4.9,
+    reviewsCount: 15400,
+    ordersCount: 68000,
+    image: 'https://images.unsplash.com/photo-1609592424009-467f9a1f33f6?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1609592424009-467f9a1f33f6?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أسود ألمنيوم PD65W'],
+    specs: {
+      'الماركة': 'Baseus Power Bank 65W الأصلي',
+      'القوة': '65W شحن PD3.0 لشحن ماك بوك ولابتوبات ديل وهواوي',
+      'السعة': '20,000 مللي أمبير مع شاشة ديجيتال لعرض الطاقة'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Baseus-65W-Power-Bank-20000mAh.html'),
+    description: 'باور بنك باسيوس الجبار بقوة 65 واط! يشحن جهازك اللابتوب والهاتف بنفس الوقت بأقصى سرعة أمان أثناء التنقل.'
+  },
+  {
+    id: 33,
+    title: 'سطل وسلة المهملات الذكية 15 لتر بفتح وإغلاق أوتوماتيكي بحساس الحركة ضد الماء',
+    category: 'smarthome',
+    priceUSD: 15.90,
+    originalPriceUSD: 42.00,
+    discount: 62,
+    rating: 4.8,
+    reviewsCount: 18200,
+    ordersCount: 82000,
+    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أبيض ناصع IPX5', 'رمادي مودرن'],
+    specs: {
+      'الحساس': 'حساس الأشعة تحت الحمراء يفتح الغطاء عند تقريب اليد 0.3s',
+      'العزل': 'غطاء محكم ينع تسرب أي روائح كريهة 100%',
+      'المقاومة': 'معيار IPX5 مقاوم للماء والرطوبة للمطابخ والحمامات'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Smart-Trash-Can-15L.html'),
+    description: 'سلة المهملات الذكية للمطبخ والحمام! تفتح غطاءها تلقائياً بدون لمس لمنع الجراثيم وتمنع انبعاث أي روائح.'
+  },
+  {
+    id: 34,
+    title: 'نظارات القيادة الشمسية الاستقطابية Polarized UV400 المخصصة للقيادة الليلية والنهار',
+    category: 'fashion',
+    priceUSD: 7.90,
+    originalPriceUSD: 24.00,
+    discount: 67,
+    rating: 4.9,
+    reviewsCount: 51000,
+    ordersCount: 230000,
+    image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أسود استقطاب نهاري', 'صفراء للقيادة الليلية HD'],
+    specs: {
+      'العدسات': 'عدسات استقطاب TAC تمنع الانعكاسات وضبابية الطريق',
+      'الحماية': 'UV400 حماية كاملة من أشعة الشمس الضارة',
+      'الهيكل': 'مغنيسيوم ألومنيوم خفيف جداً ومقاوم للصدمات'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Polarized-Driving-Sunglasses.html'),
+    description: 'نظارات القيادة الأكثر راحة ووضوحاً للرؤية أثناء القيادة! تمنع التوهج وانعكاسات أنوار السيارات والشمس.'
+  },
+  {
+    id: 35,
+    title: 'حامل وهولدر باسيوس المغناطيسي لسطح المكتب للأيباد والهواتف من الألمنيوم',
+    category: 'gadgets',
+    priceUSD: 14.50,
+    originalPriceUSD: 39.00,
+    discount: 63,
+    rating: 4.9,
+    reviewsCount: 22100,
+    ordersCount: 95000,
+    image: 'https://images.unsplash.com/photo-1586105251261-72a756497a11?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1586105251261-72a756497a11?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['رمادي فضائي ألمنيوم', 'فضي تيتانيوم'],
+    specs: {
+      'الماركة': 'Baseus Desktop Stand الأصلي',
+      'التعديل': 'دوران 360 درجة وزوايا ارتفاع قابلة للتعديل',
+      'الثبات': 'قاعدة معدنية ثقيلة مع وسائد سيليكون مانعة للانزلاق'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Baseus-Desktop-Phone-Stand.html'),
+    description: 'حامل المكتب الفخم من باسيوس للجوال والآيباد! هيكل ألمنيوم قوي يتيح التصفح والمشاهدة والدراسة بزوايا مريحة.'
+  },
+  {
+    id: 36,
+    title: 'ماوس باد الجيمنج العملاق XXL الحجم الكتروني مزود بإضاءة RGB وحواف مقواة',
+    category: 'gaming',
+    priceUSD: 11.80,
+    originalPriceUSD: 32.00,
+    discount: 63,
+    rating: 4.9,
+    reviewsCount: 27800,
+    ordersCount: 110000,
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['RGB 80x30 cm سايبر', 'RGB 90x40 cm أسود'],
+    specs: {
+      'المقاس': 'حجم كبير جداً يتسع للكيبورد والماوس معاً (900x400mm)',
+      'الإضاءة': '14 مود إضاءة RGB على الحواف بلمسة زر',
+      'السطح': 'قماش ناعم جداً لحركة ماوس سريعة وسلسة'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-RGB-Gaming-Mouse-Pad-XXL.html'),
+    description: 'ماوس باد الجيمنج الكبيرة مع حواف RGB المضيئة! تمنح مكتبك مظهراً سينمائياً وتوفر سلاسة تامة لحركة الماوس والألعاب.'
   }
 ];
 
