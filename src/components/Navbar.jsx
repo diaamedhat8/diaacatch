@@ -281,15 +281,25 @@ export default function Navbar({
 
         </div>
 
-        {/* Search Input Box */}
-        <div className="navbar-search-box" style={{
-          width: '100%',
-          maxWidth: '520px',
-          position: 'relative'
-        }}>
+        {/* Universal Search Input Box (Local Catalog + Global 100M+ AliExpress Search) */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (searchTerm.trim()) {
+              const globalAffiliateSearchUrl = `https://ar.aliexpress.com/w/wholesale-${encodeURIComponent(searchTerm.trim())}.html?aff_fcid=${CURRENCIES.USD ? 'diaacatch_affiliate_id' : ''}&aff_fsk=ChoiceDeals&aff_platform=portals-tool`;
+              window.open(globalAffiliateSearchUrl, '_blank', 'noopener,noreferrer');
+            }
+          }}
+          className="navbar-search-box"
+          style={{
+            width: '100%',
+            maxWidth: '520px',
+            position: 'relative'
+          }}
+        >
           <input
             type="text"
-            placeholder={t('searchPlaceholder')}
+            placeholder={t('searchPlaceholder') || 'ابحث عن أي منتج في علي إكسبريس برابط الأفلييت...'}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             style={{
@@ -308,14 +318,29 @@ export default function Navbar({
             onFocus={(e) => e.target.style.borderColor = 'var(--primary-red)'}
             onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
           />
-          <Search size={15} style={{
-            position: 'absolute',
-            right: '0.75rem',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            color: 'var(--text-muted)'
-          }} />
-        </div>
+          <button
+            type="submit"
+            title="ابحث في جميع منتجات علي إكسبريس برابط الأفلييت"
+            style={{
+              position: 'absolute',
+              right: '0.35rem',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              background: 'var(--primary-gradient)',
+              border: 'none',
+              borderRadius: '50%',
+              width: '28px',
+              height: '28px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#fff',
+              cursor: 'pointer'
+            }}
+          >
+            <Search size={14} />
+          </button>
+        </form>
 
       </div>
     </header>

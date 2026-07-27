@@ -212,6 +212,46 @@ export default function App() {
           t={t}
         />
 
+        {/* Universal AliExpress Global Search Banner */}
+        {searchTerm.trim() && (
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(255, 43, 74, 0.12) 0%, rgba(255, 122, 0, 0.12) 100%)',
+            border: '2px dashed var(--primary-red)',
+            borderRadius: '16px',
+            padding: '1.1rem 1.25rem',
+            marginBottom: '1.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1rem',
+            flexWrap: 'wrap'
+          }}>
+            <div>
+              <h4 style={{ margin: '0 0 0.25rem 0', fontSize: '1rem', fontWeight: '900', color: 'var(--text-main)' }}>
+                🔍 ابحث في كافة ملايين منتجات AliExpress عن: "{searchTerm}"
+              </h4>
+              <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                تصفح الكتالوج الكامل المباشر على علي إكسبريس، مع تحويل وتطبيق كود الأفلييت الخاص بك تلقائياً للأرباح!
+              </p>
+            </div>
+            <a
+              href={`https://ar.aliexpress.com/w/wholesale-${encodeURIComponent(searchTerm.trim())}.html?aff_fcid=diaacatch_affiliate_id&aff_fsk=ChoiceDeals&aff_platform=portals-tool`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+              style={{
+                fontSize: '0.85rem',
+                padding: '0.65rem 1.25rem',
+                borderRadius: '12px',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              افتح نتائج علي إكسبريس بالكامل ↗
+            </a>
+          </div>
+        )}
+
         {/* Product Cards Grid */}
         {filteredProducts.length === 0 ? (
           <div style={{
