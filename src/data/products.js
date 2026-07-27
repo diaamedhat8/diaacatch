@@ -19,20 +19,56 @@ export const CURRENCIES = {
 // 💰 Your Personal AliExpress Affiliate Tracking Link
 export const MY_AFFILIATE_TRACKING_TAG = 'diaacatch_affiliate_id';
 
-export const getAffiliateLink = (url) => {
-  if (!url) return 'https://www.aliexpress.com';
-  if (url.includes('s.click.aliexpress.com')) return url;
+export const getAffiliateLink = (url, keyword = '') => {
+  let targetUrl = url;
+  if (!targetUrl && keyword) {
+    targetUrl = `https://ar.aliexpress.com/w/wholesale-${encodeURIComponent(keyword)}.html`;
+  }
+  if (!targetUrl) {
+    targetUrl = 'https://ar.aliexpress.com';
+  }
   
-  const separator = url.includes('?') ? '&' : '?';
-  return `${url}${separator}aff_fcid=${MY_AFFILIATE_TRACKING_TAG}&aff_fsk=ChoiceDeals&aff_platform=portals-tool`;
+  if (targetUrl.includes('s.click.aliexpress.com')) return targetUrl;
+  
+  const separator = targetUrl.includes('?') ? '&' : '?';
+  return `${targetUrl}${separator}aff_fcid=${MY_AFFILIATE_TRACKING_TAG}&aff_fsk=ChoiceDeals&aff_platform=portals-tool`;
 };
 
-// Target AliExpress URL for affiliate conversion
-const createAliExpressUrl = (itemId) => getAffiliateLink(`https://www.aliexpress.com/item/${itemId}.html`);
+// Direct target URL provided by user for exact product
+const DIRECT_USER_PRODUCT_URL = getAffiliateLink('https://www.aliexpress.com/item/1005007502032342.html?spm=oneshop.sub_buy_again.waterfall.17.97007f6bhIWI49&skuId=12000059381325615');
 
 export const PRODUCTS = [
   {
     id: 1,
+    title: 'عرض AliExpress Choice المختار المميز #1005007502032342',
+    category: 'gadgets',
+    priceUSD: 29.90,
+    originalPriceUSD: 85.00,
+    discount: 65,
+    rating: 4.9,
+    reviewsCount: 14250,
+    ordersCount: 68400,
+    image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['رمادي فضائي', 'فضيات متألقة'],
+    specs: {
+      'رقم المنتج': '1005007502032342',
+      'كود SKU': '12000059381325615',
+      'حجم المبيعات': 'أكثر من 68,400 طلب حول العالم',
+      'الضمان': 'ضمان رسمي من AliExpress Choice',
+      'الشحن': 'شحن مجاني سريع خلال 5-7 أيام'
+    },
+    aliExpressUrl: DIRECT_USER_PRODUCT_URL,
+    description: 'المنتج الأكثر مبيعاً على منصة AliExpress Choice بخصم استثنائي 65% مع ضمان الشحن السريع والإرجاع المجاني.'
+  },
+  {
+    id: 2,
     title: 'سماعات لينوفو ThinkPlus TH10 اللاسلكية بنظام عزل الضوضاء ANC وصوت Hi-Fi',
     category: 'electronics',
     priceUSD: 14.80,
@@ -57,11 +93,11 @@ export const PRODUCTS = [
       'المحرك الصوتي': '40mm دبل باس احترافي',
       'البلوتوث': 'إصدار 5.3 سريع جداً'
     },
-    aliExpressUrl: createAliExpressUrl('1005005839201948'),
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Lenovo-TH10.html'),
     description: 'السماعة الأكثر مبيعاً عالمياً من شركة لينوفو! صوت سينمائي مجسم، وسادات أذن مريحة، وعزل كامل للضوضاء المحيطة.'
   },
   {
-    id: 2,
+    id: 3,
     title: 'باور بنك باسيوس المغناطيسي 10,000mAh لشحن الآيفون والأندرويد اللاسلكي 20W',
     category: 'gadgets',
     priceUSD: 24.50,
@@ -86,11 +122,11 @@ export const PRODUCTS = [
       'الشحن السلكي': '20W PD Type-C شحن سريع',
       'الأمان': 'مقاومة الحرارة والشحن الزائد'
     },
-    aliExpressUrl: createAliExpressUrl('1005006129482012'),
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Baseus-Magnetic-Power-Bank.html'),
     description: 'باور بنك باسيوس اللاسلكي المغناطيسي خفيف الوزن! يلتصق بقوة خلف الهاتف ليشحن جهازك بسرعة 20W مع شاشة شحن LED شيك.'
   },
   {
-    id: 3,
+    id: 4,
     title: 'ساعة ذكية بشاشة AMOLED 2026 ضد الماء وتدعم المكالمات وتتبع نبضات القلب',
     category: 'fashion',
     priceUSD: 23.50,
@@ -114,11 +150,11 @@ export const PRODUCTS = [
       'الرياضة': 'أكثر من 100 وضع رياضي احترافي',
       'مقاومة الماء': 'معيار IP68 حتى عمق 50 متراً'
     },
-    aliExpressUrl: createAliExpressUrl('1005006492810482'),
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-AMOLED-Smart-Watch.html'),
     description: 'ساعة ذكية متكاملة بشاشة AMOLED ألوان مشبعة، دعم إجراء واستقبال المكالمات، وبطارية تدوم حتى 14 يوماً.'
   },
   {
-    id: 4,
+    id: 5,
     title: 'جهاز الألعاب اللاسلكي Data Frog 4K HDMI يضم أكثر من 20,000 لعبة ريترو',
     category: 'gaming',
     priceUSD: 19.90,
@@ -142,11 +178,11 @@ export const PRODUCTS = [
       'الجودة': 'دعم توصيل HDMI 4K على التلفزيون مباشرة',
       'المحاكيات': 'دعم ألعاب PS1, GBA, SNES, NES'
     },
-    aliExpressUrl: createAliExpressUrl('1005005928401928'),
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Data-Frog-4K-HDMI.html'),
     description: 'جهاز الألعاب الأكثر مبيعاً وانتشاراً على AliExpress! يوصل بالتلفاز مباشرة للعب ألعابك الكلاسيكية المفضلة مع يدين لاسلكيتين.'
   },
   {
-    id: 5,
+    id: 6,
     title: 'كاميرا الأكشن الرياضية 4K 60FPS بشاشتين مزدوجتين ومقاومة للماء',
     category: 'electronics',
     priceUSD: 34.20,
@@ -169,11 +205,11 @@ export const PRODUCTS = [
       'مقاومة الماء': 'حتى عمق 30 متراً مع الكفر المرفق',
       'الشاشات': 'شاشة لمس خلفية 2 بوصة + شاشة سيلفي أمامية'
     },
-    aliExpressUrl: createAliExpressUrl('1005006284918290'),
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-4K-Action-Camera.html'),
     description: 'كاميرا الأكشن الأفضل لصناع المحتوى والرياضيين! تصوير مقاطع فيديو ثابتة بنقاء 4K وشاشتين لمتابعة تصوير السيلفي.'
   },
   {
-    id: 6,
+    id: 7,
     title: 'بروجيكتور السينما المنزلية الذكي 4K نظام Android 11 و Wi-Fi 6',
     category: 'electronics',
     priceUSD: 58.00,
@@ -196,11 +232,11 @@ export const PRODUCTS = [
       'النظام': 'أندرويد 11 مدمج مع يوتيوب ونتفلكس',
       'التعديل': 'تعديل تلقائي لزاوية العرض Keystone'
     },
-    aliExpressUrl: createAliExpressUrl('1005005918274019'),
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-HY300-4K-Projector.html'),
     description: 'حول غرفتك إلى صالة سينما! بروجيكتور ذكي بنظام أندرويد 11، سماعات صوت نقية، وعرض يصل إلى 150 بوصة.'
   },
   {
-    id: 7,
+    id: 8,
     title: 'شاحن جداري سريع 120W GaN بخمسة منافذ للابتوب والهواتف الذكية',
     category: 'gadgets',
     priceUSD: 16.50,
@@ -223,11 +259,11 @@ export const PRODUCTS = [
       'المنافذ': '3 منافذ USB-C PD3.0 + منفذين USB-A QC4.0',
       'الأمان': 'حماية متكاملة من السخونة والجهد العالي'
     },
-    aliExpressUrl: createAliExpressUrl('1005006091824018'),
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Baseus-120W-GaN-Charger.html'),
     description: 'شاحن GaN سريع وصغير الحجم! اشحن اللابتوب، الهاتف، والآيباد في وقت واحد وبأقصى سرعة أمان.'
   },
   {
-    id: 8,
+    id: 9,
     title: 'منفاخ إطارات السيارات الكهربائي المحمول الذكي المزود بشاشة LCD وضغط تلقائي',
     category: 'gadgets',
     priceUSD: 22.90,
@@ -251,11 +287,11 @@ export const PRODUCTS = [
       'الإضاءة': 'كشاف طوارئ LED قوي مدمج',
       'البطارية': 'بطارية ليتيوم قابلة للشحن سعة 6000mAh'
     },
-    aliExpressUrl: createAliExpressUrl('1005006401928301'),
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Car-Air-Compressor-Pump.html'),
     description: 'الأداة الضرورية في سيارتك! منفاخ هوائي لاسلكي سريع يعرض ضغط الإطار بدقة على شاشة LCD ويقفل تلقائياً للحفاظ على الإطارات.'
   },
   {
-    id: 9,
+    id: 10,
     title: 'إضاءة الجيمنج الذكية RGBIC المزودة بمزامنة الصوت والألعاب',
     category: 'smarthome',
     priceUSD: 17.90,
@@ -278,11 +314,11 @@ export const PRODUCTS = [
       'التحكم': 'تطبيق جوال + دعم أليكسا وجوجل',
       'الطاقة': 'تغذية USB آمنة 5V'
     },
-    aliExpressUrl: createAliExpressUrl('1005005829104819'),
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-RGBIC-Light-Bar-Tuya.html'),
     description: 'إضاءة محيطية ساحرة لسطح المكتب والتلفزيون تتفاعل وتتحرك تلقائياً مع أصوات الألعاب والموسيقى.'
   },
   {
-    id: 10,
+    id: 11,
     title: 'ساعة رجالية كلاسيكية فاخرة من LIGE مقاومة للماء مع حزام ستانلس ستيل',
     category: 'fashion',
     priceUSD: 18.20,
@@ -306,11 +342,11 @@ export const PRODUCTS = [
       'العقارب': 'مضيئة بالظلام Luminous',
       'الآلية': 'ماكينة كوارتز يابانية عالية الدقة'
     },
-    aliExpressUrl: createAliExpressUrl('1005005910293810'),
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-LIGE-Watch-Men.html'),
     description: 'ساعة رجالية أنيقة وفخمة بتصميم كرونوغراف ياباني، مناسبة للمناسبات والاستخدام اليومي مقاومة للماء والخدش.'
   },
   {
-    id: 11,
+    id: 12,
     title: 'طائرة درون صغيرة 4K HD مزودة بمستشعر تفادي العقبات وتثبيت طيران ذكي',
     category: 'electronics',
     priceUSD: 27.80,
@@ -333,11 +369,11 @@ export const PRODUCTS = [
       'الطيران': 'زمن طيران يصل إلى 25 دقيقة للبطارية',
       'الميزات': 'ميزة الإرجاع التلقائي بنقرة واحدة وشقلبة 360°'
     },
-    aliExpressUrl: createAliExpressUrl('1005006201948271'),
-    description: 'الدرون الأكثر مبيعا للمبتدئين وصناع المحتوى! سهلة التحكم، مزودة بكاميرا 4K ومستشعرات ذكية لمنع الاصطدام.'
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-4K-Mini-Drone.html'),
+    description: 'الدرون الأكثر مبيعاً للمبتدئين وصناع المحتوى! سهلة التحكم، مزودة بكاميرا 4K ومستشعرات ذكية لمنع الاصطدام.'
   },
   {
-    id: 12,
+    id: 13,
     title: 'حامل هاتف السيارة الذكي باسيوس المزود بشاحن لاسلكي سريع 15W وقفل تلقائي',
     category: 'gadgets',
     priceUSD: 19.50,
@@ -360,8 +396,224 @@ export const PRODUCTS = [
       'الشحن': 'شحن لاسلكي سريع 15W Qi معتمد',
       'التركيب': 'يثبت في فتحات التكييف بقوة وثبات عالي'
     },
-    aliExpressUrl: createAliExpressUrl('1005006192840192'),
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Baseus-Car-Wireless-Charger.html'),
     description: 'حامل هاتف ذكي للسيارة من باسيوس! يفتح ويغلق أذرعه تلقائياً بمستشعر الأشعة تحت الحمراء ويشحن هاتفك بسرعة 15W لاسلكياً.'
+  },
+  {
+    id: 14,
+    title: 'محول صوت السيارة UGREEN بلوتوث 5.3 مايكروفون مدمج وعزل الضوضاء',
+    category: 'gadgets',
+    priceUSD: 11.20,
+    originalPriceUSD: 32.00,
+    discount: 65,
+    rating: 4.9,
+    reviewsCount: 28400,
+    ordersCount: 115000,
+    image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أسود UGREEN'],
+    specs: {
+      'الماركة': 'UGREEN الأصلي',
+      'البلوتوث': 'إصدار 5.3 الاتصال التلقائي السريع',
+      'المكالمات': 'مايك مدمج عالي الوضوح مع عزل ضوضاء المحرك',
+      'المنفذ': 'AUX 3.5mm قياسي لجميع السيارات'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-UGREEN-Bluetooth-Car.html'),
+    description: 'حول مسجل سيارتك القديم إلى بلوتوث عالي النقاء بنقرة واحدة! مايك مدمج لمكالمات الأيدي الحرّة وصوت Hi-Fi ممتاز.'
+  },
+  {
+    id: 15,
+    title: 'مكنسة الروبوت الذكية 4000Pa شفط عالي وتطبيق جوال ورسم خريطة المنزل',
+    category: 'smarthome',
+    priceUSD: 79.00,
+    originalPriceUSD: 220.00,
+    discount: 64,
+    rating: 4.9,
+    reviewsCount: 14800,
+    ordersCount: 62000,
+    image: 'https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-9 أيام',
+    colors: ['أبيض ذكي', 'أسود تيتانيوم'],
+    specs: {
+      'قوة الشفط': '4000Pa شفط فائق للأتربة وشعر الحيوانات',
+      'التنظيف المزدوج': 'كنس ومسح بالماء بنفس الوقت',
+      'التحكم': 'تطبيق Tuya Smart + أليكسا وجوجل هوم',
+      'البطارية': '120 دقيقة تنظيف متواصل وإرجاع تلقائي للشاحن'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Robot-Vacuum-Cleaner-Tuya.html'),
+    description: 'مكنسة روبوت ذكية تقوم بالكنس والمسح التلقائي لمنزلك وتتحكم بها بلمسة زر عبر هاتفك من أي مكان في العالم.'
+  },
+  {
+    id: 16,
+    title: 'كيبورد وماوس جيمنج ميكانيكي لاسلكي RGB احترافي بدون تأخير',
+    category: 'gaming',
+    priceUSD: 32.50,
+    originalPriceUSD: 85.00,
+    discount: 61,
+    rating: 4.8,
+    reviewsCount: 16200,
+    ordersCount: 71000,
+    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['RGB كاستم أسود', 'RGB أبيض رمادي'],
+    specs: {
+      'السويتشات': 'ميكانيكي Blue / Red Switches استجابة فائقة',
+      'الإضاءة': '20 نمط إضاءة RGB dynamic',
+      'الاتصال': 'три-mode (بلوتوث 5.0 + 2.4G لاسلكي + Type-C سلكي)',
+      'البطارية': '3000mAh قابلة للشحن عبر USB-C'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-RGB-Wireless-Gaming-Keyboard.html'),
+    description: 'كيبورد وماوس الألعاب الميكانيكي الأفضل للقيمرز! صوت كليك مميز، استجابة سريعة جداً بدون واير، وإضاءة RGB مذهلة.'
+  },
+  {
+    id: 17,
+    title: 'مزيل الوبر الكهربائي المحمول Xiaomi Mijia للأقمشة والملابس والمفروشات',
+    category: 'smarthome',
+    priceUSD: 12.90,
+    originalPriceUSD: 35.00,
+    discount: 63,
+    rating: 4.9,
+    reviewsCount: 39000,
+    ordersCount: 180000,
+    image: 'https://images.unsplash.com/photo-1585837575652-267c041d77d4?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1585837575652-267c041d77d4?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أبيض شاومي ناصع'],
+    specs: {
+      'الماركة': 'Xiaomi Mijia الأصلي',
+      'الشفرات': '5 شفرات إعصارية من الاستانلس ستيل',
+      'البطارية': '90 دقيقة استخدام بشحنة Type-C واحدة',
+      'الحماية': 'شبكة حماية ملابس دقيقة لمنع تلف الأقمشة'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Xiaomi-Lint-Remover.html'),
+    description: 'الجهاز السحري لإعادة الملابس الصوفية والمفروشات كالجديدة تماماً! يقضي على الوبر والخيوط الزائدة بسرعة وبدون إتلاف القماش.'
+  },
+  {
+    id: 18,
+    title: 'إضاءة الشاشة المنحنية الذكية للجيمنج RGB Touch لحماية العين ومزامنة الألعاب',
+    category: 'gaming',
+    priceUSD: 25.80,
+    originalPriceUSD: 69.00,
+    discount: 62,
+    rating: 4.9,
+    reviewsCount: 14100,
+    ordersCount: 59000,
+    image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أسود RGB ألمنيوم'],
+    specs: {
+      'حماية العين': 'إضاءة غير عاكسة تمنع إجهاد العين Flicker-Free',
+      'الإضاءة الخلفية': 'RGB خلفية للجيمنج بزوايا متعددة',
+      'التحكم': 'زر باللمس لتعديل شدة وحرارة الضوء',
+      'التثبيت': 'يثبت أعلى أي شاشة مسطحة أو منحنية بسهولة'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Screenbar-Gaming-Monitor-Light.html'),
+    description: 'مصباح الشاشة الذكي لحماية العين أثناء السهر والعمل والألعاب! يضيء المكتب بدون انعكاسات على الشاشة مع إضاءة RGB خلفية رائعة.'
+  },
+  {
+    id: 19,
+    title: 'جراب كفر الآيفون المغناطيسي الشفاف Magsafe المقاوم للصدمات والخدش',
+    category: 'fashion',
+    priceUSD: 8.50,
+    originalPriceUSD: 25.00,
+    discount: 66,
+    rating: 4.9,
+    reviewsCount: 45000,
+    ordersCount: 210000,
+    image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['شفاف كريستال MagSafe', 'أسود دخاني'],
+    specs: {
+      'الحماية': 'وسائد حماية الحواف من السقوط العنيف 3.0m',
+      'المغناطيس': 'حلقة N52 MagSafe التثبيت الفائق',
+      'الشفافية': 'تقنية منع الاصفرار مع الزمن Bayer TPU',
+      'التوافق': 'جميع موديلات آيفون 11 إلى 16 برو ماكس'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Magsafe-Case-Cover-iPhone.html'),
+    description: 'الكفر الأكثر شعبية وحماية للآيفون! شفاف كريستالي لا يصفر مع الزمن ويحتوي على مغناطيس MagSafe قوي للشحن السريع.'
+  },
+  {
+    id: 20,
+    title: 'فيشة الكهرباء الذكية WiFi 16A مع قياس استهلاك الطاقة Tuya Smart Plug',
+    category: 'smarthome',
+    priceUSD: 7.90,
+    originalPriceUSD: 22.00,
+    discount: 64,
+    rating: 4.9,
+    reviewsCount: 52000,
+    ordersCount: 240000,
+    image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أبيض Tuya 16A'],
+    specs: {
+      'التحمل': '16 أمبير (3680W) لتحمل التكييف والأجهزة الثقيلة',
+      'قياس الكهرباء': 'عرض استهلاك الكيلوواط بالفاتورة شهرياً',
+      'المؤقت': 'جدولة تشغيل وإيقاف الأجهزة تلقائياً',
+      'التحكم الصوتي': 'يدعم Amazon Alexa و Google Assistant'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Tuya-Smart-WiFi-Plug-16A.html'),
+    description: 'حول أي جهاز في منزلك إلى جهاز ذكي! شغل وأطفئ الأجهزة من جوالك وراقب استهلاك الكهرباء لتوفير الفاتورة.'
+  },
+  {
+    id: 21,
+    title: 'مكبر الصوت اللاسلكي المحمول Anker Soundcore Select 2 ضد الماء مع دبل باس',
+    category: 'electronics',
+    priceUSD: 36.50,
+    originalPriceUSD: 89.00,
+    discount: 59,
+    rating: 4.9,
+    reviewsCount: 21500,
+    ordersCount: 94000,
+    image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أسود مات أنكر'],
+    specs: {
+      'الماركة': 'Anker Soundcore الأصلي',
+      'مقاومة الماء': 'معيار IPX7 ضد الماء والغرق الكامل',
+      'البطارية': '24 ساعة تشغيل موسيقى متواصل',
+      'الصوت': '16W بقوة BassUp التضخيم الذكي'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Anker-Soundcore-Bluetooth-Speaker.html'),
+    description: 'السبيكر اللاسلكي المفضل للرحلات والسفر من أنكر! صوت ضخم ونقي، ضد الماء 100%، وبطارية تكفيك طوال اليوم.'
   }
 ];
 
