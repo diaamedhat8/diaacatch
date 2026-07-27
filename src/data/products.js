@@ -1,6 +1,9 @@
 export const CATEGORIES = [
   { id: 'all', nameKey: 'filterAll', icon: 'Sparkles' },
-  { id: 'electronics', nameKey: 'filterElectronics', icon: 'Smartphone' },
+  { id: 'appliances', nameKey: 'filterAppliances', icon: 'Tv' },
+  { id: 'laptops', nameKey: 'filterLaptops', icon: 'Laptop' },
+  { id: 'phones', nameKey: 'filterPhones', icon: 'Smartphone' },
+  { id: 'electronics', nameKey: 'filterElectronics', icon: 'Headphones' },
   { id: 'smarthome', nameKey: 'filterSmarthome', icon: 'Home' },
   { id: 'gaming', nameKey: 'filterGaming', icon: 'Gamepad2' },
   { id: 'fashion', nameKey: 'filterFashion', icon: 'Watch' },
@@ -1012,7 +1015,376 @@ export const PRODUCTS = [
     },
     aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-RGB-Gaming-Mouse-Pad-XXL.html'),
     description: 'ماوس باد الجيمنج الكبيرة مع حواف RGB المضيئة! تمنح مكتبك مظهراً سينمائياً وتوفر سلاسة تامة لحركة الماوس والألعاب.'
+  },
+  {
+    id: 37,
+    title: 'تكييف ومبرد الهواء المحمول الذكي بالشحن والترطيب المائي للمنازل والمكاتب',
+    category: 'appliances',
+    priceUSD: 28.50,
+    originalPriceUSD: 79.00,
+    discount: 64,
+    rating: 4.9,
+    reviewsCount: 19800,
+    ordersCount: 88000,
+    image: 'https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أبيض ثلجي ذكي', 'رمادي مودرن'],
+    specs: {
+      'التقنية': 'تبريد بالرذاذ المائي المزدوج وترطيب الهواء',
+      'السرعات': '3 سرعات تبريد مع إضاءة محيطية LED 7 ألوان',
+      'البطارية': 'بطارية قابلة للشحن سعة 4000mAh للاستخدام اللاسلكي'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Portable-Air-Conditioner-Cooler.html'),
+    description: 'تكييف ومبرد الهواء المحمول الذكي! يمنحك هواءً بارداً ورطباً فوراً مع خزان ماء مدمج وإضاءة LED مريحة.'
+  },
+  {
+    id: 38,
+    title: 'قلاية هوائية بدون زيت ملحقة بشاشة لمس ذكية 6 لتر Xiaomi Air Fryer 6L',
+    category: 'appliances',
+    priceUSD: 59.00,
+    originalPriceUSD: 149.00,
+    discount: 60,
+    rating: 4.9,
+    reviewsCount: 28400,
+    ordersCount: 135000,
+    image: 'https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أسود بريميوم 6L', 'أبيض شيك'],
+    specs: {
+      'الماركة': 'Xiaomi Air Fryer 6L الأصلي',
+      'السعة': '6 لتر سعة عائلية كبيرة مع نافذة زجاجية شفافة',
+      'البرامج': '8 برامج طهي تلقائية وشاشة لمس OLED',
+      'الطهي': 'دوران الهواء الساخن 360° لطهي بدون زيت بنسبة 85%'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Air-Fryer-Touch-Display.html'),
+    description: 'القلاية الهوائية الذكية والأفضل مبيعاً! طهي صحي ومقرمش بدون زيوت، مع نافذة متابعة ونظام تدوير حراري 360 درجة.'
+  },
+  {
+    id: 39,
+    title: 'ماكينة الإسبريسو والقهوة الذكية 20 بار مع مبخر الحليب المدمج Espresso Machine',
+    category: 'appliances',
+    priceUSD: 68.00,
+    originalPriceUSD: 189.00,
+    discount: 64,
+    rating: 4.9,
+    reviewsCount: 16900,
+    ordersCount: 74000,
+    image: 'https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['فضي ستانلس 20 بار', 'أسود ماكياتو'],
+    specs: {
+      'مضخة الضغط': 'مضخة إيطالية احترافية 20 بار لاستخلاص الكريمة الفاخرة',
+      'مبخر الحليب': 'ذراع تبخير بخاري قوي لعمل الكابوتشينو واللاتيه',
+      'خزان الماء': '1.5 لتر شفاف قابل للفك والتنظيف'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-20-Bar-Espresso-Coffee-Machine.html'),
+    description: 'صانعة القهوة والإسبريسو المنزلية الاحترافية! استمتع بأفضل كوب كابوتشينو ولاتيه بكريمة غنية مثل الكافيهات.'
+  },
+  {
+    id: 40,
+    title: 'لاب توب جيمنج ودراسة بشاشة 15.6 بوصة FHD مع معالج Intel N95 وذاكرة 16GB RAM SSD 512GB',
+    category: 'laptops',
+    priceUSD: 199.00,
+    originalPriceUSD: 450.00,
+    discount: 56,
+    rating: 4.8,
+    reviewsCount: 9800,
+    ordersCount: 45000,
+    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-9 أيام',
+    colors: ['فضي تيتانيوم ألمنيوم'],
+    specs: {
+      'الشاشة': '15.6 بوصة IPS FHD فائقة الوضوح 1920x1080',
+      'المعالج': 'Intel N95 جيل حديث رباعي النواة حتى 3.4GHz',
+      'الذاكرة والتخزين': '16GB RAM LPDDR5 + 512GB M.2 SSD سريع',
+      'البصمة': 'حساس بصمة أمان مدمج مع كيبورد مضيئة'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-15.6-Laptop-Intel-16GB-RAM-512GB-SSD.html'),
+    description: 'لاب توب الجيمنج والأعمال عالي الأداء! هيكل ألمنيوم أنيق، شريحة إنتل حديثة، ذاكرة 16GB وسرعة تشغيل فائقة.'
+  },
+  {
+    id: 41,
+    title: 'تابلت وآيباد ذكي بشاشة 11 بوصة 2K مع قلم وكيبورد مدمج Android 14 Tablet',
+    category: 'phones',
+    priceUSD: 89.00,
+    originalPriceUSD: 220.00,
+    discount: 60,
+    rating: 4.9,
+    reviewsCount: 21500,
+    ordersCount: 98000,
+    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['رمادي فضائي 2K', 'ذهبي'],
+    specs: {
+      'الشاشة': '11 بوصة IPS 2K شاشة لمس دقيقة (2000x1200 بكسل)',
+      'النظام': 'أندرويد 14 الأصلي مع دعم متجر جوجل بلاي بالكامل',
+      'البطارية': '8800mAh تدوم طوال اليوم للدراسة والألعاب',
+      'الملحقات': 'يشمل قلم حراري وكيبورد مغناطيسي مرفق'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Android-14-Tablet-11-Inch-2K.html'),
+    description: 'التابلت الأفضل للدراسة والألعاب وتصفح الإنترنت! شاشة 2K فائقة الدقة مع كيبورد وقلم مجاني مرفق.'
+  },
+  {
+    id: 42,
+    title: 'هاتف ذكي 5G بشاشة 120Hz وقدرة شحن 67W كاميرا 108MP 5G Smartphone',
+    category: 'phones',
+    priceUSD: 149.00,
+    originalPriceUSD: 320.00,
+    discount: 53,
+    rating: 4.9,
+    reviewsCount: 14200,
+    ordersCount: 61000,
+    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أسود زجاجي 5G', 'أزرق كويكبي'],
+    specs: {
+      'الكاميرا': '108 ميجابكسل كاميرا احترافية بدقة 4K',
+      'الشاشة': '6.67 بوصة AMOLED تردد 120Hz فائقة السلاسة',
+      'الشحن': '67W شحن سريع جداً يصل 100% خلال 35 دقيقة',
+      'الشبكات': 'دعم 5G الفائق لشريحتين SIM'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-5G-Smartphone-108MP-67W.html'),
+    description: 'هاتف ذكي 5G بمواصفات رائعة! كاميرا 108 ميجابكسل بدقة سينمائية، شاشة AMOLED 120Hz وسرعة شحن خارقة.'
+  },
+  {
+    id: 43,
+    title: 'خلاط ومحضر الطعام العصري بقوة 2000W لكسر الثلج والعصائر Heavy Duty Blender',
+    category: 'appliances',
+    priceUSD: 38.00,
+    originalPriceUSD: 99.00,
+    discount: 62,
+    rating: 4.9,
+    reviewsCount: 18900,
+    ordersCount: 82000,
+    image: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أسود محرك 2000W', 'أحمر ميتاليك'],
+    specs: {
+      'القوة': '2000 واط محرك نحاسي قوي سعة 2 لتر',
+      'الشفرات': '6 شفرات يابانية حادة لكسر الثلج والفواكه الصلبة خلال ثواني',
+      'السرعات': '15 سرعة متغيرة مع خاصية النبض الفوري'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Heavy-Duty-Commercial-Blender.html'),
+    description: 'خلاط ومحضر عصائر القوة الفائقة 2000W! يكسر الثلج ويحضر العصائر والسموذي والصوصات القوية بغمضة عين.'
+  },
+  {
+    id: 44,
+    title: 'مكواة البخار العمودية المحمولة للملابس والسفر Portable Garment Steamer',
+    category: 'appliances',
+    priceUSD: 17.50,
+    originalPriceUSD: 45.00,
+    discount: 61,
+    rating: 4.8,
+    reviewsCount: 31200,
+    ordersCount: 140000,
+    image: 'https://images.unsplash.com/photo-1585837575652-267c041d77d4?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1585837575652-267c041d77d4?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أبيض سفري ناصع', 'وردي'],
+    specs: {
+      'البخار': 'تسخين سريع جداً خلال 15 ثانية بخار قوي مستمر',
+      'التصميم': 'قابلة للطي وخفيفة الوزن للحقائب والسفر',
+      'الأمان': 'حماية متكاملة من التسريب والجفاف'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Portable-Garment-Steamer-Iron.html'),
+    description: 'مكواة البخار المحمولة والسريعة للملابس! كوي سريع وفوري للملابس أثناء السفر والمنزل بدون الحاجة لطاولة مكواة.'
+  },
+  {
+    id: 45,
+    title: 'لاب توب ماك ستيل نحيل 14 بوصة FHD للطلاب والأعمال 8GB RAM 256GB SSD',
+    category: 'laptops',
+    priceUSD: 165.00,
+    originalPriceUSD: 380.00,
+    discount: 57,
+    rating: 4.8,
+    reviewsCount: 11400,
+    ordersCount: 52000,
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['فضي ماكbook style'],
+    specs: {
+      'الهيكل': 'ألومنيوم خفيف الوزن جداً 1.2kg بسمك 12mm',
+      'الشاشة': '14 بوصة FHD حواف نحيفة IPS (1920x1080)',
+      'الأداء': '8GB RAM + 256GB SSD تشغيل ويندوز 11 الأصلي'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Ultra-Thin-14-Laptop-8GB-256GB.html'),
+    description: 'لاب توب نحيف للغاية وأنيق بتصميم يشبه ماك بوك! ممتاز للدراسة والأعمال المكتبية وتصفح الإنترنت بحجم خفيف.'
+  },
+  {
+    id: 46,
+    title: 'هاتف ذكي ببطارية عملاقة 10,600mAh ومقاوم للصدمات والماء Rugged Smartphone',
+    category: 'phones',
+    priceUSD: 129.00,
+    originalPriceUSD: 280.00,
+    discount: 54,
+    rating: 4.9,
+    reviewsCount: 9400,
+    ordersCount: 41000,
+    image: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أسود مصفح للرحلات', 'برتقالي تكتيكي'],
+    specs: {
+      'البطارية': '10,600mAh بطارية ضخمة تكفي 5 أيام عمل شحنة واحدة',
+      'المتانة': 'معيار IP68/IP69K مقاوم للسقوط، الماء، والغبار',
+      'المزايا': 'كاميرا رؤية ليلية Night Vision وكشاف قوي مدمج'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Rugged-Smartphone-10000mAh.html'),
+    description: 'الهاتف الصلب المقاوم للصدمات والماء للرحلات والمواقع! بطارية خارقة 10,600mAh وكاميرا رؤية ليلية احترافية.'
+  },
+  {
+    id: 47,
+    title: 'مكيف هواء سبليت ميني لغرف النوم والمكاتب USB Mini Air Cooler AC Fan',
+    category: 'appliances',
+    priceUSD: 22.00,
+    originalPriceUSD: 59.00,
+    discount: 63,
+    rating: 4.8,
+    reviewsCount: 25400,
+    ordersCount: 110000,
+    image: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-7 أيام',
+    colors: ['أبيض مكيف ميني', 'أسود'],
+    specs: {
+      'التبريد': 'تكنولوجيا التبريد بالثلج والماء السريع',
+      'الطاقة': 'يعمل بمنفذ USB من الشاحن أو الباور بنك بذكاء 5V',
+      'الصوت': 'هادئ جداً 25dB مخصص لغرف النوم'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Mini-USB-Air-Cooler-Fan.html'),
+    description: 'مكيف الهواء الشخصي النحيف والصغير! هواء بارد ومكيف لغرفة نومك أو مكتبك باستهلاك كهرباء شبه معدوم.'
+  },
+  {
+    id: 48,
+    title: 'شاشة جيمنج كمبيوتر منحنية 27 بوصة 165Hz 1ms Curved Gaming Monitor',
+    category: 'laptops',
+    priceUSD: 139.00,
+    originalPriceUSD: 290.00,
+    discount: 52,
+    rating: 4.9,
+    reviewsCount: 12500,
+    ordersCount: 54000,
+    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أسود جيمنج RGB 165Hz'],
+    specs: {
+      'الشاشة': '27 بوصة IPS منحنية 1500R معدل تحديث 165Hz',
+      'زمن الاستجابة': '1ms استجابة سريعة جداً مع AMD FreeSync',
+      'المنافذ': '2x HDMI 2.0 + DisplayPort 1.4'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-27-Curved-Gaming-Monitor-165Hz.html'),
+    description: 'شاشة الجيمنج المنحنية الاحترافية 165Hz! ألوان غنية IPS، زوايا رؤية واسعة واستجابة 1ms فائقة للألعاب السريعة.'
+  },
+  {
+    id: 49,
+    title: 'غسالة الأطباق والأواني المحمولة الذكية للمطبخ Portable Tabletop Dishwasher',
+    category: 'appliances',
+    priceUSD: 115.00,
+    originalPriceUSD: 260.00,
+    discount: 56,
+    rating: 4.9,
+    reviewsCount: 7800,
+    ordersCount: 32000,
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-9 أيام',
+    colors: ['أبيض رخامي ذكي'],
+    specs: {
+      'التنظيف': 'تنظيف بالماء الساخن 75°C وتعقيم بالولتافيوليت UV',
+      'التركيب': 'لا تحتاج تمديدات سباكة خاصة خزان ماء مدمج',
+      'البرامج': '5 برامج غسيل وتجفيف فوري بالأقراص'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Portable-Tabletop-Dishwasher.html'),
+    description: 'غسالة الأطباق المحمولة الذكية للمطابخ والشقق! تغسل وتعقم الصحون والأواني بالماء الساخن وتجففها بدون عناء.'
+  },
+  {
+    id: 50,
+    title: 'جهاز تصفية ومُنقي الهواء الذكي HEPA للمنازل والمكاتب Smart Room Air Purifier',
+    category: 'appliances',
+    priceUSD: 45.00,
+    originalPriceUSD: 110.00,
+    discount: 59,
+    rating: 4.9,
+    reviewsCount: 16200,
+    ordersCount: 71000,
+    image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80'
+    ],
+    isChoice: true,
+    freeShipping: true,
+    deliveryDays: 'شحن 5-8 أيام',
+    colors: ['أبيض نقي HEPA'],
+    specs: {
+      'الفلترة': 'فلتر HEPA H13 ثلاثي الطبقات يزيل 99.97% من الأتربة والدخان',
+      'التحكم': 'مستشعر جودة الهواء الذكي + تطبيق جوال وشاشة لمس',
+      'التغطية': 'يغطي مساحات حتى 40 متر مربع بهدوء تام'
+    },
+    aliExpressUrl: getAffiliateLink('https://ar.aliexpress.com/w/wholesale-Smart-HEPA-Air-Purifier.html'),
+    description: 'منقي الهواء الذكي لحماية أسرتك من الأتربة والروائح والدخان! فلتر H13 HEPA طبي ينقي هواء الغرفة فوراً.'
   }
 ];
 
 export const FLASH_DEAL_TIMER_INITIAL = 5 * 3600 + 42 * 60 + 18;
+
