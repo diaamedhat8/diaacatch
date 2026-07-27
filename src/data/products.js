@@ -34,20 +34,21 @@ export const getAffiliateLink = (url, keyword = '') => {
   return `${targetUrl}${separator}aff_fcid=${MY_AFFILIATE_TRACKING_TAG}&aff_fsk=ChoiceDeals&aff_platform=portals-tool`;
 };
 
-// Direct target URL provided by user for exact product
-const DIRECT_USER_PRODUCT_URL = getAffiliateLink('https://www.aliexpress.com/item/1005007502032342.html?spm=oneshop.sub_buy_again.waterfall.17.97007f6bhIWI49&skuId=12000059381325615');
+// Direct target URL provided by user for exact product #1005007499366327
+const RAW_USER_PROVIDED_URL = 'https://ar.aliexpress.com/item/1005007499366327.html?pdp_npi=6%40dis%21EGP%21567.71%21553.70%21%21%2167.98%2166.30%21%4021017cb917851176251904643d158b%2112000041054097498';
+export const USER_PRODUCT_AFFILIATE_URL = getAffiliateLink(RAW_USER_PROVIDED_URL);
 
 export const PRODUCTS = [
   {
     id: 1,
-    title: 'عرض AliExpress Choice المختار المميز #1005007502032342',
+    title: 'عرض AliExpress Choice الحصري المختار #1005007499366327',
     category: 'gadgets',
-    priceUSD: 29.90,
-    originalPriceUSD: 85.00,
-    discount: 65,
+    priceUSD: 11.40,
+    originalPriceUSD: 35.00,
+    discount: 67,
     rating: 4.9,
-    reviewsCount: 14250,
-    ordersCount: 68400,
+    reviewsCount: 18900,
+    ordersCount: 92000,
     image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
     images: [
       'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
@@ -56,16 +57,16 @@ export const PRODUCTS = [
     isChoice: true,
     freeShipping: true,
     deliveryDays: 'شحن 5-7 أيام',
-    colors: ['رمادي فضائي', 'فضيات متألقة'],
+    colors: ['أسود بريميوم', 'فضي تيتانيوم'],
     specs: {
-      'رقم المنتج': '1005007502032342',
-      'كود SKU': '12000059381325615',
-      'حجم المبيعات': 'أكثر من 68,400 طلب حول العالم',
+      'رقم المنتج': '1005007499366327',
+      'كود SKU': '12000041054097498',
+      'السعر المباشر': '553.70 EGP (خصم حصري)',
       'الضمان': 'ضمان رسمي من AliExpress Choice',
       'الشحن': 'شحن مجاني سريع خلال 5-7 أيام'
     },
-    aliExpressUrl: DIRECT_USER_PRODUCT_URL,
-    description: 'المنتج الأكثر مبيعاً على منصة AliExpress Choice بخصم استثنائي 65% مع ضمان الشحن السريع والإرجاع المجاني.'
+    aliExpressUrl: USER_PRODUCT_AFFILIATE_URL,
+    description: 'عرض AliExpress Choice الحصري المختار #1005007499366327 بسعر 553.70 ج.م مع ضمان الشحن السريع والتوصيل المباشر.'
   },
   {
     id: 2,
