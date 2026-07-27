@@ -17,6 +17,7 @@ import { Heart, AlertCircle } from 'lucide-react';
 
 export default function App() {
   // i18n & App State (Default Arabic & SAR Currency)
+  const [allProducts, setAllProducts] = useState(PRODUCTS);
   const [selectedLanguage, setSelectedLanguage] = useState('ar');
   const [selectedCurrency, setSelectedCurrency] = useState('SAR');
   const [searchTerm, setSearchTerm] = useState('');
@@ -67,7 +68,7 @@ export default function App() {
   }, [darkMode]);
 
   // Filter & Sort Products
-  const filteredProducts = PRODUCTS.filter((product) => {
+  const filteredProducts = allProducts.filter((product) => {
     if (selectedCategory !== 'all' && product.category !== selectedCategory) {
       return false;
     }
@@ -130,6 +131,14 @@ export default function App() {
   };
 
   const handleScrollToProducts = () => {
+    if (productsSectionRef.current) {
+      productsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleImportProduct = (newProduct) => {
+    setAllProducts((prev) => [newProduct, ...prev]);
+    setToastMessage('✅ تم استيراد المنتج بنجاح وتوليد رابط الأفلييت الخاص بك!');
     if (productsSectionRef.current) {
       productsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
     }
@@ -253,8 +262,8 @@ export default function App() {
           </div>
         )}
 
-        {/* Interactive AliExpress Deal Finder Component */}
-        <AliExpressDealFinder t={t} dir={currentDir} />
+        {/* Interactive AliExpress Deal Finder & Auto-Importer Component */}
+        <AliExpressDealFinder t={t} dir={currentDir} onImportProduct={handleImportProduct} />
 
         {/* FAQ Accordion Section */}
         <FaqSection t={t} />
