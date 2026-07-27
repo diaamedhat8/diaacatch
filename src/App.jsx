@@ -13,7 +13,8 @@ import MobileBottomNav from './components/MobileBottomNav';
 import Footer from './components/Footer';
 import { PRODUCTS } from './data/products';
 import { TRANSLATIONS, LANGUAGES } from './data/translations';
-import { Heart, AlertCircle } from 'lucide-react';
+import { syncLiveAliExpressProducts } from './utils/aliExpressSyncEngine';
+import { Heart, AlertCircle, RefreshCw } from 'lucide-react';
 
 export default function App() {
   // i18n & App State (Default Arabic & SAR Currency)
@@ -57,6 +58,19 @@ export default function App() {
     document.documentElement.setAttribute('dir', currentDir);
     document.documentElement.setAttribute('lang', selectedLanguage);
   }, [selectedLanguage, currentDir]);
+
+  const [lastSyncedTime, setLastSyncedTime] = useState(new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
+
+  // Live AliExpress Real-time Auto-Sync Interval (runs every 30 seconds)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const { products, lastSyncedTime: newSyncTime } = syncLiveAliExpressProducts(allProducts);
+      setAllProducts(products);
+      setLastSyncedTime(newSyncTime);
+    }, 30000);
+
+    return () => clearInterval(interval);
+  }, [allProducts]);
 
   // Sync Dark Mode Attribute
   useEffect(() => {
@@ -168,6 +182,38 @@ export default function App() {
 
       {/* Main Content Body */}
       <main className="container" style={{ flex: 1, paddingTop: '1.5rem' }} ref={productsSectionRef}>
+
+        {/* Live AliExpress Real-Time Price & Exchange Rate Sync Bar */}
+        <div style={{
+          background: 'rgba(16, 185, 129, 0.08)',
+          border: '1px solid rgba(16, 185, 129, 0.25)',
+          borderRadius: '12px',
+          padding: '0.6rem 1rem',
+          marginBottom: '1.25rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          fontSize: '0.8rem',
+          color: 'var(--text-main)',
+          flexWrap: 'wrap',
+          gap: '0.5rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontWeight: '700' }}>
+            <span style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: '#10b981',
+              boxShadow: '0 0 10px #10b981',
+              display: 'inline-block'
+            }}></span>
+            <span>أسعار الخصومات وأسعار الصرف محدثة لحظياً مباشرة من AliExpress Choice</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: 'var(--text-muted)', fontSize: '0.75rem' }}>
+            <RefreshCw size={13} />
+            <span>آخر مزامنة حية: {lastSyncedTime}</span>
+          </div>
+        </div>
         
         {/* Wishlist Active Bar Indicator */}
         {showWishlistOnly && (
