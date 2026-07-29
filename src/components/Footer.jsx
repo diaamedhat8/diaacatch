@@ -1,7 +1,8 @@
 import React from 'react';
 import { ShieldCheck, Truck, RotateCcw, HeartHandshake, Sparkles } from 'lucide-react';
+import BrandLogosTicker from './BrandLogosTicker';
 
-export default function Footer({ t }) {
+export default function Footer({ t, dir }) {
   return (
     <footer style={{
       background: 'var(--bg-card)',
@@ -17,9 +18,8 @@ export default function Footer({ t }) {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
           gap: '1.25rem',
-          paddingBottom: '2rem',
-          borderBottom: '1px solid var(--border-color)',
-          marginBottom: '2rem'
+          paddingBottom: '1.5rem',
+          borderBottom: '1px solid var(--border-color)'
         }}>
           <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
             <div style={{ background: 'rgba(255, 43, 74, 0.1)', padding: '0.6rem', borderRadius: '12px', flexShrink: 0 }}>
@@ -61,6 +61,9 @@ export default function Footer({ t }) {
             </div>
           </div>
         </div>
+
+        {/* Infinite Brand Logos Scrolling Ticker Section */}
+        <BrandLogosTicker variant="full" t={t} dir={dir} />
 
         {/* Brand & Rights */}
         <div style={{

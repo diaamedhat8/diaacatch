@@ -11,6 +11,7 @@ import Newsletter from './components/Newsletter';
 import ToastNotification from './components/ToastNotification';
 import MobileBottomNav from './components/MobileBottomNav';
 import Footer from './components/Footer';
+import BrandLogosTicker from './components/BrandLogosTicker';
 import { PRODUCTS } from './data/products';
 import { TRANSLATIONS, LANGUAGES } from './data/translations';
 import { syncLiveAliExpressProducts } from './utils/aliExpressSyncEngine';
@@ -336,6 +337,7 @@ export default function App() {
               <ProductCard
                 key={product.id}
                 product={product}
+                selectedLanguage={selectedLanguage}
                 currencyCode={selectedCurrency}
                 isWishlisted={wishlist.includes(product.id)}
                 onToggleWishlist={handleToggleWishlist}
@@ -347,6 +349,9 @@ export default function App() {
             ))}
           </div>
         )}
+
+        {/* Brand & Payment Partner Scrolling Logos Ticker */}
+        <BrandLogosTicker variant="full" t={t} dir={currentDir} />
 
         {/* Interactive AliExpress Deal Finder & Auto-Importer Component */}
         <AliExpressDealFinder t={t} dir={currentDir} onImportProduct={handleImportProduct} />
@@ -360,7 +365,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer t={t} />
+      <Footer t={t} dir={currentDir} />
 
       {/* Floating Toast Notification */}
       <ToastNotification message={toastMessage} onClose={() => setToastMessage(null)} />
@@ -368,6 +373,7 @@ export default function App() {
       {/* Modals & Drawers */}
       <QuickViewModal
         product={quickViewProduct}
+        selectedLanguage={selectedLanguage}
         currencyCode={selectedCurrency}
         onClose={() => setQuickViewProduct(null)}
         onAddToCart={handleAddToCart}
@@ -382,6 +388,7 @@ export default function App() {
         cartItems={cart}
         onUpdateQuantity={handleUpdateCartQuantity}
         onRemoveItem={handleRemoveCartItem}
+        selectedLanguage={selectedLanguage}
         currencyCode={selectedCurrency}
         t={t}
       />

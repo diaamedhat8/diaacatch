@@ -9,9 +9,11 @@ import {
   Share2
 } from 'lucide-react';
 import { CURRENCIES } from '../data/products';
+import { getLocalizedProduct } from '../utils/productTranslations';
 
 export default function ProductCard({
   product,
+  selectedLanguage = 'ar',
   currencyCode,
   isWishlisted,
   onToggleWishlist,
@@ -20,9 +22,10 @@ export default function ProductCard({
   onShowToast,
   t
 }) {
+  const displayProduct = getLocalizedProduct(product, selectedLanguage);
   const currency = CURRENCIES[currencyCode] || CURRENCIES.USD;
-  const currentPrice = (product.priceUSD * currency.rate).toFixed(2);
-  const originalPrice = (product.originalPriceUSD * currency.rate).toFixed(2);
+  const currentPrice = (displayProduct.priceUSD * currency.rate).toFixed(2);
+  const originalPrice = (displayProduct.originalPriceUSD * currency.rate).toFixed(2);
 
   const handleShare = () => {
     if (navigator.clipboard) {
@@ -218,13 +221,13 @@ export default function ProductCard({
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical'
           }}>
-            {product.title}
+            {displayProduct.title}
           </h3>
 
           {/* Shipping Badge Tag */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', marginBottom: '0.75rem' }}>
             <Truck size={13} color="#10b981" />
-            <span className="badge-shipping">{product.deliveryDays}</span>
+            <span className="badge-shipping">{displayProduct.deliveryDays}</span>
           </div>
         </div>
 

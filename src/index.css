@@ -323,3 +323,35 @@ body {
     gap: 0.4rem !important;
   }
 }
+
+/* Brands Logo Infinite Ticker Keyframes & Animation */
+@keyframes logosMarqueeLtr {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes logosMarqueeRtl {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+.logos-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: max-content;
+  will-change: transform;
+}
+
+.logos-marquee-track.animate-marquee-ltr {
+  animation: logosMarqueeLtr 28s linear infinite;
+}
+
+.logos-marquee-track.animate-marquee-rtl {
+  animation: logosMarqueeRtl 28s linear infinite;
+}
+
+.logos-marquee-container:hover .logos-marquee-track {
+  animation-play-state: paused;
+}
+

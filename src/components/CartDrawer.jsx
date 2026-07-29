@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { X, Trash2, Plus, Minus, ExternalLink, ShoppingBag, Tag, Check } from 'lucide-react';
 import { CURRENCIES } from '../data/products';
+import { getLocalizedProduct } from '../utils/productTranslations';
+import BrandLogosTicker from './BrandLogosTicker';
 
 export default function CartDrawer({
   isOpen,
@@ -8,6 +10,7 @@ export default function CartDrawer({
   cartItems,
   onUpdateQuantity,
   onRemoveItem,
+  selectedLanguage = 'ar',
   currencyCode,
   t
 }) {
@@ -119,6 +122,7 @@ export default function CartDrawer({
             </div>
           ) : (
             cartItems.map((item) => {
+              const localizedItem = getLocalizedProduct(item, selectedLanguage);
               const itemPrice = (item.priceUSD * currency.rate * (item.quantity || 1)).toFixed(2);
 
               return (
@@ -132,7 +136,7 @@ export default function CartDrawer({
                 }}>
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={localizedItem.title}
                     style={{ width: '64px', height: '64px', borderRadius: '8px', objectFit: 'cover' }}
                   />
                   <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -147,7 +151,7 @@ export default function CartDrawer({
                         WebkitLineClamp: 2,
                         WebkitBoxOrient: 'vertical'
                       }}>
-                        {item.title}
+                        {localizedItem.title}
                       </h4>
                     </div>
 
@@ -286,6 +290,9 @@ export default function CartDrawer({
               <span>{t('checkoutBtn')}</span>
               <ExternalLink size={16} />
             </a>
+
+            {/* Scrolling Logos Ticker in Cart Drawer */}
+            <BrandLogosTicker variant="compact" t={t} />
           </div>
         )}
       </div>

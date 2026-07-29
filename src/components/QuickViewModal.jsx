@@ -7,9 +7,12 @@ import {
   ShoppingBag
 } from 'lucide-react';
 import { CURRENCIES } from '../data/products';
+import { getLocalizedProduct } from '../utils/productTranslations';
+import BrandLogosTicker from './BrandLogosTicker';
 
 export default function QuickViewModal({
   product,
+  selectedLanguage = 'ar',
   currencyCode,
   onClose,
   onAddToCart,
@@ -19,15 +22,16 @@ export default function QuickViewModal({
 }) {
   if (!product) return null;
 
+  const displayProduct = getLocalizedProduct(product, selectedLanguage);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [selectedColor, setSelectedColor] = useState(product.colors ? product.colors[0] : null);
+  const [selectedColor, setSelectedColor] = useState(displayProduct.colors ? displayProduct.colors[0] : null);
   const [quantity, setQuantity] = useState(1);
 
   const currency = CURRENCIES[currencyCode] || CURRENCIES.USD;
-  const currentPrice = (product.priceUSD * currency.rate * quantity).toFixed(2);
-  const originalPrice = (product.originalPriceUSD * currency.rate * quantity).toFixed(2);
+  const currentPrice = (displayProduct.priceUSD * currency.rate * quantity).toFixed(2);
+  const originalPrice = (displayProduct.originalPriceUSD * currency.rate * quantity).toFixed(2);
 
-  const imagesList = product.images && product.images.length > 0 ? product.images : [product.image];
+  const imagesList = displayProduct.images && displayProduct.images.length > 0 ? displayProduct.images : [displayProduct.image];
 
   return (
     <div style={{
@@ -143,24 +147,24 @@ export default function QuickViewModal({
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.4rem' }}>
-              <span className="badge-discount">-{product.discount}%</span>
+              <span className="badge-discount">-{displayProduct.discount}%</span>
               <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: '600' }}>
-                ID: #{product.id}00500
+                ID: #{displayProduct.id}00500
               </span>
             </div>
 
             <h2 style={{ fontSize: '1.15rem', fontWeight: '800', lineHeight: '1.35', marginBottom: '0.65rem' }}>
-              {product.title}
+              {displayProduct.title}
             </h2>
 
             {/* Rating & Reviews */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.85rem', fontSize: '0.82rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', color: '#ffaa00', fontWeight: '800' }}>
                 <Star size={15} fill="#ffaa00" />
-                <span>{product.rating}</span>
+                <span>{displayProduct.rating}</span>
               </div>
-              <span style={{ color: 'var(--text-muted)' }}>({product.reviewsCount.toLocaleString()})</span>
-              <span style={{ color: '#10b981', fontWeight: '700' }}>{(product.ordersCount / 1000).toFixed(1)}k+ {t('ordersCount')}</span>
+              <span style={{ color: 'var(--text-muted)' }}>({displayProduct.reviewsCount.toLocaleString()})</span>
+              <span style={{ color: '#10b981', fontWeight: '700' }}>{(displayProduct.ordersCount / 1000).toFixed(1)}k+ {t('ordersCount')}</span>
             </div>
 
             {/* Price Box */}
@@ -182,16 +186,21 @@ export default function QuickViewModal({
               </span>
             </div>
 
+            {/* Description */}
+            <p style={{ fontSize: '0.83rem', color: 'var(--text-muted)', lineHeight: '1.5', marginBottom: '1rem' }}>
+              {displayProduct.description}
+            </p>
+
             {/* Specifications */}
             <div style={{ marginBottom: '1rem' }}>
-              <div style={{ fontSize: '0.82rem', fontWeight: '700', marginBottom: '0.4rem' }}>Specifications:</div>
+              <div style={{ fontSize: '0.82rem', fontWeight: '700', marginBottom: '0.4rem' }}>Specs:</div>
               <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
                 gap: '0.4rem',
                 fontSize: '0.78rem'
               }}>
-                {Object.entries(product.specs || {}).map(([key, val]) => (
+                {Object.entries(displayProduct.specs || {}).map(([key, val]) => (
                   <div key={key} style={{
                     background: 'var(--bg-main)',
                     padding: '0.4rem 0.65rem',
@@ -215,7 +224,7 @@ export default function QuickViewModal({
               marginBottom: '1.25rem'
             }}>
               <Truck size={16} color="#10b981" />
-              <span>{t('fastShipping')}: <strong>{product.deliveryDays}</strong></span>
+              <span>{t('fastShipping')}: <strong>{displayProduct.deliveryDays}</strong></span>
             </div>
           </div>
 
@@ -249,6 +258,9 @@ export default function QuickViewModal({
               <span>{t('addToCart')}</span>
             </button>
           </div>
+
+          {/* Trusted Brand Logos Ticker under product details */}
+          <BrandLogosTicker variant="mini" t={t} />
 
         </div>
       </div>
