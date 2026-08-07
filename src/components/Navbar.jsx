@@ -26,6 +26,7 @@ export default function Navbar({
   cartCount,
   onOpenCart,
   onOpenWishlist,
+  onOpenApiModal,
   t
 }) {
   return (
@@ -211,6 +212,29 @@ export default function Navbar({
               }}
             >
               {darkMode ? <Sun size={15} color="#ffaa00" /> : <Moon size={15} color="#475569" />}
+            </button>
+
+            {/* AliExpress Open API Settings Toggle */}
+            <button
+              onClick={onOpenApiModal}
+              title="إعدادات AliExpress Open Platform API والربط المباشر"
+              style={{
+                padding: '0.2rem 0.6rem',
+                borderRadius: '50px',
+                border: '1px solid #10b981',
+                background: 'rgba(16, 185, 129, 0.12)',
+                color: '#10b981',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.25rem',
+                cursor: 'pointer',
+                fontSize: '0.72rem',
+                fontWeight: '800',
+                flexShrink: 0
+              }}
+            >
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981' }}></span>
+              <span>API</span>
             </button>
 
             {/* Wishlist Button */}

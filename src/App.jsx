@@ -6,6 +6,8 @@ import ProductCard from './components/ProductCard';
 import QuickViewModal from './components/QuickViewModal';
 import CartDrawer from './components/CartDrawer';
 import AliExpressDealFinder from './components/AliExpressDealFinder';
+import AliExpressLiveExplorer from './components/AliExpressLiveExplorer';
+import AliExpressApiModal from './components/AliExpressApiModal';
 import FaqSection from './components/FaqSection';
 import Newsletter from './components/Newsletter';
 import ToastNotification from './components/ToastNotification';
@@ -29,6 +31,7 @@ export default function App() {
   const [maxPrice, setMaxPrice] = useState(150);
   const [sortBy, setSortBy] = useState('featured');
   const [darkMode, setDarkMode] = useState(true);
+  const [isApiModalOpen, setIsApiModalOpen] = useState(false);
 
   // User Cart, Wishlist & Toast State
   const [wishlist, setWishlist] = useState([1]);
@@ -175,6 +178,7 @@ export default function App() {
         cartCount={cart.reduce((sum, item) => sum + (item.quantity || 1), 0)}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenWishlist={() => setShowWishlistOnly(!showWishlistOnly)}
+        onOpenApiModal={() => setIsApiModalOpen(true)}
         t={t}
       />
 
@@ -356,6 +360,14 @@ export default function App() {
         {/* Interactive AliExpress Deal Finder & Auto-Importer Component */}
         <AliExpressDealFinder t={t} dir={currentDir} onImportProduct={handleImportProduct} />
 
+        {/* AliExpress Live Comprehensive Explorer (From Smallest to Largest Items) */}
+        <AliExpressLiveExplorer
+          onImportProduct={handleImportProduct}
+          currencyCode={selectedCurrency}
+          t={t}
+          dir={currentDir}
+        />
+
         {/* FAQ Accordion Section */}
         <FaqSection t={t} />
 
@@ -369,6 +381,14 @@ export default function App() {
 
       {/* Floating Toast Notification */}
       <ToastNotification message={toastMessage} onClose={() => setToastMessage(null)} />
+
+      {/* AliExpress Open Platform API Settings Modal */}
+      <AliExpressApiModal
+        isOpen={isApiModalOpen}
+        onClose={() => setIsApiModalOpen(false)}
+        t={t}
+        dir={currentDir}
+      />
 
       {/* Modals & Drawers */}
       <QuickViewModal

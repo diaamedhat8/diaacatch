@@ -1,3 +1,4 @@
+// ⚡ AliExpress Real-Time Catalog - Last Live Auto-Sync: 2026-08-07T22:47:00.132Z
 export const CATEGORIES = [
   { id: 'all', nameKey: 'filterAll', icon: 'Sparkles' },
   { id: 'appliances', nameKey: 'filterAppliances', icon: 'Tv' },
